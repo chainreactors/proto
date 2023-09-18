@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package message;
+
+/*
+
+/ s->c
+struct s2c{
+    type: uint8_t,
+    task_id: uint32_t,
+    split_num: uint32_t,
+    struct data;
+},
+
+struct data {
+    task_id: uint32_t,
+    split_id: uint64_t,
+    content:uint_8*
+};
+
+// c->s
+struct c2s {
+    type: uint8_t,
+    status: uint8_t,
+    task_id: uint32_t, (same as s2c)
+    split_num: uint32_t,
+};
+
+*/
+
+message Service2Client {
+  enum types {
+    COMMAND = 0;
+  };
+  uint32 task_id = 1;
+  uint32 split_num = 2;
+  Data data = 3;
+}
+
+message Client2Service {
+  enum types {
+    COMMAND = 0;
+  };
+  enum status {
+    SUCCESS = 0;
+    FAIL = 1;
+  };
+  uint32 task_id = 1;
+  uint32 split_num = 2;
+  Data data = 3;
+
+}
+
+message Data {
+  uint32 task_id = 1;
+  uint64 split_id =2 ;
+  bytes content = 3;
+}
+
+
+
