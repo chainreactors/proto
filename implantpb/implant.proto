@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package message;
-
+package implantpb;
+option go_package = "github.com/chainreactors/malice-network/proto/implantpb";
 /*
 
 / s->c

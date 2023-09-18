@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package commonpb;
+option go_package = "github.com/chainreactors/malice-network/proto/commonpb";
+
+/*
+  Generic protobuf messages
+*/
+
+message Empty {}
+
+message Basic {}
