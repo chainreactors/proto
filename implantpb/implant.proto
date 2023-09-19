@@ -28,16 +28,18 @@ struct c2s {
 
 */
 
-message Service2Client {
+// server send message to client
+message TaskCall {
   enum types {
     COMMAND = 0;
   };
   uint32 task_id = 1;
   uint32 split_num = 2;
-  Data data = 3;
+  Spite data = 3;
 }
 
-message Client2Service {
+// client back message to server
+message TaskBack {
   enum types {
     COMMAND = 0;
   };
@@ -47,11 +49,11 @@ message Client2Service {
   };
   uint32 task_id = 1;
   uint32 split_num = 2;
-  Data data = 3;
-
+  Spite data = 3;
 }
 
-message Data {
+// malicious message
+message Spite {
   uint32 task_id = 1;
   uint64 split_id =2 ;
   bytes content = 3;

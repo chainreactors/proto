@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package clientpb;
+option go_package = "github.com/chainreactors/malice-network/proto/clientpb";
+
+message Malefic {
+
+}
+
+message Malignant {
+
+}
