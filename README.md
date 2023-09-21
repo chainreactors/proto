@@ -1,8 +1,7 @@
 ## architecture
 
 ```
-clientpb - manage malignant and malefic (implant-side) 
-commonpb - mamane server
-implant - implant <-> server exchange data
-server - grpc server
+client - client <-> server exchange data (implant-side) 
+implant - listener <-> server exchange data
+services - grpc server
 ```

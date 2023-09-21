@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package clientrpc;
+option go_package = "github.com/chainreactors/malice-network/proto/services/clientrpc";
+
+import "client/commonpb/common.proto";
+
+
+service MaliceRPC {
+  rpc GetBasicInfo(commonpb.Empty) returns (commonpb.Basic);
+}

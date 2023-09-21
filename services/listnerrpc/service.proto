@@ -1,0 +1,4 @@
+syntax = "proto3";
+
+package listenerrpc;
+option go_package = "github.com/chainreactors/malice-network/proto/services/listenerrpc";
