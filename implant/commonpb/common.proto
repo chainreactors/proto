@@ -1,0 +1,37 @@
+syntax = "proto3";
+package commonpb;
+
+message RegisterRequest {
+  string beaconId = 1;
+  Os os = 2;
+  Process process = 3;
+  Timer timer = 4;
+}
+
+message RegisterResponse {
+  bool status = 1;
+  string padding = 2;
+}
+
+message Os {
+  string name = 1;
+  string version = 2;
+  string arch = 3;
+  string username = 4;
+  string hostname = 5;
+  string locale = 6;
+}
+
+message Process {
+  string uid = 1;
+  string pid = 2;
+  string gid = 3;
+  string name = 4;
+  string args = 5;
+}
+
+message Timer {
+  int64 interval = 1;
+  int64 jitter = 2;
+  int64 heartbeat = 3;
+}

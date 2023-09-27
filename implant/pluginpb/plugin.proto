@@ -1,0 +1,30 @@
+syntax = "proto3";
+package pluginpb;
+
+message ExecRequest {
+    string command = 1;
+    string args = 2;
+}
+
+message ExecResponse {
+    string stdout = 1;
+    string stderr = 2;
+    int32 exit_code = 3;
+}
+
+message UploadRequest {
+    string path = 1;
+    bytes content = 2;
+}
+
+message UploadResponse {
+    bool success = 1;
+}
+
+message DownloadRequest {
+    string path = 1;
+}
+
+message DownloadResponse {
+    bytes content = 1;
+}
