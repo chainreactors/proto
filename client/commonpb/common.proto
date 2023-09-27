@@ -9,7 +9,18 @@ option go_package = "github.com/chainreactors/malice-network/proto/client/common
 
 message Empty {}
 
-message Basic {}
+message Basic {
+  int32 Major = 1;
+  int32 Minor = 2;
+  int32 Patch = 3;
+
+  string Commit = 4;
+  bool Dirty = 5;
+  int64 CompiledAt = 6;
+
+  string OS = 7;
+  string Arch = 8;
+}
 
 
 // Request - Common fields used in all gRPC requests
