@@ -1,5 +1,30 @@
 syntax = "proto3";
+
 package commonpb;
+option go_package = "github.com/chainreactors/malice-network/proto/implant/commonpb";
+
+import "implant/pluginpb/plugin.proto";
+
+
+message Spite {
+  int64 task_id = 1;
+  oneof body {
+    liteSpite lite_spite = 2;
+    pluginpb.ExecRequest exec_request = 4;
+    pluginpb.ExecResponse exec_response = 5;
+    pluginpb.UploadRequest upload_request = 6;
+    pluginpb.UploadResponse upload_response = 7;
+    pluginpb.DownloadRequest download_request = 8;
+    pluginpb.DownloadResponse download_response = 9;
+  }
+}
+
+
+message liteSpite {
+  int64 task_id = 1;
+  int64 type = 2;
+  bytes content = 3;
+}
 
 message RegisterRequest {
   string beaconId = 1;
@@ -35,3 +60,5 @@ message Timer {
   int64 jitter = 2;
   int64 heartbeat = 3;
 }
+
+
