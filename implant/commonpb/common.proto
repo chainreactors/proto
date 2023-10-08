@@ -7,9 +7,10 @@ import "implant/pluginpb/plugin.proto";
 
 
 message Spite {
-  int64 task_id = 1;
+  uint32 task_id = 1;
+  uint32 session_id = 2;
   oneof body {
-    liteSpite lite_spite = 2;
+    liteSpite lite_spite = 3;
     pluginpb.ExecRequest exec_request = 4;
     pluginpb.ExecResponse exec_response = 5;
     pluginpb.UploadRequest upload_request = 6;
@@ -21,8 +22,8 @@ message Spite {
 
 
 message liteSpite {
-  int64 task_id = 1;
-  int64 type = 2;
+  uint32 task_id = 1;
+  uint32 type = 2;
   bytes content = 3;
 }
 
