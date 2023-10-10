@@ -3,34 +3,55 @@ syntax = "proto3";
 package clientpb;
 option go_package = "github.com/chainreactors/malice-network/proto/client/clientpb";
 
-message Malefic {
+message Empty {}
 
+message Basic {
+  int32 major = 1;
+  int32 minor = 2;
+  int32 patch = 3;
+
+  string commit = 4;
+  bool dirty = 5;
+  int64 compiledAt = 6;
+
+  string os = 7;
+  string arch = 8;
 }
 
-message Malignant {
+message Request {
+  bool async = 1;
+  int64 timeout = 2;
 
+  string beacon_id = 8;
+  string session_id = 9;
 }
 
+message Response {
+  string err = 1;
+  bool async = 2;
+  string beacon_id = 8;
+  string task_id = 9;
+}
 
 message Job {
-  uint32 ID = 1;
-  string Name = 2;
-  string Description = 3;
-  string Protocol = 4;
-  uint32 Port = 5;
+  uint32 id = 1;
+  string name = 2;
+  string description = 3;
+  string protocol = 4;
+  uint32 port = 5;
 
-  repeated string Domains = 6;
+  repeated string domains = 6;
 }
 
 message Jobs {
-  repeated Job Active = 1;
+  repeated Job active = 1;
 }
 
 message KillJobReq {
-  uint32 ID = 1;
+  uint32 id = 1;
 }
 
 message KillJob {
-  uint32 ID = 1;
+  uint32 id = 1;
   bool Success = 2;
 }

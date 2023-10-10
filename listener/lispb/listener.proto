@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package lispb;
+option go_package = "github.com/chainreactors/malice-network/proto/listener/lispb";
+
+import "implant/commonpb/common.proto";
+
+message RegisterSession {
+  string listener_id = 1;
+  commonpb.Register register_data = 2;
+  string remote_addr = 3;
+  string session_id = 4;
+}
+
+message RegisterListener {
+  string listener_id = 1;
+}

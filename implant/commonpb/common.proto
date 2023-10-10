@@ -5,21 +5,54 @@ option go_package = "github.com/chainreactors/malice-network/proto/implant/commo
 
 import "implant/pluginpb/plugin.proto";
 
+message Empty {
+}
 
+// implant call and back data
 message Spite {
   uint32 task_id = 1;
   uint32 session_id = 2;
   oneof body {
     liteSpite lite_spite = 3;
-    pluginpb.ExecRequest exec_request = 4;
-    pluginpb.ExecResponse exec_response = 5;
-    pluginpb.UploadRequest upload_request = 6;
-    pluginpb.UploadResponse upload_response = 7;
-    pluginpb.DownloadRequest download_request = 8;
-    pluginpb.DownloadResponse download_response = 9;
+    pluginpb.ExecRequest exec_request = 11;
+    pluginpb.ExecResponse exec_response = 12;
+    pluginpb.UploadRequest upload_request = 13;
+    pluginpb.UploadResponse upload_response = 14;
+    pluginpb.DownloadRequest download_request = 15;
+    pluginpb.DownloadResponse download_response = 16;
   }
 }
 
+// implant unsolicited messages
+message Promise{
+  uint32 task_id = 1;
+  uint32 session_id = 2;
+  oneof body {
+    Register register = 11;
+    Ping ping = 12;
+    Suicide suicide = 13;
+    // keyboard logger
+    // screenshot
+    //
+  }
+}
+
+message Register {
+  string beacon_id = 1;
+  string listener_id = 2;
+  Os os = 11;
+  Process process = 12;
+  Timer timer = 13;
+}
+
+message Ping{
+  int32 nonce = 1;
+}
+
+message Suicide {
+  int32 type = 1;
+  int64 timestamp = 2;
+}
 
 message liteSpite {
   uint32 task_id = 1;
@@ -27,17 +60,6 @@ message liteSpite {
   bytes content = 3;
 }
 
-message RegisterRequest {
-  string beaconId = 1;
-  Os os = 2;
-  Process process = 3;
-  Timer timer = 4;
-}
-
-message RegisterResponse {
-  bool status = 1;
-  string padding = 2;
-}
 
 message Os {
   string name = 1;

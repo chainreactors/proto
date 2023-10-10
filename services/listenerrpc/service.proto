@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package listenerrpc;
+option go_package = "github.com/chainreactors/malice-network/proto/services/listenerrpc";
+
+
+import "implant/commonpb/common.proto";
+import "listener/lispb/listener.proto";
+
+service ImplantRPC {
+  rpc Register(lispb.RegisterSession) returns (commonpb.Empty) ;
+  rpc Ping(commonpb.Ping) returns (commonpb.Empty);
+}
