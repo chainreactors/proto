@@ -27,15 +27,15 @@ message Spite {
 }
 
 message Spites {
-  uint32 session_id = 1;
+  string session_id = 1;
   repeated Spite spites = 2;
 }
 
 // implant unsolicited messages
 message Promise{
   uint32 task_id = 1;
-  bool  async = 3;
-  uint32 duration = 4;
+  bool  async = 2;
+  uint32 duration = 3;
   oneof body {
     Register register = 11;
     Ping ping = 12;
@@ -47,7 +47,7 @@ message Promise{
 }
 
 message Promises {
-  uint32 session_id = 1;
+  string session_id = 1;
   repeated Promise promises = 2;
 }
 
