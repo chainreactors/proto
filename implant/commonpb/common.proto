@@ -13,6 +13,7 @@ message Spite {
   uint32 task_id = 1;
   bool  async = 2;
   uint64 timeout = 3;
+  bool end = 4;
 
   oneof body {
     liteSpite lite_spite = 10;
@@ -91,9 +92,9 @@ message Process {
 }
 
 message Timer {
-  uint64 interval = 1;
-  uint64 jitter = 2;
-  uint64 heartbeat = 3;
+  int64 interval = 1;
+  int64 jitter = 2;
+  int64 heartbeat = 3;
 }
 
 
