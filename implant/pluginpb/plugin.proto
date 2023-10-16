@@ -20,8 +20,9 @@ message ExecResponse {
 }
 
 message UploadRequest {
-    string path = 1;
-    bytes content = 2;
+    uint32 block_id = 1;
+    string path = 2;
+    bytes content = 3;
 }
 
 message UploadResponse {
@@ -33,5 +34,6 @@ message DownloadRequest {
 }
 
 message DownloadResponse {
-    bytes content = 1;
+    uint32 block_id = 1;
+    bytes content = 2;
 }
