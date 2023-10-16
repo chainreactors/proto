@@ -92,9 +92,9 @@ message Process {
 }
 
 message Timer {
-  int64 interval = 1;
-  int64 jitter = 2;
-  int64 heartbeat = 3;
+  uint64 interval = 1;
+  uint64 jitter = 2;
+  uint64 heartbeat = 3;
 }
 
 
