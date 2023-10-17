@@ -40,3 +40,13 @@ message KillJob {
   uint32 id = 1;
   bool Success = 2;
 }
+
+message RegisterReq {
+  string host = 1;
+  string user = 2;
+}
+
+message RegisterResp {
+  bytes certs = 1;
+  bytes private_key = 2;
+}
