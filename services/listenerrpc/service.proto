@@ -7,7 +7,11 @@ import "implant/commonpb/common.proto";
 import "listener/lispb/listener.proto";
 
 service ImplantRPC {
-  rpc Register(lispb.RegisterSession) returns (commonpb.Empty) ;
+  rpc Register(lispb.RegisterSession) returns (commonpb.Empty);
   rpc Ping(commonpb.Ping) returns (commonpb.Empty);
-  rpc SpiteStream(stream commonpb.Spite) returns (stream commonpb.Spite);
+}
+
+service ListenerRPC {
+  rpc RegisterListener(lispb.RegisterListener) returns (commonpb.Empty);
+  rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);
 }

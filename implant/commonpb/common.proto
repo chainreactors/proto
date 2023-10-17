@@ -17,38 +17,20 @@ message Spite {
 
   oneof body {
     liteSpite lite_spite = 10;
-    pluginpb.ExecRequest exec_request = 11;
-    pluginpb.ExecResponse exec_response = 12;
-    pluginpb.UploadRequest upload_request = 13;
-    pluginpb.UploadResponse upload_response = 14;
-    pluginpb.DownloadRequest download_request = 15;
-    pluginpb.DownloadResponse download_response = 16;
+    Register register = 11;
+    Ping ping = 12;
+    Suicide suicide = 13;
+    pluginpb.ExecRequest exec_request = 14;
+    pluginpb.ExecResponse exec_response = 15;
+    pluginpb.UploadRequest upload_request = 16;
+    pluginpb.UploadResponse upload_response = 17;
+    pluginpb.DownloadRequest download_request = 18;
+    pluginpb.DownloadResponse download_response = 19;
   }
 }
 
 message Spites {
-  string session_id = 1;
-  repeated Spite spites = 2;
-}
-
-// implant unsolicited messages
-message Promise{
-  uint32 task_id = 1;
-  bool  async = 2;
-  uint32 duration = 3;
-  oneof body {
-    Register register = 11;
-    Ping ping = 12;
-    Suicide suicide = 13;
-    // keyboard logger
-    // screenshot
-    //
-  }
-}
-
-message Promises {
-  string session_id = 1;
-  repeated Promise promises = 2;
+  repeated Spite spites = 1;
 }
 
 

@@ -15,11 +15,10 @@ message RegisterListener {
   string listener_id = 1;
 }
 
-message Packet{
+
+message SpiteSession{
   string listener_id = 1;
   string session_id = 2;
-  oneof body {
-    commonpb.Spite spite = 11;
-    commonpb.Promise promise = 12;
-  }
+  uint32 task_id = 3;
+  commonpb.Spite spite = 4;
 }

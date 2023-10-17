@@ -4,8 +4,9 @@ package clientrpc;
 option go_package = "github.com/chainreactors/malice-network/proto/services/clientrpc";
 
 import "client/clientpb/client.proto";
-
+import "implant/pluginpb/plugin.proto";
 
 service MaliceRPC {
-  rpc GetBasicInfo(clientpb.Empty) returns (clientpb.Basic);
+  rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
+  rpc Exec(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
 }
