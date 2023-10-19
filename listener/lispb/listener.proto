@@ -6,9 +6,11 @@ option go_package = "github.com/chainreactors/malice-network/proto/listener/lisp
 import "implant/commonpb/common.proto";
 
 message RegisterSession {
-  string listener_id = 1;
-  commonpb.Register register_data = 2;
-  string remote_addr = 3;
+  string session_id = 1;
+  string listener_id = 2;
+  commonpb.Register register_data = 3;
+  string remote_addr = 4;
+
 }
 
 message RegisterListener {

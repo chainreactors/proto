@@ -85,7 +85,7 @@ message Os {
 
 message Process {
   string uid = 1;
-  string pid = 2;
+  int32 pid = 2;
   string gid = 3;
   string name = 4;
   string args = 5;

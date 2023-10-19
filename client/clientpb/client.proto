@@ -3,6 +3,9 @@ syntax = "proto3";
 package clientpb;
 option go_package = "github.com/chainreactors/malice-network/proto/client/clientpb";
 
+import "implant/commonpb/common.proto";
+
+
 message Empty {}
 
 message Basic {
@@ -16,6 +19,22 @@ message Basic {
 
   string os = 7;
   string arch = 8;
+}
+
+message Session {
+  string session_id = 1;
+  string name = 2;
+  string remote_addr = 3;
+  bool is_dead = 4;
+  string version = 5;
+  string listener_id = 6;
+  commonpb.Os os = 11;
+  commonpb.Process process = 12;
+  commonpb.Timer timer = 13;
+}
+
+message Sessions {
+  repeated Session sessions = 1;
 }
 
 message Job {
