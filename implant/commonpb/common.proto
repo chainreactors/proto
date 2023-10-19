@@ -49,10 +49,25 @@ message Suicide {
   int64 timestamp = 2;
 }
 
-message liteSpite {
-  uint32 task_id = 1;
-  uint32 type = 2;
-  bytes content = 3;
+message LoadPlugin{
+  string name = 1;
+  bytes bin = 2;
+}
+
+message OnceLoadPlugin {
+  string name = 1;
+  bytes bin = 2;
+  repeated string params = 3;
+}
+
+message CommonRequest {
+  string name = 1;
+  repeated string params = 2;
+}
+
+message CommonResponse {
+  string name = 1;
+  bytes content = 2;
 }
 
 
@@ -77,6 +92,7 @@ message Timer {
   uint64 interval = 1;
   uint64 jitter = 2;
   uint64 heartbeat = 3;
+  uint64 last_checkin = 4;
 }
 
 
