@@ -51,6 +51,26 @@ message Jobs {
   repeated Job active = 1;
 }
 
+message Client {
+  uint32 ID = 1;
+  string Name = 2;
+  bool Online = 3;
+}
+
+message Clients {
+  repeated Client Clients = 1;
+}
+
+message Event {
+  string EventType = 1;
+  Session Session = 2;
+  Job Job = 3;
+  Client Client = 4;
+  bytes Data = 5;
+
+  string Err = 6; // Can't trigger normal gRPC error
+}
+
 message KillJobReq {
   uint32 id = 1;
 }

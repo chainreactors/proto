@@ -7,8 +7,13 @@ import "client/clientpb/client.proto";
 import "implant/pluginpb/plugin.proto";
 
 service MaliceRPC {
+  // basic
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
-  rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
   rpc RegisterCA(clientpb.RegisterReq) returns (clientpb.RegisterResp);
+  rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
+  rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
+
+ // implant
+  rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
 }
