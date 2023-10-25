@@ -12,6 +12,7 @@ service MaliceRPC {
   rpc RegisterCA(clientpb.RegisterReq) returns (clientpb.RegisterResp);
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
+  rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
 
  // implant
