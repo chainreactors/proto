@@ -4,6 +4,7 @@ package clientpb;
 option go_package = "github.com/chainreactors/malice-network/proto/client/clientpb";
 
 import "implant/commonpb/common.proto";
+import "listener/lispb/listener.proto";
 
 
 message Empty {}
@@ -39,28 +40,27 @@ message Sessions {
 
 message Job {
   uint32 id = 1;
-  string name = 2;
-  string description = 3;
-  string protocol = 4;
-  uint32 port = 5;
-
-  repeated string domains = 6;
+  oneof body {
+    Pipeline pipeline = 10;
+  }
 }
 
 message Jobs {
-  repeated Job active = 1;
+  repeated Job job = 1;
 }
 
 message Pipeline{
   string name = 1;
-  string host = 2;
-  uint32 port = 3;
-  string protocol = 4;
+  oneof body {
+    lispb.TCPPipeline tcp = 10;
+  }
 }
 
 message Listener{
   string id = 1;
-  repeated Pipeline pipelines = 2;
+  string addr = 2;
+  bool active = 3;
+  repeated Pipeline pipelines = 4;
 }
 
 message Listeners {

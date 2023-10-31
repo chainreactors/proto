@@ -15,6 +15,9 @@ message RegisterSession {
 
 message RegisterListener {
   string listener_id = 1;
+  string host = 2;
+  string name = 3;
+  string addr = 4;
 }
 
 
@@ -23,4 +26,25 @@ message SpiteSession{
   string session_id = 2;
   uint32 task_id = 3;
   commonpb.Spite spite = 4;
+}
+
+message CtrlPipeline {
+  string listener_id = 1;
+  int32 ctrl = 2;
+  oneof pipeline {
+      TCPPipeline tcp = 10;
+  }
+}
+
+message CtrlStatus {
+  string listener_id = 1;
+  int32 ctrl = 2;
+  int32 status = 3;
+  string error = 4;
+}
+
+message TCPPipeline{
+  string name = 1;
+  string host = 2;
+  uint32 port = 3;
 }

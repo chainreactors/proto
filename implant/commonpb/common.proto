@@ -19,10 +19,10 @@ message Spite {
     Register register = 11;
     Ping ping = 12;
     Suicide suicide = 13;
-    LoadPlugin LoadPlugin = 14;
-    OnceLoadPlugin OnceLoadPlugin = 15;
-    CommonRequest CommonRequest = 16;
-    CommonResponse CommonResponse = 17;
+    LoadPlugin load_plugin = 14;
+    OnceLoadPlugin onceload_plugin = 15;
+    CommonRequest common_request = 16;
+    CommonResponse common_response = 17;
     pluginpb.ExecRequest exec_request = 104;
     pluginpb.ExecResponse exec_response = 105;
     pluginpb.UploadRequest upload_request = 106;

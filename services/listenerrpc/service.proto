@@ -13,5 +13,6 @@ service ImplantRPC {
 
 service ListenerRPC {
   rpc RegisterListener(lispb.RegisterListener) returns (commonpb.Empty);
+  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
   rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);
 }
