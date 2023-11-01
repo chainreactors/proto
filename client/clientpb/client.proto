@@ -39,28 +39,33 @@ message Sessions {
 }
 
 message Job {
-  uint32 id = 1;
-  oneof body {
-    Pipeline pipeline = 10;
-  }
+  int32 id = 1;
+  lispb.Pipeline pipeline = 2;
 }
 
 message Jobs {
   repeated Job job = 1;
 }
 
-message Pipeline{
-  string name = 1;
-  oneof body {
-    lispb.TCPPipeline tcp = 10;
-  }
+message JobCtrl {
+  int32 id = 1;
+  int32 ctrl = 2;
+  Job job = 3;
+}
+
+message JobStatus {
+  string listener_id = 1;
+  int32 ctrl = 2;
+  int32 status = 3;
+  string error = 4;
+  Job job = 5;
 }
 
 message Listener{
   string id = 1;
   string addr = 2;
   bool active = 3;
-  repeated Pipeline pipelines = 4;
+  repeated lispb.Pipeline pipelines = 4;
 }
 
 message Listeners {
@@ -68,7 +73,7 @@ message Listeners {
 }
 
 message Client {
-  uint32 ID = 1;
+  int32 ID = 1;
   string Name = 2;
   bool Online = 3;
 }
@@ -88,11 +93,11 @@ message Event {
 }
 
 message KillJobReq {
-  uint32 id = 1;
+  int32 id = 1;
 }
 
 message KillJob {
-  uint32 id = 1;
+  int32 id = 1;
   bool Success = 2;
 }
 

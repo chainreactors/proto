@@ -5,6 +5,7 @@ option go_package = "github.com/chainreactors/malice-network/proto/services/list
 
 import "implant/commonpb/common.proto";
 import "listener/lispb/listener.proto";
+import "client/clientpb/client.proto";
 
 service ImplantRPC {
   rpc Register(lispb.RegisterSession) returns (commonpb.Empty);
@@ -13,6 +14,8 @@ service ImplantRPC {
 
 service ListenerRPC {
   rpc RegisterListener(lispb.RegisterListener) returns (commonpb.Empty);
-  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
+  rpc RegisterPipeline(lispb.Pipeline) returns(commonpb.Empty);
+//  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
   rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);
+  rpc JobStream(stream clientpb.JobStatus) returns (stream clientpb.JobCtrl);
 }

@@ -14,12 +14,11 @@ message RegisterSession {
 }
 
 message RegisterListener {
-  string listener_id = 1;
+  string id = 1;
   string host = 2;
   string name = 3;
   string addr = 4;
 }
-
 
 message SpiteSession{
   string listener_id = 1;
@@ -28,19 +27,14 @@ message SpiteSession{
   commonpb.Spite spite = 4;
 }
 
-message CtrlPipeline {
-  string listener_id = 1;
-  int32 ctrl = 2;
-  oneof pipeline {
-      TCPPipeline tcp = 10;
-  }
+message Pipelines{
+  repeated Pipeline pipelines = 1;
 }
 
-message CtrlStatus {
-  string listener_id = 1;
-  int32 ctrl = 2;
-  int32 status = 3;
-  string error = 4;
+message Pipeline{
+  oneof body {
+    TCPPipeline tcp = 10;
+  }
 }
 
 message TCPPipeline{

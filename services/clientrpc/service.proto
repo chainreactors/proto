@@ -5,6 +5,7 @@ option go_package = "github.com/chainreactors/malice-network/proto/services/clie
 
 import "client/clientpb/client.proto";
 import "implant/pluginpb/plugin.proto";
+import "listener/lispb/listener.proto";
 
 service MaliceRPC {
   // basic
@@ -13,8 +14,13 @@ service MaliceRPC {
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
+  rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
+  rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
 
  // implant
   rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
+
+  // listener
+  rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
 }
