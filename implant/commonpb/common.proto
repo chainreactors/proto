@@ -14,6 +14,7 @@ message Spite {
   bool  async = 2;
   uint64 timeout = 3;
   bool end = 4;
+  string name = 5;
 
   oneof body {
     Register register = 11;
