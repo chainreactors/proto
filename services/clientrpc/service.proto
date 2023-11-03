@@ -20,6 +20,9 @@ service MaliceRPC {
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
  // implant
   rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
+  rpc Upload(clientpb.Upload) returns (clientpb.Task);
+  rpc Download(clientpb.Download) returns (clientpb.Task);
+  rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
 
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
