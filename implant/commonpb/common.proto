@@ -17,6 +17,8 @@ message Spite {
   string name = 5;
 
   oneof body {
+    AsyncResponse async_response = 9;
+    Empty empty = 10;
     Register register = 11;
     Ping ping = 12;
     Suicide suicide = 13;
@@ -27,9 +29,7 @@ message Spite {
     pluginpb.ExecRequest exec_request = 104;
     pluginpb.ExecResponse exec_response = 105;
     pluginpb.UploadRequest upload_request = 106;
-    pluginpb.UploadResponse upload_response = 107;
     pluginpb.DownloadRequest download_request = 108;
-    pluginpb.DownloadResponse download_response = 109;
   }
 }
 
@@ -99,4 +99,11 @@ message Timer {
   uint64 last_checkin = 4;
 }
 
+message Block{
+  uint32 block_id = 1;
+  bytes content = 2;
+}
 
+message AsyncResponse {
+  bool success = 1;
+}

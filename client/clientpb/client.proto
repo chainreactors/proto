@@ -121,19 +121,6 @@ message RegisterResp {
   bytes CA = 3;
 }
 
-message Upload{
-  string name = 1;
-  string target = 2;
-  uint32 priv = 3;
-  bytes data = 4;
-  bool hidden = 5;
-}
-
-message Download{
-  string path = 1;
-  string name = 2;
-}
-
 message Sync{
   string name = 1;
   string target = 2;

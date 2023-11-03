@@ -18,10 +18,11 @@ service MaliceRPC {
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
+
  // implant
   rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
-  rpc Upload(clientpb.Upload) returns (clientpb.Task);
-  rpc Download(clientpb.Download) returns (clientpb.Task);
+  rpc Upload(pluginpb.UploadRequest) returns (clientpb.Task);
+  rpc Download(pluginpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
 
   // listener

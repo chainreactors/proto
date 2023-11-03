@@ -20,22 +20,14 @@ message ExecResponse {
 }
 
 message UploadRequest {
-    uint32 block_id = 1;
-	  uint32 total_num = 2;
-    string path = 3;
-    bytes content = 4;
-}
-
-message UploadResponse {
-    bool success = 1;
+    string name = 1;
+    string target = 2;
+    uint32 priv = 3;
+    bytes data = 4;
+    bool hidden = 5;
 }
 
 message DownloadRequest {
     string path = 1;
-}
-
-message DownloadResponse {
-    uint32 block_id = 1;
-	  uint32 total_num = 2;
-    bytes content = 3;
+    string name = 2;
 }
