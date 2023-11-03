@@ -17,7 +17,7 @@ service MaliceRPC {
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
-
+  rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
  // implant
   rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
 

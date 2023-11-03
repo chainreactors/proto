@@ -106,7 +106,17 @@ message RegisterReq {
   string user = 2;
 }
 
+message LoginReq {
+  string host = 1;
+  uint32 port = 2;
+}
+
+message LoginResp {
+  bool Success = 1;
+}
+
 message RegisterResp {
   bytes certs = 1;
   bytes private_key = 2;
+  bytes CA = 3;
 }
