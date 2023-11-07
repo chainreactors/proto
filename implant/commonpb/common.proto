@@ -17,6 +17,7 @@ message Spite {
   string name = 5;
 
   oneof body {
+	Block block = 8;
     AsyncResponse async_response = 9;
     Empty empty = 10;
     Register register = 11;
