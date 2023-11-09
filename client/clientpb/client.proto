@@ -32,6 +32,7 @@ message Session {
   commonpb.Os os = 11;
   commonpb.Process process = 12;
   commonpb.Timer timer = 13;
+  repeated Task tasks = 14;
 }
 
 message Sessions {
@@ -39,7 +40,7 @@ message Sessions {
 }
 
 message Job {
-  int32 id = 1;
+  uint32 id = 1;
   lispb.Pipeline pipeline = 2;
 }
 
@@ -48,7 +49,7 @@ message Jobs {
 }
 
 message JobCtrl {
-  int32 id = 1;
+  uint32 id = 1;
   int32 ctrl = 2;
   Job job = 3;
 }
@@ -73,7 +74,7 @@ message Listeners {
 }
 
 message Client {
-  int32 ID = 1;
+  uint32 ID = 1;
   string Name = 2;
   bool Online = 3;
 }
@@ -93,11 +94,11 @@ message Event {
 }
 
 message KillJobReq {
-  int32 id = 1;
+  uint32 id = 1;
 }
 
 message KillJob {
-  int32 id = 1;
+  uint32 id = 1;
   bool Success = 2;
 }
 
@@ -133,7 +134,10 @@ message SyncResp {
 }
 
 message Task{
-  int32 task_id = 1;
-  string type = 2;
-  int32 status = 3;
+  uint32 task_id = 1;
+  string session_id = 2;
+  string type = 3;
+  int32 status = 4;
+  int32 cur = 5;
+  int32 total = 6;
 }

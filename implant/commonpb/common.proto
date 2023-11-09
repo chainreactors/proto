@@ -17,7 +17,8 @@ message Spite {
   string name = 5;
 
   oneof body {
-	Block block = 8;
+	  Block block = 7;
+    AsyncStatus  async_status = 7;
     AsyncResponse async_response = 9;
     Empty empty = 10;
     Register register = 11;
@@ -107,4 +108,9 @@ message Block{
 
 message AsyncResponse {
   bool success = 1;
+}
+message AsyncStatus{
+  uint32 task_id = 1;
+  int32 status = 2;
+  string error = 3;
 }
