@@ -17,17 +17,17 @@ message Spite {
   string name = 5;
 
   oneof body {
-	  Block block = 7;
-    AsyncStatus  async_status = 7;
-    AsyncResponse async_response = 9;
     Empty empty = 10;
-    Register register = 11;
-    Ping ping = 12;
-    Suicide suicide = 13;
-    LoadPlugin load_plugin = 14;
-    OnceLoadPlugin onceload_plugin = 15;
-    CommonRequest common_request = 16;
-    CommonResponse common_response = 17;
+	  Block block = 11;
+    AsyncStatus  async_status = 12;
+    AsyncResponse async_response = 13;
+    Register register = 21;
+    Ping ping = 22;
+    Suicide suicide = 23;
+    LoadPlugin load_plugin = 24;
+    OnceLoadPlugin onceload_plugin = 25;
+    CommonRequest common_request = 26;
+    CommonResponse common_response = 27;
     pluginpb.ExecRequest exec_request = 104;
     pluginpb.ExecResponse exec_response = 105;
     pluginpb.UploadRequest upload_request = 106;
