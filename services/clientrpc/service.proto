@@ -28,3 +28,8 @@ service MaliceRPC {
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
 }
+
+service RootRPC {
+  // manager
+  rpc AddClient(clientpb.LoginReq) returns(clientpb.LoginResp);
+}
