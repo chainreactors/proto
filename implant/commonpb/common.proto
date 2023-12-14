@@ -20,7 +20,7 @@ message Spite {
     Empty empty = 10;
 	  Block block = 11;
     AsyncStatus  async_status = 12;
-    AsyncResponse async_response = 13;
+    AsyncACK async_ack = 13;
     Register register = 21;
     Ping ping = 22;
     Suicide suicide = 23;
@@ -106,9 +106,10 @@ message Block{
   bytes content = 2;
 }
 
-message AsyncResponse {
+message AsyncACK {
   bool success = 1;
 }
+
 message AsyncStatus{
   uint32 task_id = 1;
   int32 status = 2;
