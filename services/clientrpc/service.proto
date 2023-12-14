@@ -10,7 +10,6 @@ import "listener/lispb/listener.proto";
 service MaliceRPC {
   // basic
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
-  rpc RegisterCA(clientpb.RegisterReq) returns (clientpb.RegisterResp);
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);

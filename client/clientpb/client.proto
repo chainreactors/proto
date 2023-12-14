@@ -110,6 +110,7 @@ message RegisterReq {
 message LoginReq {
   string host = 1;
   uint32 port = 2;
+  string name = 3;
 }
 
 message LoginResp {
