@@ -142,3 +142,21 @@ message Task{
   int32 cur = 5;
   int32 total = 6;
 }
+
+message Kits {
+  repeated Kit kits = 1;
+}
+
+message Kit{
+  string name = 1;
+  bytes content = 2;
+}
+
+message Plugins {
+  repeated Plugin plugins = 1;
+}
+
+message Plugin{
+  string name = 1;
+  bytes content = 2;
+}

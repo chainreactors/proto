@@ -26,6 +26,10 @@ service MaliceRPC {
 
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
+
+  // plugin
+//  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
+//  rpc InstallPlugin(clientpb.Plugin) returns (clientpb.Empty);
 }
 
 service RootRPC {
