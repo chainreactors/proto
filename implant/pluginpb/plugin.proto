@@ -31,3 +31,8 @@ message DownloadRequest {
     string path = 1;
     string name = 2;
 }
+
+message DownloadResponse{
+    string checksum = 1;
+    int32 size = 2;
+}

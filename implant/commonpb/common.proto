@@ -108,10 +108,14 @@ message Block{
 
 message AsyncACK {
   bool success = 1;
+  bool end = 2;
 }
 
 message AsyncStatus{
   uint32 task_id = 1;
   int32 status = 2;
   string error = 3;
+  oneof msg {
+    pluginpb.DownloadResponse download_response = 10;
+  }
 }
