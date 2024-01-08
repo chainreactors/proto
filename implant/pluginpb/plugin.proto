@@ -19,6 +19,35 @@ message ExecResponse {
     uint32 pid = 4;
 }
 
+message InstallPlugin{
+    string name = 1;
+    bytes bin = 2;
+}
+
+message LoadAssembly{
+    string name = 1;
+    string type = 2;
+    bytes bin = 3;
+}
+
+message ExecuteAssembly{
+    string name = 1;
+    repeated string params = 3;
+}
+
+message ExecuteLoadAssembly {
+    string name = 1;
+    bytes bin = 2;
+    string type = 3;
+    repeated string params = 4;
+}
+
+message AssemblyResponse {
+    bytes data = 1;
+    int32 status = 2;
+    string err = 3;
+}
+
 message UploadRequest {
     string name = 1;
     string target = 2;

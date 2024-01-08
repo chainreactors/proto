@@ -15,6 +15,7 @@ message Spite {
   uint64 timeout = 3;
   bool end = 4;
   string name = 5;
+  string err = 6;
 
   oneof body {
     Empty empty = 10;
@@ -24,14 +25,15 @@ message Spite {
     Register register = 21;
     Ping ping = 22;
     Suicide suicide = 23;
-    LoadPlugin load_plugin = 24;
-    OnceLoadPlugin onceload_plugin = 25;
     CommonRequest common_request = 26;
     CommonResponse common_response = 27;
     pluginpb.ExecRequest exec_request = 104;
     pluginpb.ExecResponse exec_response = 105;
     pluginpb.UploadRequest upload_request = 106;
-    pluginpb.DownloadRequest download_request = 108;
+    pluginpb.DownloadRequest download_request = 107;
+    pluginpb.LoadAssembly load_assembly = 108;
+    pluginpb.ExecuteLoadAssembly execute_load_assembly = 109;
+    pluginpb.ExecuteAssembly execute_assembly = 110;
   }
 }
 
@@ -55,17 +57,6 @@ message Suicide {
   int64 timestamp = 2;
 }
 
-message LoadPlugin{
-  string name = 1;
-  bytes bin = 2;
-}
-
-message OnceLoadPlugin {
-  string name = 1;
-  bytes bin = 2;
-  repeated string params = 3;
-}
-
 message CommonRequest {
   string name = 1;
   repeated string params = 2;
@@ -74,8 +65,8 @@ message CommonRequest {
 message CommonResponse {
   string name = 1;
   bytes content = 2;
+  string err = 3;
 }
-
 
 message Os {
   string name = 1;
