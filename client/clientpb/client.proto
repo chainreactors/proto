@@ -80,17 +80,18 @@ message Client {
 }
 
 message Clients {
-  repeated Client Clients = 1;
+  repeated Client clients = 1;
 }
 
 message Event {
-  string EventType = 1;
-  Session Session = 2;
-  Job Job = 3;
-  Client Client = 4;
-  bytes Data = 5;
-  string SourceName = 6;
-  string Err = 7; // Can't trigger normal gRPC error
+  string type = 1;
+  bytes data = 2;
+  string source = 3;
+  string err = 4; // Can't trigger normal gRPC error
+  Session session = 5;
+  Job job = 6;
+  Client client = 7;
+  Task task = 8;
 }
 
 message KillJobReq {
@@ -99,7 +100,7 @@ message KillJobReq {
 
 message KillJob {
   uint32 id = 1;
-  bool Success = 2;
+  bool success = 2;
 }
 
 message RegisterReq {
@@ -115,13 +116,13 @@ message LoginReq {
 }
 
 message LoginResp {
-  bool Success = 1;
+  bool success = 1;
 }
 
 message RegisterResp {
   bytes certs = 1;
   bytes private_key = 2;
-  bytes CA = 3;
+  bytes ca = 3;
 }
 
 message Sync{
@@ -142,6 +143,12 @@ message Task{
   int32 status = 4;
   int32 cur = 5;
   int32 total = 6;
+  string error = 7;
+  bytes data = 8;
+}
+
+message Tasks{
+  repeated Task tasks = 1;
 }
 
 message Kits {

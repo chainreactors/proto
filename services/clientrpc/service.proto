@@ -9,13 +9,17 @@ import "listener/lispb/listener.proto";
 
 service MaliceRPC {
   // basic
+  rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
+
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
-  rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
+  rpc GetTasks(clientpb.Empty) returns (clientpb.Tasks);
+  rpc GetTaskContent(clientpb.Task) returns (clientpb.Task);
+  rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
 
@@ -24,6 +28,11 @@ service MaliceRPC {
   rpc Upload(pluginpb.UploadRequest) returns (clientpb.Task);
   rpc Download(pluginpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
+
+  rpc SpawnDll(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
+  rpc ExecuteAssembly(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
+  rpc SideLoad(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
+  rpc ExecuteShellcode(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
 
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);

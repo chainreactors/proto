@@ -34,6 +34,7 @@ message Spite {
     pluginpb.LoadAssembly load_assembly = 108;
     pluginpb.ExecuteLoadAssembly execute_load_assembly = 109;
     pluginpb.ExecuteAssembly execute_assembly = 110;
+    pluginpb.AssemblyResponse assembly_response = 111;
   }
 }
 
