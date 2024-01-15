@@ -15,12 +15,12 @@ message Spite {
   uint64 timeout = 3;
   bool end = 4;
   string name = 5;
-  string err = 6;
+  string error = 6; // basic error
+  AsyncStatus status = 7;
 
   oneof body {
     Empty empty = 10;
 	  Block block = 11;
-    AsyncStatus  async_status = 12;
     AsyncACK async_ack = 13;
     Register register = 21;
     Ping ping = 22;
@@ -106,7 +106,7 @@ message AsyncACK {
 message AsyncStatus{
   uint32 task_id = 1;
   int32 status = 2;
-  string error = 3;
+  string error = 3;  //std err
   oneof msg {
     pluginpb.DownloadResponse download_response = 10;
   }

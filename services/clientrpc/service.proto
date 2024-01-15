@@ -23,7 +23,7 @@ service MaliceRPC {
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
  // implant
-  rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
+  rpc Execute(pluginpb.ExecRequest) returns (clientpb.Task);
   rpc Upload(pluginpb.UploadRequest) returns (clientpb.Task);
   rpc Download(pluginpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
