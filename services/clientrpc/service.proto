@@ -17,12 +17,11 @@ service MaliceRPC {
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
-  rpc GetTasks(clientpb.Empty) returns (clientpb.Tasks);
+  rpc GetTasks(clientpb.Session) returns (clientpb.Tasks);
   rpc GetTaskContent(clientpb.Task) returns (clientpb.Task);
   rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
-
  // implant
   rpc Execute(pluginpb.ExecRequest) returns (pluginpb.ExecResponse);
   rpc Upload(pluginpb.UploadRequest) returns (clientpb.Task);
