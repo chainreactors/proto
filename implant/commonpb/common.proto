@@ -44,6 +44,11 @@ message Spites {
 
 
 message Register {
+  string name = 1;
+  string filepath = 2;
+  string proxy = 3;
+  repeated string module = 4;
+  repeated string extension = 5;
   Os os = 11;
   Process process = 12;
   Timer timer = 13;
