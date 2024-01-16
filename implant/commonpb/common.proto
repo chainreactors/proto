@@ -31,10 +31,14 @@ message Spite {
     pluginpb.ExecResponse exec_response = 105;
     pluginpb.UploadRequest upload_request = 106;
     pluginpb.DownloadRequest download_request = 107;
-    pluginpb.LoadAssembly load_assembly = 108;
-    pluginpb.ExecuteLoadAssembly execute_load_assembly = 109;
-    pluginpb.ExecuteAssembly execute_assembly = 110;
-    pluginpb.AssemblyResponse assembly_response = 111;
+    pluginpb.LoadExtension load_extension = 108;
+    pluginpb.AssemblyResponse assembly_response = 109;
+    pluginpb.ExecuteExtension execute_extension = 110;
+    pluginpb.ExecuteAssembly execute_assembly = 111;
+    pluginpb.ExecuteBof execute_bof = 112;
+    pluginpb.ExecuteSideLoad execute_sideload = 113;
+    pluginpb.ExecuteSpawn execute_spawn = 114;
+    pluginpb.ExecuteShellcode execute_shellcode = 115;
   }
 }
 

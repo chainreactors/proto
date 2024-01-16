@@ -29,10 +29,14 @@ service MaliceRPC {
   rpc Download(pluginpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
 
-  rpc SpawnDll(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
-  rpc ExecuteAssembly(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
-  rpc SideLoad(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
-  rpc ExecuteShellcode(pluginpb.ExecuteLoadAssembly) returns (clientpb.Task);
+  rpc LoadModule(pluginpb.LoadModule) returns (clientpb.Task);
+  rpc LoadExtension(pluginpb.LoadExtension) returns (clientpb.Task);
+  rpc ExecuteExtension(pluginpb.ExecuteExtension) returns (clientpb.Task);
+  rpc ExecuteSpawn(pluginpb.ExecuteSpawn) returns (clientpb.Task);
+  rpc ExecuteAssembly(pluginpb.ExecuteAssembly) returns (clientpb.Task);
+  rpc ExecuteSideLoad(pluginpb.ExecuteSideLoad) returns (clientpb.Task);
+  rpc ExecuteShellcode(pluginpb.ExecuteShellcode) returns (clientpb.Task);
+  rpc ExecuteBof(pluginpb.ExecuteBof) returns (clientpb.Task);
 
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
