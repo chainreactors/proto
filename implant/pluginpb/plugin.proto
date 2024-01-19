@@ -56,7 +56,9 @@ message ExecuteBof {
 }
 
 message ExecuteShellcode {
+    string name = 2;
     bytes bin = 1;
+    string type = 3;
 }
 
 message AssemblyResponse {

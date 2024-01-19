@@ -80,11 +80,12 @@ message CommonResponse {
 
 message Os {
   string name = 1;
-  string version = 2;
-  string arch = 3;
-  string username = 4;
-  string hostname = 5;
-  string locale = 6;
+  string version = 2; // kernel version
+  string release = 3; // release version
+  string arch = 4;
+  string username = 5;
+  string hostname = 6;
+  string locale = 7; // timezone
 }
 
 message Process {
@@ -114,7 +115,7 @@ message AsyncACK {
 
 message AsyncStatus{
   uint32 task_id = 1;
-  int32 status = 2;
+  int32 status = 2;  // unexcept error
   string error = 3;  //std err
   oneof msg {
     pluginpb.DownloadResponse download_response = 10;
