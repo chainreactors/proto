@@ -56,9 +56,14 @@ message ExecuteBof {
 }
 
 message ExecuteShellcode {
-    string name = 2;
     bytes bin = 1;
-    string type = 3;
+    string type = 2;
+    uint32 pid = 3;
+
+    // server only
+    string encoder = 4;
+    int32  iterations =5 ;
+    bytes badchars = 6;
 }
 
 message AssemblyResponse {
