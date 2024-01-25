@@ -41,6 +41,7 @@ message ExecuteAssembly {
     bytes bin = 2;
     string type = 3;
     repeated string params = 4;
+    uint32 pid = 5;
 }
 
 message ExecuteSpawn {
@@ -52,18 +53,23 @@ message ExecuteSideLoad {
 }
 
 message ExecuteBof {
-
+    string name = 1;
+    bytes bin = 2;
+    string type = 3;
+    repeated string params = 4;
 }
 
 message ExecuteShellcode {
-    bytes bin = 1;
-    string type = 2;
-    uint32 pid = 3;
+    string name = 1;
+    bytes bin = 2;
+    string type = 3;
+    repeated string params = 4;
+    uint32 pid = 5;
 
     // server only
-    string encoder = 4;
-    int32  iterations =5 ;
-    bytes badchars = 6;
+    string encoder = 6;
+    int32  iterations = 7;
+    bytes badchars = 8;
 }
 
 message AssemblyResponse {
