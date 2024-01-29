@@ -25,8 +25,7 @@ message Spite {
     Register register = 21;
     Ping ping = 22;
     Suicide suicide = 23;
-    CommonRequest common_request = 26;
-    CommonResponse common_response = 27;
+    Request request = 24;
     pluginpb.ExecRequest exec_request = 104;
     pluginpb.ExecResponse exec_response = 105;
     pluginpb.UploadRequest upload_request = 106;
@@ -67,16 +66,12 @@ message Suicide {
   int64 timestamp = 2;
 }
 
-message CommonRequest {
+
+// common empty request
+message Request {
   string name = 1;
-  repeated string params = 2;
 }
 
-message CommonResponse {
-  string name = 1;
-  bytes content = 2;
-  string err = 3;
-}
 
 message Os {
   string name = 1;

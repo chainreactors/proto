@@ -19,9 +19,17 @@ message ExecResponse {
     uint32 pid = 4;
 }
 
+message Modules {
+    repeated string modules = 1;
+}
+
 message LoadModule{
     string name = 1;
     bytes bin = 2;
+}
+
+message Extensions {
+    repeated string extensions = 1;
 }
 
 message LoadExtension{

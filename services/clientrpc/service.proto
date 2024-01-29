@@ -23,14 +23,19 @@ service MaliceRPC {
   rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
- // implant
-  rpc Execute(pluginpb.ExecRequest) returns (clientpb.Task);
+
+
+  // implant
   rpc Upload(pluginpb.UploadRequest) returns (clientpb.Task);
   rpc Download(pluginpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
 
+  rpc ListModules(commonpb.Empty) returns (clientpb.Task);
   rpc LoadModule(pluginpb.LoadModule) returns (clientpb.Task);
+  rpc ListExtensions(commonpb.Empty) returns (clientpb.Task);
   rpc LoadExtension(pluginpb.LoadExtension) returns (clientpb.Task);
+
+  rpc Execute(pluginpb.ExecRequest) returns (clientpb.Task);
   rpc ExecuteExtension(pluginpb.ExecuteExtension) returns (clientpb.Task);
   rpc ExecuteSpawn(pluginpb.ExecuteSpawn) returns (clientpb.Task);
   rpc ExecuteAssembly(pluginpb.ExecuteAssembly) returns (clientpb.Task);
@@ -42,8 +47,8 @@ service MaliceRPC {
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
 
   // plugin
-//  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
-//  rpc InstallPlugin(clientpb.Plugin) returns (clientpb.Empty);
+  //  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
+  //  rpc InstallPlugin(clientpb.Plugin) returns (clientpb.Empty);
 }
 
 service RootRPC {
