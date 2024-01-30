@@ -126,14 +126,12 @@ message RegisterResp {
 }
 
 message Sync{
-  string name = 1;
-  string target = 2;
+  string file_id = 1;
 }
 
 message SyncResp {
-  Task task = 1;
-  string target = 2;
-  bytes content = 3;
+  string name = 1;
+  bytes content = 2;
 }
 
 message Task{
