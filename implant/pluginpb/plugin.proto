@@ -24,7 +24,6 @@ message Modules {
 }
 
 message LoadModule{
-    string name = 1;
     bytes bin = 2;
 }
 
