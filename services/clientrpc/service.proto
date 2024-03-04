@@ -54,4 +54,9 @@ service MaliceRPC {
 service RootRPC {
   // manager
   rpc AddClient(clientpb.LoginReq) returns(clientpb.LoginResp);
+  rpc RemoveClient(clientpb.LoginReq) returns (clientpb.LoginResp);
+  rpc ListClients(commonpb.Empty) returns(clientpb.Clients);
+  rpc AddListener(lispb.RegisterListener) returns (commonpb.Empty);
+  rpc RemoveListener(lispb.RegisterListener) returns (commonpb.Empty);
+  rpc ListListeners(commonpb.Empty) returns(clientpb.Listeners);
 }
