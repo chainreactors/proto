@@ -3,12 +3,12 @@ syntax = "proto3";
 package lispb;
 option go_package = "github.com/chainreactors/malice-network/proto/listener/lispb";
 
-import "implant/commonpb/common.proto";
+import "implant/implantpb/implant.proto";
 
 message RegisterSession {
   string session_id = 1;
   string listener_id = 2;
-  commonpb.Register register_data = 3;
+  implantpb.Register register_data = 3;
   string remote_addr = 4;
 
 }
@@ -24,7 +24,7 @@ message SpiteSession{
   string listener_id = 1;
   string session_id = 2;
   uint32 task_id = 3;
-  commonpb.Spite spite = 4;
+  implantpb.Spite spite = 4;
 }
 
 message Pipelines{

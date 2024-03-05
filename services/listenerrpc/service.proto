@@ -3,18 +3,18 @@ syntax = "proto3";
 package listenerrpc;
 option go_package = "github.com/chainreactors/malice-network/proto/services/listenerrpc";
 
-import "implant/commonpb/common.proto";
+import "implant/implantpb/implant.proto";
 import "listener/lispb/listener.proto";
 import "client/clientpb/client.proto";
 
 service ImplantRPC {
-  rpc Register(lispb.RegisterSession) returns (commonpb.Empty);
-  rpc Ping(commonpb.Ping) returns (commonpb.Empty);
+  rpc Register(lispb.RegisterSession) returns (implantpb.Empty);
+  rpc Ping(implantpb.Ping) returns (implantpb.Empty);
 }
 
 service ListenerRPC {
-  rpc RegisterListener(lispb.RegisterListener) returns (commonpb.Empty);
-  rpc RegisterPipeline(lispb.Pipeline) returns(commonpb.Empty);
+  rpc RegisterListener(lispb.RegisterListener) returns (implantpb.Empty);
+  rpc RegisterPipeline(lispb.Pipeline) returns(implantpb.Empty);
 //  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
   rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);
   rpc JobStream(stream clientpb.JobStatus) returns (stream clientpb.JobCtrl);

@@ -4,8 +4,7 @@ package clientrpc;
 option go_package = "github.com/chainreactors/malice-network/proto/services/clientrpc";
 
 import "client/clientpb/client.proto";
-import "implant/pluginpb/plugin.proto";
-import "implant/commonpb/common.proto";
+import "implant/implantpb/implant.proto";
 import "listener/lispb/listener.proto";
 
 service MaliceRPC {
@@ -19,29 +18,29 @@ service MaliceRPC {
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc GetTasks(clientpb.Session) returns (clientpb.Tasks);
-  rpc GetTaskContent(clientpb.Task) returns (commonpb.Spite);
+  rpc GetTaskContent(clientpb.Task) returns (implantpb.Spite);
   rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
 
 
   // implant
-  rpc Upload(pluginpb.UploadRequest) returns (clientpb.Task);
-  rpc Download(pluginpb.DownloadRequest) returns (clientpb.Task);
+  rpc Upload(implantpb.UploadRequest) returns (clientpb.Task);
+  rpc Download(implantpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
 
-  rpc ListModules(commonpb.Empty) returns (clientpb.Task);
-  rpc LoadModule(pluginpb.LoadModule) returns (clientpb.Task);
-  rpc ListExtensions(commonpb.Empty) returns (clientpb.Task);
-  rpc LoadExtension(pluginpb.LoadExtension) returns (clientpb.Task);
+  rpc ListModules(implantpb.Empty) returns (clientpb.Task);
+  rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
+  rpc ListExtensions(implantpb.Empty) returns (clientpb.Task);
+  rpc LoadExtension(implantpb.LoadExtension) returns (clientpb.Task);
 
-  rpc Execute(pluginpb.ExecRequest) returns (clientpb.Task);
-  rpc ExecuteExtension(pluginpb.ExecuteExtension) returns (clientpb.Task);
-  rpc ExecuteSpawn(pluginpb.ExecuteSpawn) returns (clientpb.Task);
-  rpc ExecuteAssembly(pluginpb.ExecuteAssembly) returns (clientpb.Task);
-  rpc ExecuteSideLoad(pluginpb.ExecuteSideLoad) returns (clientpb.Task);
-  rpc ExecuteShellcode(pluginpb.ExecuteShellcode) returns (clientpb.Task);
-  rpc ExecuteBof(pluginpb.ExecuteBof) returns (clientpb.Task);
+  rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
+  rpc ExecuteExtension(implantpb.ExecuteExtension) returns (clientpb.Task);
+  rpc ExecuteSpawn(implantpb.ExecuteSpawn) returns (clientpb.Task);
+  rpc ExecuteAssembly(implantpb.ExecuteAssembly) returns (clientpb.Task);
+  rpc ExecuteSideLoad(implantpb.ExecuteSideLoad) returns (clientpb.Task);
+  rpc ExecuteShellcode(implantpb.ExecuteShellcode) returns (clientpb.Task);
+  rpc ExecuteBof(implantpb.ExecuteBof) returns (clientpb.Task);
 
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
@@ -55,8 +54,8 @@ service RootRPC {
   // manager
   rpc AddClient(clientpb.LoginReq) returns(clientpb.LoginResp);
   rpc RemoveClient(clientpb.LoginReq) returns (clientpb.LoginResp);
-  rpc ListClients(commonpb.Empty) returns(clientpb.Clients);
-  rpc AddListener(lispb.RegisterListener) returns (commonpb.Empty);
-  rpc RemoveListener(lispb.RegisterListener) returns (commonpb.Empty);
-  rpc ListListeners(commonpb.Empty) returns(clientpb.Listeners);
+  rpc ListClients(clientpb.Empty) returns(clientpb.Clients);
+  rpc AddListener(lispb.RegisterListener) returns (clientpb.Empty);
+  rpc RemoveListener(lispb.RegisterListener) returns (clientpb.Empty);
+  rpc ListListeners(clientpb.Empty) returns(clientpb.Listeners);
 }

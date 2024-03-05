@@ -1,0 +1,220 @@
+syntax = "proto3";
+package implantpb;
+
+option go_package = "github.com/chainreactors/malice-network/proto/implant/implantpb";
+
+message Empty {
+}
+
+// implant call and back data
+message Spite {
+  uint32 task_id = 1;
+  bool  async = 2;
+  uint64 timeout = 3;
+  bool end = 4;
+  string name = 5;
+  string error = 6; // basic error
+  Status status = 7;
+
+  oneof body {
+    Empty empty = 10;
+    Block block = 11;
+    AsyncACK async_ack = 13;
+    Register register = 21;
+    Ping ping = 22;
+    Suicide suicide = 23;
+    Request request = 24;
+    LoadModule  load_module = 25;
+    Modules  modules = 26;
+    ExecRequest exec_request = 104;
+    ExecResponse exec_response = 105;
+    UploadRequest upload_request = 106;
+    DownloadRequest download_request = 107;
+    AssemblyResponse assembly_response = 109;
+    ExecuteAssembly execute_assembly = 111;
+    ExecuteBof execute_bof = 112;
+    ExecuteSideLoad execute_sideload = 113;
+    ExecuteSpawn execute_spawn = 114;
+    ExecuteShellcode execute_shellcode = 115;
+    Extensions extensions = 120;
+    LoadExtension load_extension = 121;
+    ExecuteExtension execute_extension = 122;
+  }
+}
+
+message Spites {
+  repeated Spite spites = 1;
+}
+
+message Status{
+  uint32 task_id = 1;
+  int32 status = 2;  // unexcept error
+  string error = 3;  //std err
+  oneof msg {
+    DownloadResponse download_response = 10;
+  }
+}
+
+message Ping{
+  int32 nonce = 1;
+}
+
+message Register {
+  string name = 1;
+  string filepath = 2;
+  string proxy = 3;
+  repeated string module = 4;
+  repeated string extension = 5;
+  Os os = 11;
+  Process process = 12;
+  Timer timer = 13;
+}
+
+message Suicide {
+  int32 type = 1;
+  int64 timestamp = 2;
+}
+
+
+// common empty request
+message Request {
+  string name = 1;
+}
+
+message Block{
+  uint32 block_id = 1;
+  bytes content = 2;
+}
+
+message AsyncACK {
+  bool success = 1;
+  bool end = 2;
+}
+
+message Os {
+  string name = 1;
+  string version = 2; // kernel version
+  string release = 3; // release version
+  string arch = 4;
+  string username = 5;
+  string hostname = 6;
+  string locale = 7; // timezone
+}
+
+message Process {
+  string uid = 1;
+  int32 pid = 2;
+  string gid = 3;
+  string name = 4;
+  string args = 5;
+}
+
+message Timer {
+  uint64 interval = 1;
+  uint64 jitter = 2;
+  uint64 heartbeat = 3;
+  uint64 last_checkin = 4;
+}
+
+
+message ExecRequest {
+  string path = 1;
+  repeated string args = 2;
+  bool output = 3;
+  string stdout = 4;
+  string stderr = 5;
+  uint32 ppid = 10;
+}
+
+message ExecResponse {
+  int32 status_code = 1;
+  bytes stdout = 2;
+  bytes stderr = 3;
+  uint32 pid = 4;
+}
+
+message Modules {
+  repeated string modules = 1;
+}
+
+message LoadModule{
+  bytes bin = 2;
+}
+
+message Extensions {
+  repeated string extensions = 1;
+}
+
+message LoadExtension{
+  string name = 1;
+  string type = 2;
+  bytes bin = 3;
+}
+
+message ExecuteExtension {
+  string name = 1;
+  string type = 2;
+  repeated string params = 3;
+}
+
+message ExecuteAssembly {
+  string name = 1;
+  bytes bin = 2;
+  string type = 3;
+  repeated string params = 4;
+  uint32 pid = 5;
+}
+
+message ExecuteSpawn {
+
+}
+
+message ExecuteSideLoad {
+
+}
+
+message ExecuteBof {
+  string name = 1;
+  bytes bin = 2;
+  string type = 3;
+  repeated string params = 4;
+}
+
+message ExecuteShellcode {
+  string name = 1;
+  bytes bin = 2;
+  string type = 3;
+  repeated string params = 4;
+  uint32 pid = 5;
+
+  // server only
+  string encoder = 6;
+  int32  iterations = 7;
+  bytes badchars = 8;
+}
+
+message AssemblyResponse {
+  bytes data = 1;
+  int32 status = 2;
+  string err = 3;
+}
+
+message UploadRequest {
+  string name = 1;
+  string target = 2;
+  uint32 priv = 3;
+  bytes data = 4;
+  bool hidden = 5;
+}
+
+message DownloadRequest {
+  string path = 1;
+  string name = 2;
+}
+
+message DownloadResponse{
+  string checksum = 1;
+  int32 size = 2;
+}
+
+

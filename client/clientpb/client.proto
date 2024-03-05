@@ -3,7 +3,7 @@ syntax = "proto3";
 package clientpb;
 option go_package = "github.com/chainreactors/malice-network/proto/client/clientpb";
 
-import "implant/commonpb/common.proto";
+import "implant/implantpb/implant.proto";
 import "listener/lispb/listener.proto";
 
 
@@ -29,9 +29,9 @@ message Session {
   bool is_dead = 4;
   string version = 5;
   string listener_id = 6;
-  commonpb.Os os = 11;
-  commonpb.Process process = 12;
-  commonpb.Timer timer = 13;
+  implantpb.Os os = 11;
+  implantpb.Process process = 12;
+  implantpb.Timer timer = 13;
   repeated Task tasks = 14;
 }
 
