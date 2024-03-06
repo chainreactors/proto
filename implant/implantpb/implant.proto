@@ -24,8 +24,9 @@ message Spite {
     Ping ping = 22;
     Suicide suicide = 23;
     Request request = 24;
-    LoadModule  load_module = 25;
-    Modules  modules = 26;
+    Response response = 25;
+    LoadModule  load_module = 31;
+    Modules  modules = 32;
     ExecRequest exec_request = 104;
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
@@ -79,6 +80,11 @@ message Suicide {
 // common empty request
 message Request {
   string name = 1;
+  string input = 2;
+}
+
+message Response {
+  string output = 1;
 }
 
 message Block{
@@ -116,6 +122,22 @@ message Timer {
   uint64 last_checkin = 4;
 }
 
+message FileInfo {
+  string Name = 1;
+  bool IsDir = 2;
+  int64 Size = 3;
+  int64 ModTime = 4;
+  string Mode = 5;
+  string Link = 6;
+  string Uid = 7;
+  string Gid = 8;
+}
+
+message LsResponse {
+  string Path = 1;
+  bool Exists = 2;
+  repeated FileInfo Files = 3;
+}
 
 message ExecRequest {
   string path = 1;
