@@ -81,6 +81,7 @@ message Suicide {
 message Request {
   string name = 1;
   string input = 2;
+  repeated string params = 3;
 }
 
 message Response {
