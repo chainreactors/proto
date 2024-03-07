@@ -4,6 +4,7 @@ package clientrpc;
 option go_package = "github.com/chainreactors/malice-network/proto/services/clientrpc";
 
 import "client/clientpb/client.proto";
+import "client/rootpb/root.proto";
 import "implant/implantpb/implant.proto";
 import "listener/lispb/listener.proto";
 
@@ -60,10 +61,10 @@ service MaliceRPC {
 
 service RootRPC {
   // manager
-  rpc AddClient(clientpb.LoginReq) returns(clientpb.LoginResp);
-  rpc RemoveClient(clientpb.LoginReq) returns (clientpb.LoginResp);
-  rpc ListClients(clientpb.Empty) returns(clientpb.Clients);
-  rpc AddListener(lispb.RegisterListener) returns (clientpb.Empty);
-  rpc RemoveListener(lispb.RegisterListener) returns (clientpb.Empty);
-  rpc ListListeners(clientpb.Empty) returns(clientpb.Listeners);
+  rpc AddClient(rootpb.Operator) returns(rootpb.Response);
+  rpc RemoveClient(rootpb.Operator) returns (rootpb.Response);
+  rpc ListClients(rootpb.Operator) returns(clientpb.Clients);
+  rpc AddListener(rootpb.Operator) returns (rootpb.Response);
+  rpc RemoveListener(rootpb.Operator) returns (rootpb.Response);
+  rpc ListListeners(rootpb.Operator) returns(clientpb.Listeners);
 }

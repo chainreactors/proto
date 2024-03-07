@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package rootpb;
+option go_package = "github.com/chainreactors/malice-network/proto/client/rootpb";
+
+
+message Operator{
+  string name = 1;
+  string operation = 2;
+  string arg = 3;
+  repeated string params = 4;
+}
+
+message Response{
+  string response = 1;
+  string error = 2;
+}
