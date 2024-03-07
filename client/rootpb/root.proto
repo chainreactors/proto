@@ -12,6 +12,7 @@ message Operator{
 }
 
 message Response{
-  string response = 1;
-  string error = 2;
+  int32 status = 1;
+  string response = 2;
+  string error = 3;
 }
