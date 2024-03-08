@@ -112,7 +112,6 @@ message LoginReq {
   string host = 1;
   uint32 port = 2;
   string name = 3;
-  string token = 4;
 }
 
 message LoginResp {
