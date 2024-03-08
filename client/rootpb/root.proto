@@ -6,9 +6,9 @@ option go_package = "github.com/chainreactors/malice-network/proto/client/rootpb
 
 message Operator{
   string name = 1;
-  string operation = 2;
-  string arg = 3;
-  repeated string params = 4;
+  string op = 2;
+  repeated string args = 4;
+  map<string, string> params = 5;
 }
 
 message Response{
