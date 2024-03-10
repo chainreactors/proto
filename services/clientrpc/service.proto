@@ -20,6 +20,7 @@ service MaliceRPC {
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc GetTasks(clientpb.Session) returns (clientpb.Tasks);
   rpc GetTaskContent(clientpb.Task) returns (implantpb.Spite);
+  rpc WaitTaskContent(clientpb.Task) returns (implantpb.Spite);
   rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
