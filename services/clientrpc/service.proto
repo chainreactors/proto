@@ -35,6 +35,7 @@ service MaliceRPC {
   // implant::fs
   rpc Pwd(implantpb.Empty) returns (clientpb.Task);
   rpc Ls(implantpb.Request) returns (clientpb.Task);
+  rpc Cd(implantpb.Request) returns (clientpb.Task);
   rpc Rm(implantpb.Request) returns (clientpb.Task);
   rpc Mv(implantpb.Request) returns (clientpb.Task);
 
