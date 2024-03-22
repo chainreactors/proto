@@ -26,6 +26,7 @@ message Spite {
     Response response = 25;
     LoadModule  load_module = 31;
     Modules  modules = 32;
+    LsResponse ls_response = 101;
     ExecRequest exec_request = 104;
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
@@ -127,12 +128,9 @@ message Timer {
 message FileInfo {
   string Name = 1;
   bool IsDir = 2;
-  int64 Size = 3;
+  uint64 Size = 3;
   int64 ModTime = 4;
-  string Mode = 5;
   string Link = 6;
-  string Uid = 7;
-  string Gid = 8;
 }
 
 message LsResponse {
@@ -238,7 +236,7 @@ message DownloadRequest {
 
 message DownloadResponse{
   string checksum = 1;
-  int32 size = 2;
+  uint64 size = 2;
 }
 
 
