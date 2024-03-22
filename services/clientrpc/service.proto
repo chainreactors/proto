@@ -56,6 +56,16 @@ service MaliceRPC {
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
 
+  // Websites
+  rpc Websites(clientpb.Empty) returns (clientpb.Websites);
+  rpc Website(clientpb.Website) returns (clientpb.Website);
+  rpc WebsiteRemove(clientpb.Website) returns (clientpb.Empty);
+  rpc WebsiteAddContent(clientpb.WebsiteAddContent) returns (clientpb.Website);
+  rpc WebsiteUpdateContent(clientpb.WebsiteAddContent)
+      returns (clientpb.Website);
+  rpc WebsiteRemoveContent(clientpb.WebsiteRemoveContent)
+      returns (clientpb.Website);
+
   // plugin
   //  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
   //  rpc InstallPlugin(clientpb.Plugin) returns (clientpb.Empty);
