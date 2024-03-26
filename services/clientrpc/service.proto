@@ -38,6 +38,9 @@ service MaliceRPC {
   rpc Cd(implantpb.Request) returns (clientpb.Task);
   rpc Rm(implantpb.Request) returns (clientpb.Task);
   rpc Mv(implantpb.Request) returns (clientpb.Task);
+  rpc Cp(implantpb.Request) returns (clientpb.Task);
+  rpc Cat(implantpb.Request) returns (clientpb.Task);
+  rpc Mkdir(implantpb.Request) returns (clientpb.Task);
 
   // implant::module
   rpc ListModules(implantpb.Empty) returns (clientpb.Task);

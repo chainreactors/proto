@@ -249,6 +249,7 @@ message UploadRequest {
 message DownloadRequest {
   string path = 1;
   string name = 2;
+  uint32 buffer_size = 3;
 }
 
 message DownloadResponse{
