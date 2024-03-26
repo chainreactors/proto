@@ -12,7 +12,7 @@ message Spite {
   uint32 task_id = 2;
   bool  async = 3;
   uint64 timeout = 4;
-  string error = 5; // basic error
+  uint32 error = 5; // basic error
   Status status = 6;
 
   oneof body {
@@ -238,5 +238,3 @@ message DownloadResponse{
   string checksum = 1;
   uint64 size = 2;
 }
-
-
