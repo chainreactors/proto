@@ -27,6 +27,8 @@ message Spite {
     LoadModule  load_module = 31;
     Modules  modules = 32;
     LsResponse ls_response = 101;
+    ChownRequest chown_request = 102;
+    EnvResponse env_response = 103;
     ExecRequest exec_request = 104;
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
@@ -81,11 +83,19 @@ message Suicide {
 message Request {
   string name = 1;
   string input = 2;
-  repeated string params = 3;
+  repeated string args = 3;
+  map<string, string> params = 4;
 }
 
 message Response {
   string output = 1;
+}
+
+message NetInterface {
+  int32 index = 1;
+  string name = 2;
+  string mac = 3;
+  repeated string ip_addresses = 4;
 }
 
 message Block{
@@ -237,4 +247,20 @@ message DownloadRequest {
 message DownloadResponse{
   string checksum = 1;
   uint64 size = 2;
+}
+
+
+message ChownRequest{
+  string path = 1;
+  string uid = 2;
+  string gid = 3;
+  bool recursive = 4;
+}
+
+message IfconfigResponse {
+  repeated NetInterface net_interfaces = 1;
+}
+
+message EnvResponse {
+  map<string, string> env = 1;
 }
