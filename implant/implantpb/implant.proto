@@ -33,6 +33,7 @@ message Spite {
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
     DownloadRequest download_request = 107;
+    PsResponse ps_response = 108;
     AssemblyResponse assembly_response = 109;
     ExecuteAssembly execute_assembly = 111;
     ExecuteBof execute_bof = 112;
@@ -121,11 +122,13 @@ message Os {
 }
 
 message Process {
-  string uid = 1;
-  int32 pid = 2;
-  string gid = 3;
-  string name = 4;
-  string args = 5;
+  string name = 1;
+  uint32 pid = 2;
+  uint32 ppid = 3;
+  string owner = 4;
+  string arch = 5;
+  string path = 6;
+  string args = 7;
 }
 
 message Timer {
@@ -147,6 +150,10 @@ message LsResponse {
   string Path = 1;
   bool Exists = 2;
   repeated FileInfo Files = 3;
+}
+
+message PsResponse{
+  repeated Process processes = 1;
 }
 
 message ExecRequest {
@@ -263,4 +270,23 @@ message IfconfigResponse {
 
 message EnvResponse {
   map<string, string> env = 1;
+}
+
+message RegistryRequest {
+  string hive = 1;
+  string path = 2;
+  string key = 3;
+  string hostname = 4;
+}
+
+message RegistryWriteRequest {
+  string hive = 1;
+  string path = 2;
+  string key = 3;
+  string hostname = 4;
+  string string_value = 5;
+  bytes byte_value = 6;
+  uint32 d_wordvalue = 7;
+  uint64 q_Wordvalue = 8;
+  uint32 type = 10;
 }
