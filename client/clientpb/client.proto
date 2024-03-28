@@ -29,6 +29,7 @@ message Session {
   bool is_dead = 4;
   string version = 5;
   string listener_id = 6;
+  string group_name = 7;
   implantpb.Os os = 11;
   implantpb.Process process = 12;
   implantpb.Timer timer = 13;
