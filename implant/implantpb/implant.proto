@@ -26,9 +26,11 @@ message Spite {
     Response response = 25;
     LoadModule  load_module = 31;
     Modules  modules = 32;
+    Extensions extensions = 40;
+    LoadExtension load_extension = 41;
+    ExecuteExtension execute_extension = 42;
     LsResponse ls_response = 101;
     ChownRequest chown_request = 102;
-    EnvResponse env_response = 103;
     ExecRequest exec_request = 104;
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
@@ -40,9 +42,8 @@ message Spite {
     ExecuteSideLoad execute_sideload = 113;
     ExecuteSpawn execute_spawn = 114;
     ExecuteShellcode execute_shellcode = 115;
-    Extensions extensions = 120;
-    LoadExtension load_extension = 121;
-    ExecuteExtension execute_extension = 122;
+    RegistryRequest registry_request = 116;
+    RegistryWriteRequest registry_write_request = 117;
   }
 }
 
@@ -90,6 +91,8 @@ message Request {
 
 message Response {
   string output = 1;
+  string error = 2;
+  map<string, string> kv = 3;
 }
 
 message NetInterface {
@@ -97,6 +100,19 @@ message NetInterface {
   string name = 2;
   string mac = 3;
   repeated string ip_addresses = 4;
+}
+
+message SockTabEntry {
+  string local_addr = 1;
+  string remote_addr = 2;
+  string skState = 3;
+  uint32 uid = 4;
+  Process process = 5;
+  string protocol = 6;
+}
+
+message Netstat {
+  repeated SockTabEntry socks = 1;
 }
 
 message Block{
@@ -269,9 +285,6 @@ message IfconfigResponse {
   repeated NetInterface net_interfaces = 1;
 }
 
-message EnvResponse {
-  map<string, string> env = 1;
-}
 
 message RegistryRequest {
   string hive = 1;
