@@ -41,9 +41,11 @@ service MaliceRPC {
   rpc Cp(implantpb.Request) returns (clientpb.Task);
   rpc Cat(implantpb.Request) returns (clientpb.Task);
   rpc Mkdir(implantpb.Request) returns (clientpb.Task);
-  // implant::process
+  // implant::sys
   rpc Kill(implantpb.Request) returns (clientpb.Task);
   rpc Ps(implantpb.Request) returns (clientpb.Task);
+  rpc Netstat(implantpb.Request) returns (clientpb.Task);
+  rpc Curl(implantpb.CurlRequest) returns (clientpb.Task);
   // implant::module
   rpc ListModules(implantpb.Empty) returns (clientpb.Task);
   rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);

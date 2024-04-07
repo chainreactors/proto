@@ -46,6 +46,7 @@ message Spite {
     RegistryRequest registry_request = 116;
     RegistryWriteRequest registry_write_request = 117;
     IfconfigResponse ifconfig_response = 118;
+    CurlRequest curl_request = 119;
   }
 }
 
@@ -108,7 +109,7 @@ message SockTabEntry {
   string local_addr = 1;
   string remote_addr = 2;
   string skState = 3;
-//  uint32 uid = 4;
+  //  uint32 uid = 4;
   string pid = 5;
   string protocol = 6;
 }
@@ -273,6 +274,15 @@ message DownloadRequest {
 message DownloadResponse{
   string checksum = 1;
   uint64 size = 2;
+}
+
+message CurlRequest{
+  string url = 1;
+  int32 timeout = 2;
+  string method = 3;
+  bytes  body = 4;
+  map<string, string> header =5;
+  string hostname = 6;
 }
 
 
