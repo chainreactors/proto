@@ -40,14 +40,13 @@ message Spite {
     AssemblyResponse assembly_response = 110;
     ExecuteAssembly execute_assembly = 111;
     ExecuteBof execute_bof = 112;
-    BofResponse bof_response = 113;
-    ExecuteSideLoad execute_sideload = 114;
-    ExecuteSpawn execute_spawn = 115;
-    ExecuteShellcode execute_shellcode = 116;
-    RegistryRequest registry_request = 117;
-    RegistryWriteRequest registry_write_request = 118;
-    IfconfigResponse ifconfig_response = 119;
-    CurlRequest curl_request = 120;
+    ExecuteSideLoad execute_sideload = 113;
+    ExecuteSpawn execute_spawn = 114;
+    ExecuteShellcode execute_shellcode = 115;
+    RegistryRequest registry_request = 116;
+    RegistryWriteRequest registry_write_request = 117;
+    IfconfigResponse ifconfig_response = 118;
+    CurlRequest curl_request = 119;
   }
 }
 
@@ -110,7 +109,7 @@ message SockTabEntry {
   string local_addr = 1;
   string remote_addr = 2;
   string skState = 3;
-  //  uint32 uid = 4;
+//  uint32 uid = 4;
   string pid = 5;
   string protocol = 6;
 }
@@ -255,12 +254,6 @@ message ExecuteShellcode {
 }
 
 message AssemblyResponse {
-  bytes data = 1;
-  int32 status = 2;
-  string err = 3;
-}
-
-message BofResponse {
   bytes data = 1;
   int32 status = 2;
   string err = 3;
