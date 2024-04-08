@@ -40,13 +40,14 @@ message Spite {
     AssemblyResponse assembly_response = 110;
     ExecuteAssembly execute_assembly = 111;
     ExecuteBof execute_bof = 112;
-    ExecuteSideLoad execute_sideload = 113;
-    ExecuteSpawn execute_spawn = 114;
-    ExecuteShellcode execute_shellcode = 115;
-    RegistryRequest registry_request = 116;
-    RegistryWriteRequest registry_write_request = 117;
-    IfconfigResponse ifconfig_response = 118;
-    CurlRequest curl_request = 119;
+    BofResponse bof_response = 113;
+    ExecuteSideLoad execute_sideload = 114;
+    ExecuteSpawn execute_spawn = 115;
+    ExecuteShellcode execute_shellcode = 116;
+    RegistryRequest registry_request = 117;
+    RegistryWriteRequest registry_write_request = 118;
+    IfconfigResponse ifconfig_response = 119;
+    CurlRequest curl_request = 120;
   }
 }
 
@@ -197,6 +198,7 @@ message Modules {
 
 message LoadModule{
   bytes bin = 2;
+  string bundle = 3;
 }
 
 message Extensions {
@@ -236,6 +238,7 @@ message ExecuteBof {
   bytes bin = 2;
   string type = 3;
   repeated string params = 4;
+  string entry_point = 5;
 }
 
 message ExecuteShellcode {
@@ -252,6 +255,12 @@ message ExecuteShellcode {
 }
 
 message AssemblyResponse {
+  bytes data = 1;
+  int32 status = 2;
+  string err = 3;
+}
+
+message BofResponse {
   bytes data = 1;
   int32 status = 2;
   string err = 3;
