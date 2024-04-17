@@ -35,6 +35,7 @@ message Spite {
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
     DownloadRequest download_request = 107;
+    DownloadResponse download_response = 121;
     PsResponse ps_response = 108;
     NetstatResponse netstat_response = 109;
     AssemblyResponse assembly_response = 110;
@@ -58,9 +59,9 @@ message Status{
   uint32 task_id = 1;
   int32 status = 2;  // unexcept error
   string error = 3;  //std err
-  oneof msg {
-    DownloadResponse download_response = 10;
-  }
+  oneof msg{
+    string output = 4;
+  };
 }
 
 message Ping{
