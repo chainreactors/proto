@@ -149,6 +149,19 @@ message Tasks{
   repeated Task tasks = 1;
 }
 
+message TaskDescs{
+  repeated TaskDesc tasks = 1;
+}
+
+message TaskDesc{
+  uint32 task_id = 1;
+  int32 cur = 2;
+  int32 total = 3;
+  string type = 4;
+  int32 status = 5;
+  string description = 6;
+}
+
 message Kits {
   repeated Kit kits = 1;
 }
