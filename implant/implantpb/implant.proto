@@ -163,6 +163,7 @@ message FileInfo {
   bool IsDir = 2;
   uint64 Size = 3;
   int64 ModTime = 4;
+  uint32 Mode = 5;
   string Link = 6;
 }
 
