@@ -25,7 +25,7 @@ service MaliceRPC {
   rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
-
+  rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
 
   // implant
   // implant::file

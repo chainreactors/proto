@@ -24,7 +24,7 @@ message Basic {
 
 message Session {
   string session_id = 1;
-  string name = 2;
+  string note = 2;
   string remote_addr = 3;
   bool is_dead = 4;
   string version = 5;
@@ -36,6 +36,12 @@ message Session {
   repeated Task tasks = 14;
 }
 
+message BasicUpdateSession{
+  string session_id = 1;
+  string note = 2;
+  string group_name = 3;
+  bool is_delete = 4;
+}
 message Sessions {
   repeated Session sessions = 1;
 }
