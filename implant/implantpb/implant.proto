@@ -48,6 +48,7 @@ message Spite {
     RegistryWriteRequest registry_write_request = 117;
     IfconfigResponse ifconfig_response = 118;
     CurlRequest curl_request = 119;
+    ExecutePowershell execute_powershell = 120;
   }
 }
 
@@ -256,6 +257,11 @@ message ExecuteShellcode {
 //  string encoder = 6;
 //  int32  iterations = 7;
 //  bytes badchars = 8;
+}
+
+message ExecutePowershell {
+  string name = 1;
+  string script = 2;
 }
 
 message AssemblyResponse {
