@@ -49,6 +49,8 @@ message Spite {
     IfconfigResponse ifconfig_response = 118;
     CurlRequest curl_request = 119;
     ExecutePowershell execute_powershell = 120;
+    ExecutePE execute_pe = 122;
+    ExecuteCommand execute_command = 123;
   }
 }
 
@@ -232,7 +234,8 @@ message ExecuteSpawn {
 }
 
 message ExecuteSideLoad {
-
+  bytes bin = 1;
+  string name = 2;
 }
 
 message ExecuteBof {
@@ -262,6 +265,23 @@ message ExecuteShellcode {
 message ExecutePowershell {
   string name = 1;
   string script = 2;
+}
+
+message ExecutePE {
+  string name = 1;
+  bytes bin = 2;
+  bool inline = 3;
+  repeated string params = 4;
+  uint32 pid = 5;
+  bool is_need_sacrifice = 9;
+  bool block_dll = 10;
+}
+
+message ExecuteCommand {
+  string command = 1;
+  string spoofed_args = 2;
+  bool block_dll = 3;
+  uint32 pid = 4;
 }
 
 message AssemblyResponse {
