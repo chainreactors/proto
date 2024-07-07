@@ -227,6 +227,7 @@ message ExecuteAssembly {
   string type = 3;
   repeated string params = 4;
   uint32 pid = 5;
+  bool need_output = 6;
 }
 
 message ExecuteSpawn {
@@ -252,6 +253,7 @@ message ExecuteShellcode {
   bool inline = 3;
   repeated string params = 4;
   uint32 pid = 5;
+  bool need_output = 8;
   bool is_need_sacrifice = 9;
   bool block_dll = 10;
 
@@ -273,6 +275,7 @@ message ExecutePE {
   bool inline = 3;
   repeated string params = 4;
   uint32 pid = 5;
+  bool need_output = 8;
   bool is_need_sacrifice = 9;
   bool block_dll = 10;
 }
@@ -282,6 +285,7 @@ message ExecuteCommand {
   string spoofed_args = 2;
   bool block_dll = 3;
   uint32 pid = 4;
+  bool need_output = 5;
 }
 
 message AssemblyResponse {
