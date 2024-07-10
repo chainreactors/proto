@@ -240,7 +240,7 @@ message ExecuteAssembly {
   string type = 3;
   repeated string params = 4;
   uint32 pid = 5;
-  bool need_output = 6;
+  bool output = 6;
 }
 
 message ExecuteSpawn {
