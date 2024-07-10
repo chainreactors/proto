@@ -63,7 +63,8 @@ service MaliceRPC {
   rpc ExecuteExtension(implantpb.ExecuteExtension) returns (clientpb.Task);
   rpc ExecuteSpawn(implantpb.ExecuteSpawn) returns (clientpb.Task);
   rpc ExecuteAssembly(implantpb.ExecuteAssembly) returns (clientpb.Task);
-  rpc ExecuteSideLoad(implantpb.ExecuteSideLoad) returns (clientpb.Task);
+  rpc ExecutePe(implantpb.ExecutePE) returns (clientpb.Task);
+  rpc ExecuteDll(implantpb.ExecutePE) returns (clientpb.Task);
   rpc ExecuteShellcode(implantpb.ExecuteShellcode) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBof) returns (clientpb.Task);
 
