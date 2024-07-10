@@ -73,7 +73,7 @@ message Listener{
   string id = 1;
   string addr = 2;
   bool active = 3;
-  repeated lispb.Pipeline pipelines = 4;
+  lispb.Pipelines pipelines = 4;
 }
 
 message Listeners {

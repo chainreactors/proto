@@ -18,6 +18,7 @@ message RegisterListener {
   string host = 2;
   string name = 3;
   string addr = 4;
+  Pipelines pipelines = 5;
 }
 
 message SpiteSession{
