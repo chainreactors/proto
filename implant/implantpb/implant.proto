@@ -170,6 +170,14 @@ message FileInfo {
   string Link = 6;
 }
 
+message SacrificeProcess {
+  bool need_output = 1;
+  bool block_dll = 2;
+  uint32 ppid = 3;
+  string argue = 4;
+  repeated string params = 5;
+}
+
 message LsResponse {
   string Path = 1;
   bool Exists = 2;
@@ -194,6 +202,11 @@ message ExecResponse {
   bytes stdout = 2;
   bytes stderr = 3;
   uint32 pid = 4;
+}
+
+message ExecsRequest {
+  string path = 1;
+  SacrificeProcess sacrifice = 2;
 }
 
 message Modules {
@@ -250,12 +263,8 @@ message ExecuteBof {
 message ExecuteShellcode {
   string name = 1;
   bytes bin = 2;
-  bool inline = 3;
-  repeated string params = 4;
-  uint32 pid = 5;
-  bool need_output = 8;
-  bool is_need_sacrifice = 9;
-  bool block_dll = 10;
+  bool need_output = 3;
+  SacrificeProcess sacrifice = 4;
 
 
 //  // server only
@@ -272,20 +281,13 @@ message ExecutePowershell {
 message ExecutePE {
   string name = 1;
   bytes bin = 2;
-  bool inline = 3;
-  repeated string params = 4;
-  uint32 pid = 5;
-  bool need_output = 8;
-  bool is_need_sacrifice = 9;
-  bool block_dll = 10;
+  bool need_output = 3;
+  SacrificeProcess sacrifice = 4;
 }
 
 message ExecuteCommand {
   string command = 1;
-  string spoofed_args = 2;
-  bool block_dll = 3;
-  uint32 pid = 4;
-  bool need_output = 5;
+  SacrificeProcess sacrifice = 2;
 }
 
 message AssemblyResponse {
