@@ -19,6 +19,7 @@ message Spite {
     Empty empty = 10;
     Block block = 11;
     AsyncACK async_ack = 13;
+    SysInfo sysinfo = 20;
     Register register = 21;
     Ping ping = 22;
     Suicide suicide = 23;
@@ -77,9 +78,12 @@ message Register {
   string proxy = 3;
   repeated string module = 4;
   repeated string extension = 5;
+  Timer timer = 10;
+}
+
+message SysInfo {
   Os os = 11;
   Process process = 12;
-  Timer timer = 13;
 }
 
 message Suicide {
