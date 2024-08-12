@@ -9,6 +9,7 @@ import "client/clientpb/client.proto";
 
 service ImplantRPC {
   rpc Register(lispb.RegisterSession) returns (implantpb.Empty);
+  rpc SysInfo(implantpb.SysInfo) returns (implantpb.Empty);
   rpc Ping(implantpb.Ping) returns (implantpb.Empty);
 }
 

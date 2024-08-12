@@ -74,14 +74,16 @@ message Ping{
 
 message Register {
   string name = 1;
-  string filepath = 2;
-  string proxy = 3;
-  repeated string module = 4;
-  repeated string extension = 5;
-  Timer timer = 10;
+  string proxy = 2;
+  repeated string module = 3;
+  repeated string extension = 4;
+  Timer timer = 5;
+
+  SysInfo sysinfo = 11;
 }
 
 message SysInfo {
+  string filepath = 1;
   Os os = 11;
   Process process = 12;
 }
