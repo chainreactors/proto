@@ -53,6 +53,7 @@ service MaliceRPC {
   rpc SetEnv(implantpb.Request) returns (clientpb.Task);
   rpc UnsetEnv(implantpb.Request) returns (clientpb.Task);
   rpc Whoami(implantpb.Request) returns (clientpb.Task);
+  rpc Info(implantpb.Request) returns (clientpb.Task);
   // implant::module
   rpc ListModules(implantpb.Empty) returns (clientpb.Task);
   rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
