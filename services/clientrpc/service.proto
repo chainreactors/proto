@@ -15,6 +15,8 @@ service MaliceRPC {
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
+  rpc GetAlivedSessions(clientpb.Empty) returns (clientpb.Sessions);
+  rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
@@ -55,13 +57,13 @@ service MaliceRPC {
   rpc Whoami(implantpb.Request) returns (clientpb.Task);
   rpc Info(implantpb.Request) returns (clientpb.Task);
   // implant::module
-  rpc ListModules(implantpb.Empty) returns (clientpb.Task);
+  rpc ListModules(implantpb.Request) returns (clientpb.Task);
   rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
-  rpc ListExtensions(implantpb.Empty) returns (clientpb.Task);
+  rpc ListExtensions(implantpb.Request) returns (clientpb.Task);
   rpc LoadExtension(implantpb.LoadExtension) returns (clientpb.Task);
+  rpc ExecuteExtension(implantpb.ExecuteExtension) returns (clientpb.Task);
 
   rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
-  rpc ExecuteExtension(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteSpawn(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteAssembly(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecutePE(implantpb.ExecuteBinary) returns (clientpb.Task);

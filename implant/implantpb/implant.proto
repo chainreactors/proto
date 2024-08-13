@@ -78,7 +78,7 @@ message Register {
   string name = 1;
   string proxy = 2;
   repeated string module = 3;
-  repeated string extension = 4;
+  Extensions extension = 4;
   Timer timer = 5;
 
   SysInfo sysinfo = 11;

@@ -27,13 +27,18 @@ message Session {
   string note = 2;
   string remote_addr = 3;
   bool is_dead = 4;
-  string version = 5;
   string listener_id = 6;
   string group_name = 7;
   implantpb.Os os = 11;
   implantpb.Process process = 12;
   implantpb.Timer timer = 13;
-  repeated Task tasks = 14;
+  Tasks tasks = 14;
+  repeated string modules = 15;
+  implantpb.Extensions extensions = 16;
+}
+
+message SessionRequest{
+  string session_id = 1;
 }
 
 message BasicUpdateSession{
