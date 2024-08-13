@@ -61,14 +61,14 @@ service MaliceRPC {
   rpc LoadExtension(implantpb.LoadExtension) returns (clientpb.Task);
 
   rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
-  rpc ExecuteExtension(implantpb.ExecuteExtension) returns (clientpb.Task);
-  rpc ExecuteSpawn(implantpb.ExecuteSpawn) returns (clientpb.Task);
-  rpc ExecuteAssembly(implantpb.ExecuteAssembly) returns (clientpb.Task);
-  rpc ExecutePE(implantpb.ExecutePE) returns (clientpb.Task);
-  rpc ExecuteDLL(implantpb.ExecutePE) returns (clientpb.Task);
-  rpc ExecuteShellcode(implantpb.ExecuteShellcode) returns (clientpb.Task);
-  rpc ExecutePowershell(implantpb.ExecutePowershell) returns (clientpb.Task);
-  rpc ExecuteBof(implantpb.ExecuteBof) returns (clientpb.Task);
+  rpc ExecuteExtension(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteSpawn(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteAssembly(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecutePE(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteDLL(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteShellcode(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecutePowershell(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
 
   // listener
   rpc StartTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
