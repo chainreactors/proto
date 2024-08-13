@@ -27,7 +27,9 @@ message Spite {
     Response response = 25;
     LoadModule  load_module = 31;
     Modules  modules = 32;
-    LoadExtension load_extension = 41;
+    LoadExtension load_extension = 35;
+    Extensions extensions = 36;
+    ExecuteExtension execute_extension = 37;
     ExecuteBinary execute_binary = 42;
 //    ExecuteExtension execute_extension = 42;
     LsResponse ls_response = 101;
@@ -220,6 +222,17 @@ message Modules {
   repeated string modules = 1;
 }
 
+
+message Extensions {
+  repeated Extension extensions = 1;
+}
+
+message Extension {
+  string name = 1;
+  string type = 2;
+  string depend = 3;
+}
+
 message LoadModule{
   string bundle = 1;
   bytes bin = 2;
@@ -232,10 +245,15 @@ message LoadExtension{
   bytes bin = 4;
 }
 
+
+message ExecuteExtension {
+  string extension = 1;
+  ExecuteBinary execute_binary = 2;
+}
+
 message ExecuteBinary {
   string name = 1;
   bytes bin = 2;
-  string extension = 3;
   string type = 4;
   repeated string params = 5;
   string entry_point = 6;
