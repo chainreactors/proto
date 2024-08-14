@@ -35,11 +35,54 @@ message Pipelines{
 message Pipeline{
   oneof body {
     TCPPipeline tcp = 10;
+    Website web = 20;
   }
+  TLS tls = 70;
+}
+
+message TLS{
+    string cert = 1;
+    string key = 2;
 }
 
 message TCPPipeline{
   string name = 1;
   string host = 2;
   uint32 port = 3;
+  string listener_id = 4;
+}
+
+message WebContent {
+  string ID = 1;
+  string WebsiteID = 2;
+  string Path = 3;
+  string ContentType = 4;
+  uint64 Size = 5 [ jstype = JS_STRING ];
+
+  bytes Content = 9;
+}
+
+message WebsiteAddContent {
+  string Name = 1;
+  map<string, WebContent> Contents = 2;
+}
+
+message WebsiteRemoveContent {
+  string Name = 1;
+  repeated string Paths = 2;
+}
+
+message Website {
+  string ID = 1;
+  string Name = 2;
+  uint32 Port= 3;
+  string RootPath = 4;
+  string listener_id = 5;
+  map<string, WebContent> Contents = 6;
+}
+
+message Websites { repeated Website Websites = 1; }
+
+message ListenerName {
+  string Name = 1;
 }

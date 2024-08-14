@@ -16,6 +16,8 @@ service ImplantRPC {
 service ListenerRPC {
   rpc RegisterListener(lispb.RegisterListener) returns (implantpb.Empty);
   rpc RegisterPipeline(lispb.Pipeline) returns(implantpb.Empty);
+  rpc RegisterWebsite(lispb.Website) returns(implantpb.Empty);
+
   //  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
   rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);
   rpc JobStream(stream clientpb.JobStatus) returns (stream clientpb.JobCtrl);
