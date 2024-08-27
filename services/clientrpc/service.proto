@@ -11,25 +11,32 @@ import "listener/lispb/listener.proto";
 service MaliceRPC {
   // basic
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
-
+  rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
+
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetAlivedSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
+  rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
+
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
+
   rpc GetTasks(clientpb.Session) returns (clientpb.Tasks);
-  rpc GetTaskContent(clientpb.Task) returns (implantpb.Spite);
+  rpc GetTaskContent(clientpb.Task) returns (clientpb.TaskContext);
   rpc GetTaskDescs(clientpb.Session) returns(clientpb.TaskDescs);
-  rpc WaitTaskContent(clientpb.Task) returns (implantpb.Spite);
-  rpc CancelBeaconTask(clientpb.Task) returns (clientpb.Task);
+  rpc WaitTaskContent(clientpb.Task) returns (clientpb.TaskContext);
+  rpc WaitTaskFinish(clientpb.Task) returns (clientpb.TaskContext);
+  rpc GetAllTaskContent(clientpb.Task) returns (clientpb.TaskContexts);
+
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
-  rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
-  rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
 
   // implant
+  // implant::generic
+  rpc CancelTask(clientpb.Task) returns (clientpb.Task);
+
   // implant::file
   rpc Upload(implantpb.UploadRequest) returns (clientpb.Task);
   rpc Download(implantpb.DownloadRequest) returns (clientpb.Task);

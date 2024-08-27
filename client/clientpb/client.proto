@@ -146,6 +146,19 @@ message SyncResp {
   bytes content = 2;
 }
 
+message TaskContext {
+  Task task = 1;
+  Session session = 2;
+  implantpb.Spite spite = 3;
+}
+
+
+message TaskContexts {
+  Task task = 1;
+  Session session = 2;
+  repeated implantpb.Spite spites = 3;
+}
+
 message Task{
   uint32 task_id = 1;
   string session_id = 2;
@@ -154,7 +167,7 @@ message Task{
   int32 cur = 5;
   int32 total = 6;
   string error = 7;
-  bytes data = 8;
+  int32 need = 8;
 }
 
 message Tasks{
