@@ -178,6 +178,18 @@ message TaskDescs{
   repeated TaskDesc tasks = 1;
 }
 
+message File{
+  string name = 1;
+  string local = 2; // client
+  string temp_id = 3; // server
+  string remote = 4;  // implant
+  string op = 5;
+}
+
+message Files{
+  repeated File files = 1;
+}
+
 message TaskDesc{
   uint32 task_id = 1;
   int32 cur = 2;
