@@ -14,14 +14,12 @@ service MaliceRPC {
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
 
-  rpc GetClientsAuth(clientpb.Empty) returns (clientpb.Clients);
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetAlivedSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
   rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
 
-  rpc GetListenersAuth(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
