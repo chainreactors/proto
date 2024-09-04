@@ -82,10 +82,12 @@ service MaliceRPC {
   rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
 
   // listener
-  rpc StartTcpPipeline(lispb.Pipeline) returns (clientpb.Empty);
-  rpc StopTcpPipeline(lispb.TCPPipeline) returns (clientpb.Empty);
-  rpc StartWebsite(lispb.Pipeline) returns (clientpb.Empty);
-  rpc StopWebsite(lispb.Website) returns (clientpb.Empty);
+  rpc RegisterPipeline(lispb.Pipeline) returns (clientpb.Empty);
+  rpc StartTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc RegisterWebsite(lispb.Pipeline) returns (clientpb.Empty);
+  rpc StartWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListWebsites(lispb.ListenerName) returns (lispb.Websites);
   rpc ListPipelines(lispb.ListenerName) returns (lispb.Pipelines);
   // Websites

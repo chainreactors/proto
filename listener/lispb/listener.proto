@@ -40,6 +40,11 @@ message Pipeline{
   TLS tls = 70;
 }
 
+message CtrlPipeline{
+  string listener_id = 1;
+  string name = 2;
+}
+
 message TLS{
     string cert = 1;
     string key = 2;
