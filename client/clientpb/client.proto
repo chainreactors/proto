@@ -53,7 +53,8 @@ message Sessions {
 
 message Job {
   uint32 id = 1;
-  lispb.Pipeline pipeline = 2;
+  string name = 2;
+  lispb.Pipeline pipeline = 3;
 }
 
 message Jobs {

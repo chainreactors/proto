@@ -48,6 +48,7 @@ message CtrlPipeline{
 message TLS{
     string cert = 1;
     string key = 2;
+    bool enable = 3;
 }
 
 message TCPPipeline{
@@ -55,6 +56,7 @@ message TCPPipeline{
   string host = 2;
   uint32 port = 3;
   string listener_id = 4;
+  bool enable = 5;
 }
 
 message WebContent {
@@ -84,6 +86,7 @@ message Website {
   string RootPath = 4;
   string listener_id = 5;
   map<string, WebContent> Contents = 6;
+  bool enable = 7;
 }
 
 message Websites { repeated Website Websites = 1; }
