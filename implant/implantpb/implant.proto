@@ -248,6 +248,7 @@ message ExecuteBinary {
   repeated string params = 5;
   string entry_point = 6;
   bool output = 7;
+  string arch = 8;
   SacrificeProcess sacrifice = 10;
 }
 
