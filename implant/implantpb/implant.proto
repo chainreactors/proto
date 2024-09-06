@@ -27,7 +27,7 @@ message Spite {
     Response response = 25;
     LoadModule  load_module = 31;
     Modules  modules = 32;
-    LoadAddon addon = 35;
+    LoadAddon load_addon = 35;
     Addons addons = 36;
     ExecuteAddon execute_addon = 37;
     ExecuteBinary execute_binary = 42;
