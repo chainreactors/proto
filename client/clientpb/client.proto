@@ -34,7 +34,7 @@ message Session {
   implantpb.Timer timer = 13;
   Tasks tasks = 14;
   repeated string modules = 15;
-  implantpb.Extensions extensions = 16;
+  implantpb.Addons addons = 16;
 }
 
 message SessionRequest{

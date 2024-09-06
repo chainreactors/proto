@@ -64,11 +64,13 @@ service MaliceRPC {
   rpc Whoami(implantpb.Request) returns (clientpb.Task);
   rpc Info(implantpb.Request) returns (clientpb.Task);
   // implant::module
-  rpc ListModules(implantpb.Request) returns (clientpb.Task);
+  rpc ListModule(implantpb.Request) returns (clientpb.Task);
   rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
-  rpc ListExtensions(implantpb.Request) returns (clientpb.Task);
-  rpc LoadExtension(implantpb.LoadExtension) returns (clientpb.Task);
-  rpc ExecuteExtension(implantpb.ExecuteExtension) returns (clientpb.Task);
+  rpc RefreshModule(implantpb.Request) returns (clientpb.Task);
+  rpc ListAddon(implantpb.Request) returns (clientpb.Task);
+  rpc LoadAddon(implantpb.LoadAddon) returns (clientpb.Task);
+  rpc ExecuteAddon(implantpb.ExecuteAddon) returns (clientpb.Task);
+  rpc Clear(implantpb.Request) returns (clientpb.Task);
 
   rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
   rpc ExecuteSpawn(implantpb.ExecuteBinary) returns (clientpb.Task);

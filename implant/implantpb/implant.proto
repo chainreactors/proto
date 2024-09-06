@@ -27,11 +27,10 @@ message Spite {
     Response response = 25;
     LoadModule  load_module = 31;
     Modules  modules = 32;
-    LoadExtension load_extension = 35;
-    Extensions extensions = 36;
-    ExecuteExtension execute_extension = 37;
+    LoadAddon addon = 35;
+    Addons addons = 36;
+    ExecuteAddon execute_addon = 37;
     ExecuteBinary execute_binary = 42;
-//    ExecuteExtension execute_extension = 42;
     LsResponse ls_response = 101;
     ChownRequest chown_request = 102;
     ExecRequest exec_request = 104;
@@ -42,17 +41,10 @@ message Spite {
     PsResponse ps_response = 108;
     NetstatResponse netstat_response = 109;
     AssemblyResponse assembly_response = 110;
-//    ExecuteAssembly execute_assembly = 111;
-//    ExecuteBof execute_bof = 112;
-//    ExecuteSideLoad execute_sideload = 113;
-//    ExecuteSpawn execute_spawn = 114;
-//    ExecuteShellcode execute_shellcode = 115;
     RegistryRequest registry_request = 116;
     RegistryWriteRequest registry_write_request = 117;
     IfconfigResponse ifconfig_response = 118;
     CurlRequest curl_request = 119;
-//    ExecutePowershell execute_powershell = 120;
-//    ExecutePE execute_pe = 122;
     ExecuteCommand execute_command = 123;
   }
 }
@@ -78,7 +70,7 @@ message Register {
   string name = 1;
   string proxy = 2;
   repeated string module = 3;
-  Extensions extension = 4;
+  Addons addon = 4;
   Timer timer = 5;
 
   SysInfo sysinfo = 11;
@@ -221,11 +213,11 @@ message Modules {
 }
 
 
-message Extensions {
-  repeated Extension extensions = 1;
+message Addons {
+  repeated Addon addons = 1;
 }
 
-message Extension {
+message Addon {
   string name = 1;
   string type = 2;
   string depend = 3;
@@ -236,7 +228,7 @@ message LoadModule{
   bytes bin = 2;
 }
 
-message LoadExtension{
+message LoadAddon{
   string name = 1;
   string type = 2;
   string depend = 3;
@@ -244,8 +236,8 @@ message LoadExtension{
 }
 
 
-message ExecuteExtension {
-  string extension = 1;
+message ExecuteAddon {
+  string addon = 1;
   ExecuteBinary execute_binary = 2;
 }
 
