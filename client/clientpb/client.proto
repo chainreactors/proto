@@ -43,10 +43,10 @@ message SessionRequest{
 
 message BasicUpdateSession{
   string session_id = 1;
-  string note = 2;
-  string group_name = 3;
-  bool is_delete = 4;
+  string op = 2;
+  string arg = 3;
 }
+
 message Sessions {
   repeated Session sessions = 1;
 }
