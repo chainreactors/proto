@@ -10,10 +10,8 @@ import "listener/lispb/listener.proto";
 
 service MaliceRPC {
   // basic
-  rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.LoginResp);
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
-
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetAlivedSessions(clientpb.Empty) returns (clientpb.Sessions);
@@ -31,12 +29,14 @@ service MaliceRPC {
   rpc WaitTaskFinish(clientpb.Task) returns (clientpb.TaskContext);
   rpc GetAllTaskContent(clientpb.Task) returns (clientpb.TaskContexts);
 
+  rpc GetFiles(clientpb.Session) returns (clientpb.Files);
+  // event
+  rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
+  rpc Notify(clientpb.Event) returns (clientpb.Empty); // notify event to specific client
+
 
   // implant
-  // implant::generic
-  rpc CancelTask(clientpb.Task) returns (clientpb.Task);
-
   // implant::file
   rpc Upload(implantpb.UploadRequest) returns (clientpb.Task);
   rpc Download(implantpb.DownloadRequest) returns (clientpb.Task);
@@ -63,7 +63,7 @@ service MaliceRPC {
   rpc UnsetEnv(implantpb.Request) returns (clientpb.Task);
   rpc Whoami(implantpb.Request) returns (clientpb.Task);
   rpc Info(implantpb.Request) returns (clientpb.Task);
-  // implant::module
+  // implant::internal
   rpc ListModule(implantpb.Request) returns (clientpb.Task);
   rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
   rpc RefreshModule(implantpb.Request) returns (clientpb.Task);
@@ -71,7 +71,9 @@ service MaliceRPC {
   rpc LoadAddon(implantpb.LoadAddon) returns (clientpb.Task);
   rpc ExecuteAddon(implantpb.ExecuteAddon) returns (clientpb.Task);
   rpc Clear(implantpb.Request) returns (clientpb.Task);
+  rpc CancelTask(implantpb.Request) returns (clientpb.Task);
 
+  // implant:execute
   rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
   rpc ExecuteSpawn(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteAssembly(implantpb.ExecuteBinary) returns (clientpb.Task);
