@@ -98,10 +98,11 @@ message Clients {
 
 message Event {
   string type = 1;
-  bytes data = 2;
-  string source = 3;
-  string message = 4;
-  string err = 5; // Can't trigger normal gRPC error
+  string op = 2;
+  bytes data = 3;
+  string source = 4;
+  string message = 5;
+  string err = 6; // Can't trigger normal gRPC error
   Session session = 10;
   Job job = 11;
   Client client = 12;
