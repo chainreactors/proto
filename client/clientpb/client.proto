@@ -55,6 +55,7 @@ message Job {
   uint32 id = 1;
   string name = 2;
   lispb.Pipeline pipeline = 3;
+  lispb.WebsiteAssets website_assets = 4;
 }
 
 message Jobs {

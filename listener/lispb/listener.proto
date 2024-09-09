@@ -94,3 +94,13 @@ message Websites { repeated Website Websites = 1; }
 message ListenerName {
   string Name = 1;
 }
+
+message WebsiteAsset{
+  string FileName = 1;
+  bytes Content = 2;
+  string WebName = 3;
+}
+
+message WebsiteAssets{
+  repeated WebsiteAsset Assets = 1;
+}
