@@ -49,6 +49,18 @@ message Spite {
   }
 }
 
+enum Arch {
+  i686 = 0;
+  x86_64 = 1;
+  arm = 2;
+  aarch64 = 3;
+  mips = 4;
+  powerpc = 5;
+  powerpc64 = 6;
+  riscv32 = 7;
+  riscv64 = 8;
+}
+
 message Spites {
   repeated Spite spites = 1;
 }
@@ -172,11 +184,11 @@ message FileInfo {
 }
 
 message SacrificeProcess {
-  bool output = 1;
+  bool hidden = 1;
   bool block_dll = 2;
-  uint32 ppid = 3;
-  string argue = 4;
-  repeated string params = 5;
+  bool etw = 3;
+  uint32 ppid = 4;
+  string argue = 5;
 }
 
 message LsResponse {
@@ -245,11 +257,13 @@ message ExecuteBinary {
   string name = 1;
   bytes bin = 2;
   string type = 4;
-  repeated string params = 5;
-  string entry_point = 6;
-  bool output = 7;
-  string arch = 8;
-  SacrificeProcess sacrifice = 10;
+  string process_name = 5;
+  repeated string params = 6;
+  string entry_point = 7;
+  bool output = 8;
+  Arch arch = 9;
+  uint32 timeout = 10;
+  SacrificeProcess sacrifice = 11;
 }
 
 message AssemblyResponse {
