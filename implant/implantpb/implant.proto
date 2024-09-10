@@ -258,7 +258,7 @@ message ExecuteBinary {
   bytes bin = 2;
   string type = 4;
   string process_name = 5;
-  repeated string params = 6;
+  repeated string args = 6;
   string entry_point = 7;
   bool output = 8;
   Arch arch = 9;
