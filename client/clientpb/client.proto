@@ -64,7 +64,7 @@ message Jobs {
 
 message JobCtrl {
   uint32 id = 1;
-  int32 ctrl = 2;
+  string ctrl = 2;
   Job job = 3;
 }
 
@@ -100,8 +100,6 @@ message Clients {
 message Event {
   string type = 1;
   string op = 2;
-  bytes data = 3;
-  string source = 4;
   string message = 5;
   string err = 6; // Can't trigger normal gRPC error
   Session session = 10;
@@ -128,10 +126,6 @@ message LoginReq {
   string host = 1;
   uint32 port = 2;
   string name = 3;
-}
-
-message LoginResp {
-  bool success = 1;
 }
 
 message RegisterResp {
