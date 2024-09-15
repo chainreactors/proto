@@ -102,10 +102,12 @@ message Event {
   string op = 2;
   string message = 5;
   string err = 6; // Can't trigger normal gRPC error
+
   Session session = 10;
   Job job = 11;
   Client client = 12;
   Task task = 13;
+  implantpb.Spite spite = 14;
 }
 
 message KillJobReq {
