@@ -18,7 +18,8 @@ message Spite {
   oneof body {
     Empty empty = 10;
     Block block = 11;
-    AsyncACK async_ack = 13;
+    ACK ack = 13;
+    AssemblyResponse assembly_response = 14;
     SysInfo sysinfo = 20;
     Register register = 21;
     Ping ping = 22;
@@ -37,10 +38,11 @@ message Spite {
     ExecResponse exec_response = 105;
     UploadRequest upload_request = 106;
     DownloadRequest download_request = 107;
-    DownloadResponse download_response = 121;
-    PsResponse ps_response = 108;
+    DownloadResponse download_response = 108;
     NetstatResponse netstat_response = 109;
-    AssemblyResponse assembly_response = 110;
+    PsResponse ps_response = 110;
+    BypassRequest bypass_request = 111;
+
     RegistryRequest registry_request = 116;
     RegistryWriteRequest registry_write_request = 117;
     IfconfigResponse ifconfig_response = 118;
@@ -148,7 +150,7 @@ message Block{
   bool end = 3;
 }
 
-message AsyncACK {
+message ACK {
   uint32 id = 1;
   bool success = 2;
   bool end = 3;
