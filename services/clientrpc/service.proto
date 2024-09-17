@@ -63,6 +63,8 @@ service MaliceRPC {
   rpc UnsetEnv(implantpb.Request) returns (clientpb.Task);
   rpc Whoami(implantpb.Request) returns (clientpb.Task);
   rpc Info(implantpb.Request) returns (clientpb.Task);
+  rpc Bypass(implantpb.BypassRequest) returns (clientpb.Task);
+
   // implant::internal
   rpc ListModule(implantpb.Request) returns (clientpb.Task);
   rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
@@ -79,6 +81,7 @@ service MaliceRPC {
   rpc ExecuteAssembly(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteEXE(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteDLL(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteArmory(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteShellcode(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecutePowershell(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);

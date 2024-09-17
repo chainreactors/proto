@@ -115,6 +115,13 @@ message Response {
   map<string, string> kv = 3;
 }
 
+
+message BypassRequest{
+  bool ETW = 1;
+  bool AMSI = 2;
+  bool block_dll = 3;
+}
+
 message NetInterface {
   int32 index = 1;
   string name = 2;
