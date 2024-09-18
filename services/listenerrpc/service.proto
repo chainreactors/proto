@@ -17,6 +17,14 @@ service ListenerRPC {
   rpc RegisterListener(lispb.RegisterListener) returns (implantpb.Empty);
   rpc RegisterPipeline(lispb.Pipeline) returns(implantpb.Empty);
   rpc RegisterWebsite(lispb.Pipeline) returns(implantpb.Empty);
+  rpc StartTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc ListTcpPipelines(lispb.ListenerName) returns (lispb.Pipelines);
+  rpc StartWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
+  rpc UploadWebsite(lispb.WebsiteAssets) returns (clientpb.Empty);
+  rpc ListWebsites(lispb.ListenerName) returns (lispb.Websites);
+  rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
 
   //  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
   rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);

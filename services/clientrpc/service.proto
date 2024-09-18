@@ -86,17 +86,6 @@ service MaliceRPC {
   rpc ExecutePowershell(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
 
-  // listener
-  rpc NewPipeline(lispb.Pipeline) returns (clientpb.Empty);
-  rpc StartTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc StopTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc ListTcpPipelines(lispb.ListenerName) returns (lispb.Pipelines);
-  rpc NewWebsite(lispb.Pipeline) returns (clientpb.Empty);
-  rpc StartWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc StopWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc UploadWebsite(lispb.WebsiteAssets) returns (clientpb.Empty);
-  rpc ListWebsites(lispb.ListenerName) returns (lispb.Websites);
-  rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
   // Websites
   rpc Websites(clientpb.Empty) returns (lispb.Websites);
   rpc Website(lispb.Website) returns (lispb.Website);

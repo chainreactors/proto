@@ -46,9 +46,10 @@ message CtrlPipeline{
 }
 
 message TLS{
-    string cert = 1;
-    string key = 2;
-    bool enable = 3;
+  bool enable = 1;
+  string cert = 2;
+  string key = 3;
+  string ca = 4;
 }
 
 message TCPPipeline{
