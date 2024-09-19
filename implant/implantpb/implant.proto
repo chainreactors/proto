@@ -20,6 +20,7 @@ message Spite {
     Block block = 11;
     ACK ack = 13;
     AssemblyResponse assembly_response = 14;
+    ImplantTask task = 15;
     SysInfo sysinfo = 20;
     Register register = 21;
     Ping ping = 22;
@@ -139,6 +140,11 @@ message SockTabEntry {
 
 message NetstatResponse {
   repeated SockTabEntry socks = 1;
+}
+
+message ImplantTask{
+  uint32 task_id = 1;
+  string op = 2;
 }
 
 message Block{

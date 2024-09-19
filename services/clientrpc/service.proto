@@ -73,7 +73,7 @@ service MaliceRPC {
   rpc LoadAddon(implantpb.LoadAddon) returns (clientpb.Task);
   rpc ExecuteAddon(implantpb.ExecuteAddon) returns (clientpb.Task);
   rpc Clear(implantpb.Request) returns (clientpb.Task);
-  rpc CancelTask(implantpb.Request) returns (clientpb.Task);
+  rpc CancelTask(implantpb.ImplantTask) returns (clientpb.Task);
 
   // implant:execute
   rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
