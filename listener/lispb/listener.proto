@@ -69,6 +69,7 @@ message TCPPipeline{
 
 message WebContent {
   string ID = 1;
+  string Name = 6;
   string WebsiteID = 2;
   string Path = 3;
   string ContentType = 4;
@@ -95,6 +96,10 @@ message Website {
   string listener_id = 5;
   map<string, WebContent> Contents = 6;
   bool enable = 7;
+}
+
+message WebsiteResponse{
+  string ID = 1;
 }
 
 message Websites { repeated Website Websites = 1; }

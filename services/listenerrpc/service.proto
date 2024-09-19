@@ -16,7 +16,7 @@ service ImplantRPC {
 service ListenerRPC {
   rpc RegisterListener(lispb.RegisterListener) returns (implantpb.Empty);
   rpc RegisterPipeline(lispb.Pipeline) returns(implantpb.Empty);
-  rpc RegisterWebsite(lispb.Pipeline) returns(implantpb.Empty);
+  rpc RegisterWebsite(lispb.Pipeline) returns(lispb.WebsiteResponse);
   rpc StartTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
   rpc StopTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListTcpPipelines(lispb.ListenerName) returns (lispb.Pipelines);
