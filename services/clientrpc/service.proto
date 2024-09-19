@@ -86,6 +86,8 @@ service MaliceRPC {
   rpc ExecutePowershell(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
 
+  // jobs
+  rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
   // Websites
   rpc Websites(clientpb.Empty) returns (lispb.Websites);
   rpc Website(lispb.Website) returns (lispb.Website);
