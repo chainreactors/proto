@@ -71,9 +71,6 @@ message Status{
   uint32 task_id = 1;
   int32 status = 2;  // unexcept error
   string error = 3;  //std err
-  oneof msg{
-    string output = 4;
-  };
 }
 
 message Ping{
