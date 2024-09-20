@@ -178,11 +178,12 @@ message TaskDescs{
 }
 
 message File{
-  string name = 1;
-  string local = 2; // client
-  string temp_id = 3; // server
-  string remote = 4;  // implant
-  string op = 5;
+  string task_id = 1;
+  string name = 2;
+  string local = 3; // client
+  string temp_id = 4; // server
+  string remote = 5;  // implant
+  string op = 6;
 }
 
 message Files{
