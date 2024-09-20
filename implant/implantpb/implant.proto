@@ -260,6 +260,7 @@ message LoadAddon{
   string type = 2;
   string depend = 3;
   bytes bin = 4;
+  Arch arch = 5;
 }
 
 
