@@ -85,6 +85,7 @@ service MaliceRPC {
   rpc ExecuteShellcode(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecutePowershell(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteLocal(implantpb.ExecSacrificeRequest) returns (clientpb.Task);
 
   // jobs
   rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
