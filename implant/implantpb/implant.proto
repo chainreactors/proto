@@ -33,6 +33,7 @@ message Spite {
     Addons addons = 36;
     ExecuteAddon execute_addon = 37;
     ExecuteBinary execute_binary = 42;
+    ExecuteClr execute_clr = 43;
     LsResponse ls_response = 101;
     ChownRequest chown_request = 102;
     ExecRequest exec_request = 104;
@@ -262,6 +263,11 @@ message LoadAddon{
   bytes bin = 4;
 }
 
+message ExecuteClr {
+  bool amsi_bypass = 1;
+  bool etw_bypass = 2;
+  ExecuteBinary execute_binary = 3;
+}
 
 message ExecuteAddon {
   string addon = 1;
