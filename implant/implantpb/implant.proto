@@ -1,7 +1,7 @@
 syntax = "proto3";
 package implantpb;
 
-option go_package = "github.com/chainreactors/malice-network/proto/implant/implantpb";
+option go_package = "github.com/chainreactors/malice-network/helper/proto/implant/implantpb";
 
 message Empty {
 }
@@ -19,20 +19,20 @@ message Spite {
     Empty empty = 10;
     Block block = 11;
     ACK ack = 13;
-    BinaryResponse assembly_response = 14;
-    ImplantTask task = 15;
+    ImplantTask task = 14;
     SysInfo sysinfo = 20;
     Register register = 21;
     Ping ping = 22;
     Suicide suicide = 23;
     Request request = 24;
     Response response = 25;
+    ExecuteBinary execute_binary = 26;
+    BinaryResponse binary_response = 27;
     LoadModule  load_module = 31;
     Modules  modules = 32;
     LoadAddon load_addon = 35;
     Addons addons = 36;
     ExecuteAddon execute_addon = 37;
-    ExecuteBinary execute_binary = 42;
     ExecuteClr execute_clr = 43;
     LsResponse ls_response = 101;
     ChownRequest chown_request = 102;
