@@ -33,7 +33,6 @@ message Spite {
     LoadAddon load_addon = 35;
     Addons addons = 36;
     ExecuteAddon execute_addon = 37;
-    ExecuteClr execute_clr = 43;
     LsResponse ls_response = 101;
     ChownRequest chown_request = 102;
     ExecRequest exec_request = 104;
@@ -50,7 +49,6 @@ message Spite {
     IfconfigResponse ifconfig_response = 118;
     CurlRequest curl_request = 119;
     ExecuteCommand execute_command = 123;
-    ExecSacrificeRequest execute_sacrifice_request = 124;
   }
 }
 
@@ -229,11 +227,11 @@ message ExecResponse {
   uint32 pid = 4;
 }
 
-message ExecSacrificeRequest {
-  string process_name = 1;
-  repeated string args = 2; 
-  bool output = 3;
-  SacrificeProcess sacrifice = 4;
+message BinaryResponse {
+  bytes data = 1;      // common return, bof BeaconOutput
+  bytes message = 2;  // bof BeaconPrintf
+  string err = 4;
+  int32 status = 3;
 }
 
 message Modules {
@@ -263,12 +261,6 @@ message LoadAddon{
   bytes bin = 4;
 }
 
-message ExecuteClr {
-  bool amsi_bypass = 1;
-  bool etw_bypass = 2;
-  ExecuteBinary execute_binary = 3;
-}
-
 message ExecuteAddon {
   string addon = 1;
   ExecuteBinary execute_binary = 2;
@@ -277,6 +269,7 @@ message ExecuteAddon {
 message ExecuteBinary {
   string name = 1;
   bytes bin = 2;
+  map<string, string> param = 3;
   string type = 4;
   string process_name = 5;
   repeated string args = 6;
@@ -285,13 +278,6 @@ message ExecuteBinary {
   Arch arch = 9;
   uint32 timeout = 10;
   SacrificeProcess sacrifice = 11;
-}
-
-message BinaryResponse {
-  bytes data = 1;      // common return, bof BeaconOutput
-  bytes message = 2;  // bof BeaconPrintf
-  string err = 4;
-  int32 status = 3;
 }
 
 message ExecuteCommand {
