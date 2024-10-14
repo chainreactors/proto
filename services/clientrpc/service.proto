@@ -41,6 +41,7 @@ service MaliceRPC {
   rpc Upload(implantpb.UploadRequest) returns (clientpb.Task);
   rpc Download(implantpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
+  rpc SyncLog(clientpb.Sync) returns (clientpb.SyncResp);
 
   // implant::fs
   rpc Pwd(implantpb.Request) returns (clientpb.Task);
