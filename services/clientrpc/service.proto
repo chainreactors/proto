@@ -79,14 +79,14 @@ service MaliceRPC {
   // implant:execute
   rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
   rpc ExecuteSpawn(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteAssembly(implantpb.ExecuteClr) returns (clientpb.Task);
-  rpc ExecutePowerpick(implantpb.ExecuteClr) returns (clientpb.Task);
+  rpc ExecuteAssembly(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecutePowerpick(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteEXE(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteDLL(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteArmory(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteShellcode(implantpb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteLocal(implantpb.ExecSacrificeRequest) returns (clientpb.Task);
+  rpc ExecuteLocal(implantpb.ExecuteBinary) returns (clientpb.Task);
 
   // jobs
   rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
