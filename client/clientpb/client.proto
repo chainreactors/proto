@@ -41,6 +41,11 @@ message SessionRequest{
   string session_id = 1;
 }
 
+message SessionLog{
+  string session_id = 1;
+  int32 limit = 2;
+}
+
 message BasicUpdateSession{
   string session_id = 1;
   string op = 2;
@@ -159,6 +164,10 @@ message TaskContexts {
   repeated implantpb.Spite spites = 3;
 }
 
+message TasksContext {
+  repeated TaskContext contexts = 1;
+}
+
 message Task{
   uint32 task_id = 1;
   string session_id = 2;
@@ -168,6 +177,7 @@ message Task{
   int32 total = 6;
   string error = 7;
   int32 need = 8;
+  string description = 9;
 }
 
 message Tasks{

@@ -16,6 +16,7 @@ service MaliceRPC {
   rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetAlivedSessions(clientpb.Empty) returns (clientpb.Sessions);
   rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
+  rpc GetSessionLog(clientpb.SessionLog) returns (clientpb.TasksContext);
   rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
 
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
@@ -41,7 +42,6 @@ service MaliceRPC {
   rpc Upload(implantpb.UploadRequest) returns (clientpb.Task);
   rpc Download(implantpb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
-  rpc SyncLog(clientpb.Sync) returns (clientpb.SyncResp);
 
   // implant::fs
   rpc Pwd(implantpb.Request) returns (clientpb.Task);
