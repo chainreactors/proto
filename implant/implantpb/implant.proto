@@ -3,7 +3,7 @@ package implantpb;
 
 option go_package = "github.com/chainreactors/malice-network/helper/proto/implant/implantpb";
 
-import "implant/modulepb/module.proto";
+import "implant/implantpb/module.proto";
 
 message Empty {
 }
