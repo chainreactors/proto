@@ -5,7 +5,7 @@ option go_package = "github.com/chainreactors/malice-network/helper/proto/servic
 
 import "client/clientpb/client.proto";
 import "client/rootpb/root.proto";
-import "implant/implantpb/implant.proto";
+import "implant/implantpb/module.proto";
 import "listener/lispb/listener.proto";
 
 service MaliceRPC {
@@ -39,54 +39,54 @@ service MaliceRPC {
 
   // implant
   // implant::file
-  rpc Upload(implantpb.UploadRequest) returns (clientpb.Task);
-  rpc Download(implantpb.DownloadRequest) returns (clientpb.Task);
+  rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
+  rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
 
   // implant::fs
-  rpc Pwd(implantpb.Request) returns (clientpb.Task);
-  rpc Ls(implantpb.Request) returns (clientpb.Task);
-  rpc Cd(implantpb.Request) returns (clientpb.Task);
-  rpc Rm(implantpb.Request) returns (clientpb.Task);
-  rpc Mv(implantpb.Request) returns (clientpb.Task);
-  rpc Cp(implantpb.Request) returns (clientpb.Task);
-  rpc Cat(implantpb.Request) returns (clientpb.Task);
-  rpc Mkdir(implantpb.Request) returns (clientpb.Task);
-  rpc Chmod(implantpb.Request) returns (clientpb.Task);
-  rpc Chown(implantpb.ChownRequest) returns (clientpb.Task);
+  rpc Pwd(modulepb.Request) returns (clientpb.Task);
+  rpc Ls(modulepb.Request) returns (clientpb.Task);
+  rpc Cd(modulepb.Request) returns (clientpb.Task);
+  rpc Rm(modulepb.Request) returns (clientpb.Task);
+  rpc Mv(modulepb.Request) returns (clientpb.Task);
+  rpc Cp(modulepb.Request) returns (clientpb.Task);
+  rpc Cat(modulepb.Request) returns (clientpb.Task);
+  rpc Mkdir(modulepb.Request) returns (clientpb.Task);
+  rpc Chmod(modulepb.Request) returns (clientpb.Task);
+  rpc Chown(modulepb.ChownRequest) returns (clientpb.Task);
   // implant::sys
-  rpc Kill(implantpb.Request) returns (clientpb.Task);
-  rpc Ps(implantpb.Request) returns (clientpb.Task);
-  rpc Netstat(implantpb.Request) returns (clientpb.Task);
-  rpc Curl(implantpb.CurlRequest) returns (clientpb.Task);
-  rpc Env(implantpb.Request) returns(clientpb.Task);
-  rpc SetEnv(implantpb.Request) returns (clientpb.Task);
-  rpc UnsetEnv(implantpb.Request) returns (clientpb.Task);
-  rpc Whoami(implantpb.Request) returns (clientpb.Task);
-  rpc Info(implantpb.Request) returns (clientpb.Task);
-  rpc Bypass(implantpb.BypassRequest) returns (clientpb.Task);
+  rpc Kill(modulepb.Request) returns (clientpb.Task);
+  rpc Ps(modulepb.Request) returns (clientpb.Task);
+  rpc Netstat(modulepb.Request) returns (clientpb.Task);
+  rpc Curl(modulepb.CurlRequest) returns (clientpb.Task);
+  rpc Env(modulepb.Request) returns(clientpb.Task);
+  rpc SetEnv(modulepb.Request) returns (clientpb.Task);
+  rpc UnsetEnv(modulepb.Request) returns (clientpb.Task);
+  rpc Whoami(modulepb.Request) returns (clientpb.Task);
+  rpc Info(modulepb.Request) returns (clientpb.Task);
+  rpc Bypass(modulepb.BypassRequest) returns (clientpb.Task);
 
   // implant::internal
-  rpc ListModule(implantpb.Request) returns (clientpb.Task);
-  rpc LoadModule(implantpb.LoadModule) returns (clientpb.Task);
-  rpc RefreshModule(implantpb.Request) returns (clientpb.Task);
-  rpc ListAddon(implantpb.Request) returns (clientpb.Task);
-  rpc LoadAddon(implantpb.LoadAddon) returns (clientpb.Task);
-  rpc ExecuteAddon(implantpb.ExecuteAddon) returns (clientpb.Task);
-  rpc Clear(implantpb.Request) returns (clientpb.Task);
-  rpc CancelTask(implantpb.ImplantTask) returns (clientpb.Task);
+  rpc ListModule(modulepb.Request) returns (clientpb.Task);
+  rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
+  rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
+  rpc ListAddon(modulepb.Request) returns (clientpb.Task);
+  rpc LoadAddon(modulepb.LoadAddon) returns (clientpb.Task);
+  rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
+  rpc Clear(modulepb.Request) returns (clientpb.Task);
+  rpc CancelTask(modulepb.ImplantTask) returns (clientpb.Task);
 
   // implant:execute
-  rpc Execute(implantpb.ExecRequest) returns (clientpb.Task);
-  rpc ExecuteSpawn(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteAssembly(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecutePowerpick(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteEXE(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteDLL(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteArmory(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteShellcode(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteBof(implantpb.ExecuteBinary) returns (clientpb.Task);
-  rpc ExecuteLocal(implantpb.ExecuteBinary) returns (clientpb.Task);
+  rpc Execute(modulepb.ExecRequest) returns (clientpb.Task);
+  rpc ExecuteSpawn(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteAssembly(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecutePowerpick(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteEXE(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteDLL(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteArmory(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteShellcode(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteBof(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc ExecuteLocal(modulepb.ExecuteBinary) returns (clientpb.Task);
 
   // jobs
   rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);

@@ -4,13 +4,14 @@ package listenerrpc;
 option go_package = "github.com/chainreactors/malice-network/helper/proto/services/listenerrpc";
 
 import "implant/implantpb/implant.proto";
+import "implant/implantpb/module.proto";
 import "listener/lispb/listener.proto";
 import "client/clientpb/client.proto";
 
 service ImplantRPC {
   rpc Register(lispb.RegisterSession) returns (implantpb.Empty);
-  rpc SysInfo(implantpb.SysInfo) returns (implantpb.Empty);
-  rpc Ping(implantpb.Ping) returns (implantpb.Empty);
+  rpc SysInfo(modulepb.SysInfo) returns (implantpb.Empty);
+  rpc Ping(modulepb.Ping) returns (implantpb.Empty);
 }
 
 service ListenerRPC {

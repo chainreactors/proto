@@ -4,6 +4,7 @@ package clientpb;
 option go_package = "github.com/chainreactors/malice-network/helper/proto/client/clientpb";
 
 import "implant/implantpb/implant.proto";
+import "implant/implantpb/module.proto";
 import "listener/lispb/listener.proto";
 
 
@@ -29,12 +30,12 @@ message Session {
   bool is_alive = 4;
   string listener_id = 6;
   string group_name = 7;
-  implantpb.Os os = 11;
-  implantpb.Process process = 12;
-  implantpb.Timer timer = 13;
+  modulepb.Os os = 11;
+  modulepb.Process process = 12;
+  modulepb.Timer timer = 13;
   Tasks tasks = 14;
   repeated string modules = 15;
-  implantpb.Addons addons = 16;
+  modulepb.Addons addons = 16;
 }
 
 message SessionRequest{

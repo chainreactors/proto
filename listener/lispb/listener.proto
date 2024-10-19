@@ -3,12 +3,13 @@ syntax = "proto3";
 package lispb;
 option go_package = "github.com/chainreactors/malice-network/helper/proto/listener/lispb";
 
+import "implant/implantpb/module.proto";
 import "implant/implantpb/implant.proto";
 
 message RegisterSession {
   string session_id = 1;
   string listener_id = 2;
-  implantpb.Register register_data = 3;
+  modulepb.Register register_data = 3;
   string remote_addr = 4;
 
 }
