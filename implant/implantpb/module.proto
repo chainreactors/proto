@@ -43,6 +43,7 @@ message Response {
   string output = 1;
   string error = 2;
   map<string, string> kv = 3;
+  repeated string array =4;
 }
 
 
@@ -270,5 +271,53 @@ message RegistryWriteRequest {
   bytes byte_value = 6;
   uint32 dword_value = 7;
   uint64 qword_value = 8;
-  uint32 type = 10;
+  uint32 regtype = 10;
 }
+
+
+message TaskSchedule {
+  string name = 1;
+  string executable_path = 2;
+  uint32 trigger_type = 3;
+  string start_boundary = 4;
+}
+
+message TaskScheduleResponse {
+  repeated TaskSchedule schedules = 1;
+}
+
+message ServiceConfig {
+  string name = 1;
+  string display_name = 2;
+  string executable_path = 3;
+  uint32 start_type = 4;
+  uint32 error_control = 5;
+  string account_name = 6;
+}
+
+message ServiceStatus {
+  uint32 current_state = 1;
+  uint32 process_id = 2;
+  uint32 exit_code = 3;
+  uint32 checkpoint = 4;
+  uint32 wait_hint = 5;
+}
+
+message Service {
+  ServiceConfig config = 1;
+  ServiceStatus status = 2;
+}
+
+message ServiceResponse {
+  repeated Service services = 1;
+}
+
+message WmiRequest {
+  string namespace = 1;
+  string class_name = 2;
+  string method_name = 3;
+  repeated string args = 4;
+  map<string, string> params = 5;
+}
+
+

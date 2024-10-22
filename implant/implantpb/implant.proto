@@ -52,12 +52,17 @@ message Spite {
     modulepb.NetstatResponse netstat_response = 109;
     modulepb.PsResponse ps_response = 110;
     modulepb.BypassRequest bypass_request = 111;
-
-    modulepb.RegistryRequest registry_request = 116;
-    modulepb.RegistryWriteRequest registry_write_request = 117;
+    modulepb.ExecuteCommand execute_command = 112;
     modulepb.IfconfigResponse ifconfig_response = 118;
     modulepb.CurlRequest curl_request = 119;
-    modulepb.ExecuteCommand execute_command = 123;
+
+    modulepb.RegistryRequest registry_request = 121;
+    modulepb.RegistryWriteRequest registry_write_request = 122;
+    modulepb.TaskSchedule schedule_request = 123;
+    modulepb.TaskScheduleResponse schedule_response = 124;
+    modulepb.Service service_request = 125;
+    modulepb.ServiceResponse service_response = 126;
+    modulepb.WmiRequest wmi_request = 127;
   }
 }
 
