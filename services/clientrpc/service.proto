@@ -100,6 +100,11 @@ service MaliceRPC {
   rpc WebsiteRemoveContent(lispb.WebsiteRemoveContent)
       returns (lispb.Website);
 
+  // generator
+  rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
+  rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
+  rpc Generate(clientpb.Generate) returns(clientpb.Empty);
+
   // plugin
   //  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
   //  rpc InstallPlugin(clientpb.Plugin) returns (clientpb.Empty);

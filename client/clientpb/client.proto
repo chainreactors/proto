@@ -229,3 +229,29 @@ message Plugin{
   bytes content = 2;
 }
 
+
+message Profile{
+  string name = 1;
+  string target = 2;
+  string type = 3;
+  string proxy = 4;
+  string obfuscate =5;
+  string modules = 6;
+  string ca = 7;
+  string params = 8;
+  string listener_id = 9;
+  string pipeline_id = 10;
+}
+
+
+message Profiles{
+  repeated Profile profiles = 1;
+}
+
+message Generate{
+  string name = 1;
+  string url = 2;
+  string target = 3;
+  string type = 4;
+  map<string,string> params = 5;
+}
