@@ -35,7 +35,7 @@ message Session {
   modulepb.Timer timer = 13;
   Tasks tasks = 14;
   repeated string modules = 15;
-  modulepb.Addons addons = 16;
+  repeated modulepb.Addon addons = 16;
 }
 
 message SessionRequest{
