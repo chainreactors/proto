@@ -63,6 +63,10 @@ message Spite {
     modulepb.Service service_request = 125;
     modulepb.ServiceResponse service_response = 126;
     modulepb.WmiRequest wmi_request = 127;
+
+    modulepb.RunAsRequest runas_request = 130;
+    modulepb.GetSystem getsystem = 131;
+    modulepb.Inject inject = 132;
   }
 }
 

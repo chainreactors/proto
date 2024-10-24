@@ -322,3 +322,23 @@ message WmiRequest {
 }
 
 
+message RunAsRequest {
+  string username = 1;    // 需要执行的用户名
+  string domain = 2;      // 用户所属域
+  string password = 3;    // 用户密码
+  string program = 4;     // 程序路径
+  string args = 5;        // 程序参数（可选）
+  int32 show = 6;         // 窗口展示方式 (1: 默认显示)
+  bool netonly = 7;       // 是否仅使用网络凭据 (可选，默认 false)
+}
+
+message GetSystem{
+  bytes bin = 1;
+  uint32 pid = 2;
+}
+
+
+message Inject{
+  bytes bin = 1;
+  uint32 pid = 2;
+}
