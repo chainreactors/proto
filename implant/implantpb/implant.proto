@@ -29,6 +29,7 @@ message Spite {
     modulepb.Block block = 11;
     modulepb.ACK ack = 13;
     modulepb.ImplantTask task = 14;
+    modulepb.Sleep sleep = 15;
     modulepb.SysInfo sysinfo = 20;
     modulepb.Register register = 21;
     modulepb.Ping ping = 22;
