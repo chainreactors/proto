@@ -117,7 +117,7 @@ message Process {
 message Timer {
   uint64 interval = 1;
   double jitter = 2;
-  uint64 heartbeat = 3;
+  double heartbeat = 3;
   uint64 last_checkin = 4;
 }
 
