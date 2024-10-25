@@ -112,6 +112,7 @@ message Process {
   string arch = 5;
   string path = 6;
   string args = 7;
+  string uid = 8;
 }
 
 message Timer {
