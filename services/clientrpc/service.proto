@@ -38,6 +38,18 @@ service MaliceRPC {
   rpc SessionEvent(clientpb.Event) returns (clientpb.Empty);
 
   // implant
+
+  // implant::internal
+  rpc Sleep(modulepb.Sleep) returns (clientpb.Task);
+  rpc ListModule(modulepb.Request) returns (clientpb.Task);
+  rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
+  rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
+  rpc ListAddon(modulepb.Request) returns (clientpb.Task);
+  rpc LoadAddon(modulepb.LoadAddon) returns (clientpb.Task);
+  rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
+  rpc Clear(modulepb.Request) returns (clientpb.Task);
+  rpc CancelTask(modulepb.ImplantTask) returns (clientpb.Task);
+
   // implant::file
   rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
   rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
@@ -54,6 +66,7 @@ service MaliceRPC {
   rpc Mkdir(modulepb.Request) returns (clientpb.Task);
   rpc Chmod(modulepb.Request) returns (clientpb.Task);
   rpc Chown(modulepb.ChownRequest) returns (clientpb.Task);
+
   // implant::sys
   rpc Kill(modulepb.Request) returns (clientpb.Task);
   rpc Ps(modulepb.Request) returns (clientpb.Task);
@@ -66,15 +79,34 @@ service MaliceRPC {
   rpc Info(modulepb.Request) returns (clientpb.Task);
   rpc Bypass(modulepb.BypassRequest) returns (clientpb.Task);
 
-  // implant::internal
-  rpc ListModule(modulepb.Request) returns (clientpb.Task);
-  rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
-  rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
-  rpc ListAddon(modulepb.Request) returns (clientpb.Task);
-  rpc LoadAddon(modulepb.LoadAddon) returns (clientpb.Task);
-  rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
-  rpc Clear(modulepb.Request) returns (clientpb.Task);
-  rpc CancelTask(modulepb.ImplantTask) returns (clientpb.Task);
+  // implant::sys::reg
+  rpc RegQuery(modulepb.RegistryRequest) returns (clientpb.Task);
+  rpc RegAdd(modulepb.RegistryRequest) returns (clientpb.Task);
+  rpc RegDelete(modulepb.RegistryRequest) returns (clientpb.Task);
+  rpc RegListKey(modulepb.RegistryRequest) returns (clientpb.Task);
+  rpc RegListValue(modulepb.RegistryRequest) returns (clientpb.Task);
+
+  // implant::sys::service
+  rpc ServiceList(modulepb.Request) returns (clientpb.Task);
+  rpc ServiceStart(modulepb.Service) returns (clientpb.Task);
+  rpc ServiceStop(modulepb.Service) returns (clientpb.Task);
+  rpc ServiceQuery(modulepb.Service) returns (clientpb.Task);
+
+  // implant::sys::taskschd
+  rpc TaskSchdList(modulepb.Request) returns (clientpb.Task);
+  rpc TaskSchdCreate(modulepb.TaskSchedule) returns (clientpb.Task);
+  rpc TaskSchdStart(modulepb.TaskSchedule) returns (clientpb.Task);
+  rpc TaskSchdStop(modulepb.TaskSchedule) returns (clientpb.Task);
+  rpc TaskSchdDelete(modulepb.TaskSchedule) returns (clientpb.Task);
+
+  // implant::sys:wmi
+  rpc WmiQuery(modulepb.WmiRequest) returns (clientpb.Task);
+  rpc WmiExecute(modulepb.WmiRequest) returns (clientpb.Task);
+
+  // implant::sys:token
+  rpc Runas(modulepb.RunAsRequest) returns (clientpb.Task);
+  rpc Privs(modulepb.Request) returns (clientpb.Task);
+  rpc GetSystem(modulepb.Request) returns (clientpb.Task);
 
   // implant:execute
   rpc Execute(modulepb.ExecRequest) returns (clientpb.Task);
