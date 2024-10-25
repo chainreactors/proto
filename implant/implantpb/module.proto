@@ -31,9 +31,6 @@ message Suicide {
   int64 timestamp = 2;
 }
 
-message Sleep {
-  uint64 interval = 1;
-}
 
 // common empty request
 message Request {

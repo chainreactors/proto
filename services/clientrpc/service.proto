@@ -40,7 +40,8 @@ service MaliceRPC {
   // implant
 
   // implant::internal
-  rpc Sleep(modulepb.Sleep) returns (clientpb.Task);
+  rpc Sleep(modulepb.Timer) returns (clientpb.Task);
+  rpc Suicide(modulepb.Request) returns (clientpb.Task);
   rpc ListModule(modulepb.Request) returns (clientpb.Task);
   rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
   rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
