@@ -239,8 +239,7 @@ message Profile{
   string modules = 6;
   string ca = 7;
   string params = 8;
-  string listener_id = 9;
-  string pipeline_id = 10;
+  string pipeline_id = 9;
 }
 
 
