@@ -64,7 +64,7 @@ message Spite {
     modulepb.ServiceConfig service_request = 125;
     modulepb.ServicesResponse services_response = 126;
     modulepb.Service service_response = 127;
-    modulepb.WmiRequest wmi_request = 128;
+    modulepb.WmiQueryRequest wmi_request = 128;
 
     modulepb.RunAsRequest runas_request = 130;
     modulepb.GetSystem getsystem = 131;

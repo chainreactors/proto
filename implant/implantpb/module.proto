@@ -257,6 +257,7 @@ message IfconfigResponse {
   repeated NetInterface net_interfaces = 1;
 }
 
+// wrap for client
 message RegistryRequest {
   string type = 1;
   Registry registry = 2;
@@ -279,6 +280,10 @@ message RegistryWriteRequest {
   uint32 regtype = 10;
 }
 
+message TaskScheduleRequest {
+  string type = 1;
+  TaskSchedule taskschd = 2;
+}
 
 message TaskSchedule {
   string name = 1;
@@ -314,7 +319,6 @@ message ServiceStatus {
   uint32 wait_hint = 5;
 }
 
-
 message Service {
   ServiceConfig config = 1;
   ServiceStatus status = 2;
@@ -324,14 +328,18 @@ message ServicesResponse {
   repeated Service services = 1;
 }
 
-message WmiRequest {
+message WmiQueryRequest {
+  string namespace = 1;
+  string class_name = 2;
+  repeated string args = 3;
+}
+
+message WmiMethodRequest {
   string namespace = 1;
   string class_name = 2;
   string method_name = 3;
-  repeated string args = 4;
-  map<string, string> params = 5;
+  map<string, string> params = 4;
 }
-
 
 message RunAsRequest {
   string username = 1;    // 需要执行的用户名
