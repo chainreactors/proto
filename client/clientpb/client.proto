@@ -254,5 +254,11 @@ message Generate{
   string stager =3;
   string target = 4;
   string type = 5;
-  map<string,string> params = 6;
+  repeated string modules = 6;
+  string ca = 7;
+  map<string,string> params = 8;
+}
+
+message Builders{
+  repeated Generate builders = 1;
 }
