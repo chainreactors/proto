@@ -309,7 +309,7 @@ message Service {
   ServiceStatus status = 2;
 }
 
-message ServiceResponse {
+message ServicesResponse {
   repeated Service services = 1;
 }
 
