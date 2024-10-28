@@ -257,8 +257,12 @@ message IfconfigResponse {
   repeated NetInterface net_interfaces = 1;
 }
 
-
 message RegistryRequest {
+  string type = 1;
+  Registry registry = 2;
+}
+
+message Registry {
   string hive = 1;
   string path = 2;
   string key = 3;

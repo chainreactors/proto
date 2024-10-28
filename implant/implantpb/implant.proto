@@ -57,7 +57,7 @@ message Spite {
     modulepb.IfconfigResponse ifconfig_response = 118;
     modulepb.CurlRequest curl_request = 119;
 
-    modulepb.RegistryRequest registry_request = 121;
+    modulepb.Registry registry_request = 121;
     modulepb.RegistryWriteRequest registry_write_request = 122;
     modulepb.TaskSchedule schedule_request = 123;
     modulepb.TaskScheduleResponse schedule_response = 124;
