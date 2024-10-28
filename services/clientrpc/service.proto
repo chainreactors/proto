@@ -125,6 +125,11 @@ service MaliceRPC {
   rpc ExecuteBof(modulepb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteLocal(modulepb.ExecuteBinary) returns (clientpb.Task);
 
+  // shellcode
+  rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);
+  rpc DLL2Shellcode(clientpb.DLL2Shellcode) returns (clientpb.Bin);
+  rpc ShellcodeEncode(clientpb.ShellcodeEncode) returns (clientpb.Bin);
+
   // jobs
   rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
   // Websites

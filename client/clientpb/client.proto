@@ -216,15 +216,6 @@ message TaskDesc{
   string description = 6;
 }
 
-message Kits {
-  repeated Kit kits = 1;
-}
-
-message Kit{
-  string name = 1;
-  bytes content = 2;
-}
-
 message Plugins {
   repeated Plugin plugins = 1;
 }
@@ -234,6 +225,31 @@ message Plugin{
   bytes content = 2;
 }
 
+message EXE2Shellcode{
+  bytes bin = 1;
+  string type = 2; // donut
+  string arch = 3; // x86 or x64
+  string params = 4;
+}
+
+message DLL2Shellcode{
+  bytes bin = 1;
+  string type = 2; // srdi or donut
+  string arch = 3; // x86 or x64
+  string params = 4;
+  string entrypoint = 5;
+}
+
+message ShellcodeEncode{
+  bytes shellcode = 1;
+  string type = 2; // sgn
+  string arch = 3; // x86 or x64
+  int32 iterations =4;
+}
+
+message Bin{
+  bytes bin = 1;
+}
 
 message Profile{
   string name = 1;
