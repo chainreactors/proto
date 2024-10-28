@@ -291,6 +291,12 @@ message TaskScheduleResponse {
   repeated TaskSchedule schedules = 1;
 }
 
+// wrap for client
+message ServiceRequest {
+  string type = 1;
+  ServiceConfig service = 2;
+}
+
 message ServiceConfig {
   string name = 1;
   string display_name = 2;
@@ -307,6 +313,7 @@ message ServiceStatus {
   uint32 checkpoint = 4;
   uint32 wait_hint = 5;
 }
+
 
 message Service {
   ServiceConfig config = 1;

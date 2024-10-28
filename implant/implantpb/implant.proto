@@ -61,7 +61,7 @@ message Spite {
     modulepb.RegistryWriteRequest registry_write_request = 122;
     modulepb.TaskSchedule schedule_request = 123;
     modulepb.TaskScheduleResponse schedule_response = 124;
-    modulepb.Service service_request = 125;
+    modulepb.ServiceConfig service_request = 125;
     modulepb.ServicesResponse services_response = 126;
     modulepb.Service service_response = 127;
     modulepb.WmiRequest wmi_request = 128;

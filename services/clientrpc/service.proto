@@ -82,16 +82,16 @@ service MaliceRPC {
 
   // implant::sys::reg
   rpc RegQuery(modulepb.RegistryRequest) returns (clientpb.Task);
-  rpc RegAdd(modulepb.RegistryRequest) returns (clientpb.Task);
+  rpc RegAdd(modulepb.RegistryWriteRequest) returns (clientpb.Task);
   rpc RegDelete(modulepb.RegistryRequest) returns (clientpb.Task);
   rpc RegListKey(modulepb.RegistryRequest) returns (clientpb.Task);
   rpc RegListValue(modulepb.RegistryRequest) returns (clientpb.Task);
 
   // implant::sys::service
   rpc ServiceList(modulepb.Request) returns (clientpb.Task);
-  rpc ServiceStart(modulepb.Service) returns (clientpb.Task);
-  rpc ServiceStop(modulepb.Service) returns (clientpb.Task);
-  rpc ServiceQuery(modulepb.Service) returns (clientpb.Task);
+  rpc ServiceStart(modulepb.ServiceRequest) returns (clientpb.Task);
+  rpc ServiceStop(modulepb.ServiceRequest) returns (clientpb.Task);
+  rpc ServiceQuery(modulepb.ServiceRequest) returns (clientpb.Task);
 
   // implant::sys::taskschd
   rpc TaskSchdList(modulepb.Request) returns (clientpb.Task);
