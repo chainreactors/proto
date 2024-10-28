@@ -93,6 +93,7 @@ service MaliceRPC {
   rpc ServiceStart(modulepb.ServiceRequest) returns (clientpb.Task);
   rpc ServiceStop(modulepb.ServiceRequest) returns (clientpb.Task);
   rpc ServiceQuery(modulepb.ServiceRequest) returns (clientpb.Task);
+  rpc ServiceDelete(modulepb.ServiceRequest) returns (clientpb.Task);
 
   // implant::sys::taskschd
   rpc TaskSchdList(modulepb.Request) returns (clientpb.Task);
