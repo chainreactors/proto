@@ -287,12 +287,18 @@ message TaskScheduleRequest {
 
 message TaskSchedule {
   string name = 1;
-  string executable_path = 2;
-  uint32 trigger_type = 3;
-  string start_boundary = 4;
+  string path = 2;
+  string executable_path = 3;
+  uint32 trigger_type = 4;
+  string start_boundary = 5;
+  string description = 6;
+  bool enabled = 7;
+  string last_run_time = 8;
+  string next_run_time = 9;
 }
 
-message TaskScheduleResponse {
+
+message TaskSchedulesResponse {
   repeated TaskSchedule schedules = 1;
 }
 

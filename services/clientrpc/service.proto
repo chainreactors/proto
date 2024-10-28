@@ -100,6 +100,8 @@ service MaliceRPC {
   rpc TaskSchdStart(modulepb.TaskScheduleRequest) returns (clientpb.Task);
   rpc TaskSchdStop(modulepb.TaskScheduleRequest) returns (clientpb.Task);
   rpc TaskSchdDelete(modulepb.TaskScheduleRequest) returns (clientpb.Task);
+  rpc TaskSchdQuery(modulepb.TaskScheduleRequest) returns (clientpb.Task);
+  rpc TaskSchdRun(modulepb.TaskScheduleRequest) returns (clientpb.Task);
 
   // implant::sys:wmi
   rpc WmiQuery(modulepb.WmiQueryRequest) returns (clientpb.Task);
