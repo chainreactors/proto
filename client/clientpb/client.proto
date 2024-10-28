@@ -28,14 +28,18 @@ message Session {
   string note = 2;
   string remote_addr = 3;
   bool is_alive = 4;
+  bool is_privilege = 5;
   string listener_id = 6;
   string group_name = 7;
+  string type = 8;
   modulepb.Os os = 11;
   modulepb.Process process = 12;
   modulepb.Timer timer = 13;
   Tasks tasks = 14;
   repeated string modules = 15;
   repeated modulepb.Addon addons = 16;
+  map<string, string> argue = 17;
+  map<string, string> data = 18;
 }
 
 message SessionRequest{
