@@ -330,8 +330,7 @@ message ServicesResponse {
 
 message WmiQueryRequest {
   string namespace = 1;
-  string class_name = 2;
-  repeated string args = 3;
+  repeated string args = 2;
 }
 
 message WmiMethodRequest {
