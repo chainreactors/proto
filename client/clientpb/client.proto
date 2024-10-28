@@ -179,6 +179,7 @@ message Task{
   string error = 7;
   int32 need = 8;
   string description = 9;
+  string clientName =10;
 }
 
 message Tasks{
@@ -250,7 +251,8 @@ message Profiles{
 message Generate{
   string name = 1;
   string url = 2;
-  string target = 3;
-  string type = 4;
-  map<string,string> params = 5;
+  string stager =3;
+  string target = 4;
+  string type = 5;
+  map<string,string> params = 6;
 }
