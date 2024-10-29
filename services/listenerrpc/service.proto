@@ -5,28 +5,27 @@ option go_package = "github.com/chainreactors/malice-network/helper/proto/servic
 
 import "implant/implantpb/implant.proto";
 import "implant/implantpb/module.proto";
-import "listener/lispb/listener.proto";
 import "client/clientpb/client.proto";
 
 service ImplantRPC {
-  rpc Register(lispb.RegisterSession) returns (implantpb.Empty);
+  rpc Register(clientpb.RegisterSession) returns (implantpb.Empty);
   rpc SysInfo(modulepb.SysInfo) returns (implantpb.Empty);
   rpc Ping(modulepb.Ping) returns (implantpb.Empty);
 }
 
 service ListenerRPC {
-  rpc RegisterListener(lispb.RegisterListener) returns (implantpb.Empty);
-  rpc RegisterPipeline(lispb.Pipeline) returns(implantpb.Empty);
-  rpc RegisterWebsite(lispb.Pipeline) returns(lispb.WebsiteResponse);
-  rpc StartTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc StopTcpPipeline(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc ListTcpPipelines(lispb.ListenerName) returns (lispb.Pipelines);
-  rpc StartWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc StopWebsite(lispb.CtrlPipeline) returns (clientpb.Empty);
-  rpc UploadWebsite(lispb.WebsiteAssets) returns (clientpb.Empty);
-  rpc ListWebsites(lispb.ListenerName) returns (lispb.Websites);
+  rpc RegisterListener(clientpb.RegisterListener) returns (implantpb.Empty);
+  rpc RegisterPipeline(clientpb.Pipeline) returns(implantpb.Empty);
+  rpc RegisterWebsite(clientpb.Pipeline) returns(clientpb.WebsiteResponse);
+  rpc StartTcpPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopTcpPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc ListTcpPipelines(clientpb.ListenerName) returns (clientpb.Pipelines);
+  rpc StartWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc UploadWebsite(clientpb.WebsiteAssets) returns (clientpb.Empty);
+  rpc ListWebsites(clientpb.ListenerName) returns (clientpb.Websites);
 
-  //  rpc ListenerCtrl(lispb.CtrlStatus) returns (stream lispb.CtrlPipeline);
-  rpc SpiteStream(stream lispb.SpiteSession) returns (stream lispb.SpiteSession);
+  //  rpc ListenerCtrl(clientpb.CtrlStatus) returns (stream clientpb.CtrlPipeline);
+  rpc SpiteStream(stream clientpb.SpiteSession) returns (stream clientpb.SpiteSession);
   rpc JobStream(stream clientpb.JobStatus) returns (stream clientpb.JobCtrl);
 }

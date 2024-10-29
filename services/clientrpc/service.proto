@@ -6,7 +6,6 @@ option go_package = "github.com/chainreactors/malice-network/helper/proto/servic
 import "client/clientpb/client.proto";
 import "client/rootpb/root.proto";
 import "implant/implantpb/module.proto";
-import "listener/lispb/listener.proto";
 
 service MaliceRPC {
   // basic
@@ -20,7 +19,7 @@ service MaliceRPC {
   rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
 
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
-  rpc GetPipelines(clientpb.Empty) returns (lispb.Pipelines);
+  rpc GetPipelines(clientpb.Empty) returns (clientpb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
 
   rpc GetTasks(clientpb.Session) returns (clientpb.Tasks);
@@ -131,16 +130,16 @@ service MaliceRPC {
   rpc ShellcodeEncode(clientpb.ShellcodeEncode) returns (clientpb.Bin);
 
   // jobs
-  rpc ListJobs(clientpb.Empty) returns (lispb.Pipelines);
+  rpc ListJobs(clientpb.Empty) returns (clientpb.Pipelines);
   // Websites
-  rpc Websites(clientpb.Empty) returns (lispb.Websites);
-  rpc Website(lispb.Website) returns (lispb.Website);
-  rpc WebsiteRemove(lispb.Website) returns (clientpb.Empty);
-  rpc WebsiteAddContent(lispb.WebsiteAddContent) returns (lispb.Website);
-  rpc WebsiteUpdateContent(lispb.WebsiteAddContent)
-      returns (lispb.Website);
-  rpc WebsiteRemoveContent(lispb.WebsiteRemoveContent)
-      returns (lispb.Website);
+  rpc Websites(clientpb.Empty) returns (clientpb.Websites);
+  rpc Website(clientpb.Website) returns (clientpb.Website);
+  rpc WebsiteRemove(clientpb.Website) returns (clientpb.Empty);
+  rpc WebsiteAddContent(clientpb.WebsiteAddContent) returns (clientpb.Website);
+  rpc WebsiteUpdateContent(clientpb.WebsiteAddContent)
+      returns (clientpb.Website);
+  rpc WebsiteRemoveContent(clientpb.WebsiteRemoveContent)
+      returns (clientpb.Website);
 
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);

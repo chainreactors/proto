@@ -5,7 +5,6 @@ option go_package = "github.com/chainreactors/malice-network/helper/proto/client
 
 import "implant/implantpb/implant.proto";
 import "implant/implantpb/module.proto";
-import "listener/lispb/listener.proto";
 
 
 message Empty {}
@@ -64,8 +63,8 @@ message Sessions {
 message Job {
   uint32 id = 1;
   string name = 2;
-  lispb.Pipeline pipeline = 3;
-  lispb.WebsiteAssets website_assets = 4;
+  Pipeline pipeline = 3;
+  WebsiteAssets website_assets = 4;
 }
 
 message Jobs {
@@ -90,7 +89,7 @@ message Listener{
   string id = 1;
   string addr = 2;
   bool active = 3;
-  lispb.Pipelines pipelines = 4;
+  Pipelines pipelines = 4;
 }
 
 message Listeners {
@@ -281,4 +280,118 @@ message Generate{
 
 message Builders{
   repeated Generate builders = 1;
+}
+
+
+message RegisterSession {
+  string session_id = 1;
+  string listener_id = 2;
+  modulepb.Register register_data = 3;
+  string remote_addr = 4;
+
+}
+
+message RegisterListener {
+  string id = 1;
+  string host = 2;
+  string name = 3;
+  string addr = 4;
+  Pipelines pipelines = 5;
+}
+
+message SpiteSession{
+  string listener_id = 1;
+  string session_id = 2;
+  uint32 task_id = 3;
+  implantpb.Spite spite = 4;
+}
+
+message Pipelines{
+  repeated Pipeline pipelines = 1;
+}
+
+message Pipeline{
+  oneof body {
+    TCPPipeline tcp = 10;
+    Website web = 20;
+  }
+  TLS tls = 70;
+  Encryption encryption = 80;
+}
+
+message CtrlPipeline{
+  string listener_id = 1;
+  string name = 2;
+}
+
+message TLS{
+  string cert = 1;
+  string key = 2;
+  bool enable = 3;
+}
+
+message Encryption{
+  bool enable = 1;
+  string type = 2;
+  string key = 3;
+}
+
+
+message TCPPipeline{
+  string name = 1;
+  string host = 2;
+  uint32 port = 3;
+  string listener_id = 4;
+  bool enable = 5;
+}
+
+message WebContent {
+  string ID = 1;
+  string Name = 6;
+  string WebsiteID = 2;
+  string Path = 3;
+  string ContentType = 4;
+  uint64 Size = 5 [ jstype = JS_STRING ];
+
+  bytes Content = 9;
+}
+
+message WebsiteAddContent {
+  string Name = 1;
+  map<string, WebContent> Contents = 2;
+}
+
+message WebsiteRemoveContent {
+  string Name = 1;
+  repeated string Paths = 2;
+}
+
+message Website {
+  string ID = 1;
+  string Name = 2;
+  uint32 Port= 3;
+  string RootPath = 4;
+  string listener_id = 5;
+  map<string, WebContent> Contents = 6;
+  bool enable = 7;
+}
+
+message WebsiteResponse{
+  string ID = 1;
+}
+
+message Websites { repeated Website Websites = 1; }
+
+message ListenerName {
+  string Name = 1;
+}
+
+message WebsiteAsset{
+  string FileName = 1;
+  bytes Content = 2;
+  string WebName = 3;
+}
+
+message WebsiteAssets{
+  repeated WebsiteAsset Assets = 1;
 }
