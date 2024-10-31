@@ -24,8 +24,9 @@ message Basic {
 
 message Session {
   string session_id = 1;
+  bytes raw_id = 9;
   string note = 2;
-  string remote_addr = 3;
+  string target = 3;
   bool is_alive = 4;
   bool is_privilege = 5;
   string listener_id = 6;
@@ -161,7 +162,6 @@ message TaskContext {
   implantpb.Spite spite = 3;
 }
 
-
 message TaskContexts {
   Task task = 1;
   Session session = 2;
@@ -282,13 +282,13 @@ message Builders{
   repeated Generate builders = 1;
 }
 
-
 message RegisterSession {
   string session_id = 1;
   string listener_id = 2;
   modulepb.Register register_data = 3;
-  string remote_addr = 4;
-
+  string target = 4;
+  bytes raw_id =5;
+  string type =6;
 }
 
 message RegisterListener {
@@ -299,7 +299,14 @@ message RegisterListener {
   Pipelines pipelines = 5;
 }
 
-message SpiteSession{
+message SpiteRequest{
+  string listener_id = 1;
+  Session session = 2;
+  Task task = 3;
+  implantpb.Spite spite = 4;
+}
+
+message SpiteResponse{
   string listener_id = 1;
   string session_id = 2;
   uint32 task_id = 3;
@@ -311,8 +318,12 @@ message Pipelines{
 }
 
 message Pipeline{
+  bool enable = 1;
+  string name = 2;
+  string listener_id =3;
   oneof body {
     TCPPipeline tcp = 10;
+    BindPipeline bind = 11;
     Website web = 20;
   }
   TLS tls = 70;
@@ -336,13 +347,12 @@ message Encryption{
   string key = 3;
 }
 
+message BindPipeline{
+}
 
 message TCPPipeline{
-  string name = 1;
   string host = 2;
   uint32 port = 3;
-  string listener_id = 4;
-  bool enable = 5;
 }
 
 message WebContent {
@@ -368,12 +378,9 @@ message WebsiteRemoveContent {
 
 message Website {
   string ID = 1;
-  string Name = 2;
   uint32 Port= 3;
   string RootPath = 4;
-  string listener_id = 5;
   map<string, WebContent> Contents = 6;
-  bool enable = 7;
 }
 
 message WebsiteResponse{

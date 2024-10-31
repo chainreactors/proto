@@ -17,15 +17,15 @@ service ListenerRPC {
   rpc RegisterListener(clientpb.RegisterListener) returns (implantpb.Empty);
   rpc RegisterPipeline(clientpb.Pipeline) returns(implantpb.Empty);
   rpc RegisterWebsite(clientpb.Pipeline) returns(clientpb.WebsiteResponse);
-  rpc StartTcpPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
-  rpc StopTcpPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
-  rpc ListTcpPipelines(clientpb.ListenerName) returns (clientpb.Pipelines);
+  rpc StartPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc StopPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc ListPipelines(clientpb.ListenerName) returns (clientpb.Pipelines);
   rpc StartWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc StopWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc UploadWebsite(clientpb.WebsiteAssets) returns (clientpb.Empty);
-  rpc ListWebsites(clientpb.ListenerName) returns (clientpb.Websites);
+  rpc ListWebsites(clientpb.ListenerName) returns (clientpb.Pipelines);
 
   //  rpc ListenerCtrl(clientpb.CtrlStatus) returns (stream clientpb.CtrlPipeline);
-  rpc SpiteStream(stream clientpb.SpiteSession) returns (stream clientpb.SpiteSession);
+  rpc SpiteStream(stream clientpb.SpiteResponse) returns (stream clientpb.SpiteRequest);
   rpc JobStream(stream clientpb.JobStatus) returns (stream clientpb.JobCtrl);
 }
