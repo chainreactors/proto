@@ -30,6 +30,7 @@ message Spite {
     modulepb.ACK ack = 13;
     modulepb.ImplantTask task = 14;
     modulepb.Timer sleep_request =15;
+    modulepb.Init init = 16;
     modulepb.SysInfo sysinfo = 20;
     modulepb.Register register = 21;
     modulepb.Ping ping = 22;
