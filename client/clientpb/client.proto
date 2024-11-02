@@ -24,14 +24,15 @@ message Basic {
 
 message Session {
   string session_id = 1;
-  bytes raw_id = 9;
-  string note = 2;
-  string target = 3;
-  bool is_alive = 4;
-  bool is_privilege = 5;
-  string listener_id = 6;
-  string group_name = 7;
-  string type = 8;
+  bytes raw_id = 2;
+  string type = 3;
+  string note = 4;
+  string pipeline_id = 5;
+  string group_name = 6;
+  string target = 7;
+  bool is_alive = 8;
+  bool is_privilege = 9;
+  uint64 LastCheckin = 10;
   modulepb.Os os = 11;
   modulepb.Process process = 12;
   modulepb.Timer timer = 13;
@@ -44,6 +45,7 @@ message Session {
 
 message SessionRequest{
   string session_id = 1;
+  bool all = 2;
 }
 
 message SessionLog{
@@ -284,11 +286,11 @@ message Builders{
 
 message RegisterSession {
   string session_id = 1;
-  string listener_id = 2;
-  modulepb.Register register_data = 3;
+  string pipeline_id = 2;
   string target = 4;
   bytes raw_id =5;
   string type =6;
+  modulepb.Register register_data = 7;
 }
 
 message RegisterListener {

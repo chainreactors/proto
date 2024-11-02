@@ -12,11 +12,10 @@ service MaliceRPC {
   rpc LoginClient(clientpb.LoginReq) returns (clientpb.Client);
   rpc GetBasic(clientpb.Empty) returns (clientpb.Basic);
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
-  rpc GetSessions(clientpb.Empty) returns (clientpb.Sessions);
-  rpc GetAlivedSessions(clientpb.Empty) returns (clientpb.Sessions);
+  rpc GetSessions(clientpb.SessionRequest) returns (clientpb.Sessions);
   rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
-  rpc GetSessionLog(clientpb.SessionLog) returns (clientpb.TasksContext);
-  rpc BasicSessionOP(clientpb.BasicUpdateSession) returns(clientpb.Empty);
+  rpc GetSessionHistory(clientpb.SessionLog) returns (clientpb.TasksContext);
+  rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
 
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (clientpb.Pipelines);
@@ -36,9 +35,8 @@ service MaliceRPC {
   rpc Notify(clientpb.Event) returns (clientpb.Empty); // notify event to specific client
   rpc SessionEvent(clientpb.Event) returns (clientpb.Empty);
 
-  // implant
-
   // implant::internal
+  rpc Ping(modulepb.Ping) returns (clientpb.Task);
   rpc Sleep(modulepb.Timer) returns (clientpb.Task);
   rpc Suicide(modulepb.Request) returns (clientpb.Task);
   rpc ListModule(modulepb.Request) returns (clientpb.Task);

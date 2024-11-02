@@ -3,19 +3,18 @@ syntax = "proto3";
 package listenerrpc;
 option go_package = "github.com/chainreactors/malice-network/helper/proto/services/listenerrpc";
 
-import "implant/implantpb/implant.proto";
-import "implant/implantpb/module.proto";
 import "client/clientpb/client.proto";
-
-service ImplantRPC {
-  rpc Register(clientpb.RegisterSession) returns (implantpb.Empty);
-  rpc SysInfo(modulepb.SysInfo) returns (implantpb.Empty);
-  rpc Ping(modulepb.Ping) returns (implantpb.Empty);
-}
+import "implant/implantpb/module.proto";
 
 service ListenerRPC {
-  rpc RegisterListener(clientpb.RegisterListener) returns (implantpb.Empty);
-  rpc RegisterPipeline(clientpb.Pipeline) returns(implantpb.Empty);
+  // implant
+  rpc Register(clientpb.RegisterSession) returns (clientpb.Empty);
+  rpc SysInfo(modulepb.SysInfo) returns (clientpb.Empty);
+  rpc Checkin(modulepb.Ping) returns (clientpb.Empty);
+  rpc InitBindSession(modulepb.Request) returns (clientpb.Empty);
+  // pipeline
+  rpc RegisterListener(clientpb.RegisterListener) returns (clientpb.Empty);
+  rpc RegisterPipeline(clientpb.Pipeline) returns(clientpb.Empty);
   rpc RegisterWebsite(clientpb.Pipeline) returns(clientpb.WebsiteResponse);
   rpc StartPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc StopPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
