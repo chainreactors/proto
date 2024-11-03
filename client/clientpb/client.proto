@@ -43,6 +43,7 @@ message Session {
   repeated modulepb.Addon addons = 16;
   map<string, string> argue = 17;
   map<string, string> data = 18;
+  map<string, string> loot = 19;
 }
 
 message SessionRequest{
@@ -125,18 +126,15 @@ message Event {
   implantpb.Spite spite = 14;
 }
 
-message KillJobReq {
-  uint32 id = 1;
-}
-
-message KillJob {
-  uint32 id = 1;
-  bool success = 2;
-}
-
-message RegisterReq {
-  string host = 1;
-  string user = 2;
+message On{
+  int32 id =1;
+  string event_type = 2;
+  string event_op = 3;
+  string message_name = 4;
+  string session_id = 5;
+  string task_id = 6;
+  string pipeline_id = 7;
+  string listener_id = 8;
 }
 
 message LoginReq {
@@ -187,6 +185,8 @@ message Task{
   int32 need = 8;
   string description = 9;
   string clientName =10;
+  bool finished = 11;
+  bool timeout = 12;
 }
 
 message Tasks{
@@ -405,4 +405,12 @@ message WebsiteAsset{
 
 message WebsiteAssets{
   repeated WebsiteAsset Assets = 1;
+}
+
+message Polling{
+  string id = 1;
+  string session_id = 2;
+  uint64 interval = 3;
+  repeated uint32 tasks = 4;
+  bool force = 5;
 }

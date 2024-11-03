@@ -34,6 +34,7 @@ service MaliceRPC {
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
   rpc Notify(clientpb.Event) returns (clientpb.Empty); // notify event to specific client
   rpc SessionEvent(clientpb.Event) returns (clientpb.Empty);
+  rpc OnHook(clientpb.On) returns (clientpb.Empty);
 
   // implant::internal
   rpc Ping(modulepb.Ping) returns (clientpb.Task);
@@ -47,6 +48,9 @@ service MaliceRPC {
   rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
   rpc Clear(modulepb.Request) returns (clientpb.Task);
   rpc CancelTask(modulepb.ImplantTask) returns (clientpb.Task);
+
+  // implant::bind
+  rpc Polling(clientpb.Polling) returns (clientpb.Empty);
 
   // implant::file
   rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
