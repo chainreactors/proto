@@ -208,10 +208,11 @@ message ExecuteBinary {
   string process_name = 5;
   repeated string args = 6;
   string entry_point = 7;
-  bool output = 8;
-  uint32 arch = 9;
-  uint32 timeout = 10;
-  SacrificeProcess sacrifice = 11;
+  bytes data = 8;
+  bool output = 9;
+  uint32 arch = 10;
+  uint32 timeout = 11;
+  SacrificeProcess sacrifice = 12;
 }
 
 message ExecuteCommand {
