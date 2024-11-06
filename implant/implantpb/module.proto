@@ -17,10 +17,10 @@ message Register {
   SysInfo sysinfo = 11;
 }
 
-
 message Init{
   bytes data = 1;
 }
+
 message SysInfo {
   string filepath = 1;
   string workdir = 2;
@@ -363,7 +363,6 @@ message GetSystem{
   bytes bin = 1;
   uint32 pid = 2;
 }
-
 
 message Inject{
   bytes bin = 1;

@@ -24,7 +24,7 @@ message Basic {
 
 message Session {
   string session_id = 1;
-  bytes raw_id = 2;
+  uint32 raw_id = 2;
   string type = 3;
   string note = 4;
   string pipeline_id = 5;
@@ -184,7 +184,7 @@ message Task{
   string error = 7;
   int32 need = 8;
   string description = 9;
-  string clientName =10;
+  string callby =10;
   bool finished = 11;
   bool timeout = 12;
 }
@@ -250,6 +250,7 @@ message ShellcodeEncode{
   int32 iterations =4;
 }
 
+
 message Bin{
   bytes bin = 1;
 }
@@ -290,7 +291,7 @@ message RegisterSession {
   string session_id = 1;
   string pipeline_id = 2;
   string target = 4;
-  bytes raw_id =5;
+  uint32 raw_id =5;
   string type =6;
   modulepb.Register register_data = 7;
 }
