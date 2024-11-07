@@ -33,7 +33,7 @@ message Session {
   bool is_alive = 8;
   bool is_privilege = 9;
   bool is_initialized = 10;
-  uint64 last_checkin = 11;
+  int64 last_checkin = 11;
   Tasks tasks = 12;
 
   modulepb.Os os = 20;
@@ -69,6 +69,17 @@ message BasicUpdateSession{
 
 message Sessions {
   repeated Session sessions = 1;
+}
+
+message SpiteCache {
+  repeated SpiteCacheItem items = 1;
+}
+
+message SpiteCacheItem{
+  int32 index =1;
+  string id = 2;
+  implantpb.Spite spite = 3;
+  int64 expiration = 4;
 }
 
 message Job {
