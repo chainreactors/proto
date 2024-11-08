@@ -269,6 +269,18 @@ message ShellcodeEncode{
 
 message Bin{
   bytes bin = 1;
+  string name = 2;
+}
+
+message MutantFile{
+  bytes bin = 1;
+  string name = 2;
+  string function_name = 3;
+  string user_data_path = 4;
+  string type = 5;
+  string arch = 6;
+  string platform = 7;
+  string id = 8;
 }
 
 message Profile{
@@ -293,10 +305,13 @@ message Generate{
   string url = 2;
   string stager =3;
   string target = 4;
-  string type = 5;
-  repeated string modules = 6;
-  string ca = 7;
-  map<string,string> params = 8;
+  string platform = 5;
+  string type = 6;
+  repeated string modules = 7;
+  string ca = 8;
+  map<string,string> params = 9;
+  string feature = 10;
+  string shellcode_type = 11;
 }
 
 message Builders{

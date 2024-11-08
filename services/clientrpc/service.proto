@@ -130,6 +130,7 @@ service MaliceRPC {
   rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);
   rpc DLL2Shellcode(clientpb.DLL2Shellcode) returns (clientpb.Bin);
   rpc ShellcodeEncode(clientpb.ShellcodeEncode) returns (clientpb.Bin);
+  rpc MaleficSRDI(clientpb.MutantFile) returns (clientpb.Bin);
 
   // jobs
   rpc ListJobs(clientpb.Empty) returns (clientpb.Pipelines);
@@ -146,7 +147,7 @@ service MaliceRPC {
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
-  rpc Generate(clientpb.Generate) returns(clientpb.Empty);
+  rpc Generate(clientpb.Generate) returns(clientpb.Bin);
   rpc DownloadOutput(clientpb.Sync) returns (clientpb.SyncResp);
   rpc GetBuilders(clientpb.Empty) returns (clientpb.Builders);
 
