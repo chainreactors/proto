@@ -302,16 +302,17 @@ message Profiles{
 
 message Generate{
   string name = 1;
-  string url = 2;
-  string stager =3;
-  string target = 4;
-  string platform = 5;
-  string type = 6;
-  repeated string modules = 7;
-  string ca = 8;
-  map<string,string> params = 9;
-  string feature = 10;
-  string shellcode_type = 11;
+  string profileName = 2;
+  string url = 3;
+  string stager =4;
+  string target = 5;
+  string platform = 6;
+  string type = 7;
+  repeated string modules = 8;
+  string ca = 9;
+  map<string,string> params = 10;
+  string feature = 11;
+  string shellcode_type = 12;
 }
 
 message Builders{
