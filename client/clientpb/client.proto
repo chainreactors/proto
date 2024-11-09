@@ -270,6 +270,9 @@ message ShellcodeEncode{
 message Bin{
   bytes bin = 1;
   string name = 2;
+  string type = 3;
+  string stage = 4;
+  string target = 5;
 }
 
 message MutantFile{

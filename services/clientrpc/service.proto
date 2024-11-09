@@ -147,9 +147,10 @@ service MaliceRPC {
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
-  rpc Generate(clientpb.Generate) returns(clientpb.Bin);
-  rpc DownloadOutput(clientpb.Sync) returns (clientpb.SyncResp);
-  rpc GetBuilders(clientpb.Empty) returns (clientpb.Builders);
+  rpc Build(clientpb.Generate) returns(clientpb.Bin);
+  rpc DownloadArtifact(clientpb.Sync) returns (clientpb.SyncResp);
+  rpc UploadArtifact(clientpb.Bin) returns (clientpb.Empty);
+  rpc ListArtifact(clientpb.Empty) returns (clientpb.Builders);
 
   // plugin
   //  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
