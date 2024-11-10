@@ -267,24 +267,23 @@ message ShellcodeEncode{
 }
 
 
-message Bin{
+message Bin {
+  bytes Bin = 1;
+}
+
+message Builder{
   bytes bin = 1;
   string name = 2;
   string type = 3;
   string stage = 4;
   string target = 5;
-}
-
-message MutantFile{
-  bytes bin = 1;
-  string name = 2;
-  string function_name = 3;
-  string user_data_path = 4;
-  string type = 5;
   string arch = 6;
   string platform = 7;
-  string id = 8;
+  uint32 id = 8;
+  string function_name = 9;
+  string user_data_path = 10;
 }
+
 
 message Profile{
   string name = 1;
