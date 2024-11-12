@@ -429,9 +429,6 @@ message WebsiteResponse{
 
 message Websites { repeated Website Websites = 1; }
 
-message ListenerName {
-  string Name = 1;
-}
 
 message WebsiteAsset{
   string FileName = 1;
