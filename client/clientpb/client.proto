@@ -397,47 +397,47 @@ message TCPPipeline{
 
 message WebContent {
   string ID = 1;
-  string Name = 6;
-  string WebsiteID = 2;
-  string Path = 3;
-  string ContentType = 4;
-  uint64 Size = 5 [ jstype = JS_STRING ];
-
-  bytes Content = 9;
+  string name = 2;
+  string websiteID = 3;
+  string path = 4;
+  string contentType = 5;
+  uint64 size = 6 [ jstype = JS_STRING ];
+  string parser = 7;
+  bytes content = 9;
 }
 
 message WebsiteAddContent {
-  string Name = 1;
-  map<string, WebContent> Contents = 2;
+  string name = 1;
+  map<string, WebContent> contents = 2;
 }
 
 message WebsiteRemoveContent {
-  string Name = 1;
-  repeated string Paths = 2;
+  string name = 1;
+  repeated string paths = 2;
 }
 
 message Website {
   string ID = 1;
-  uint32 Port= 3;
-  string RootPath = 4;
-  map<string, WebContent> Contents = 6;
+  uint32 port= 3;
+  string root = 4;
+  map<string, WebContent> contents = 6;
 }
 
 message WebsiteResponse{
   string ID = 1;
 }
 
-message Websites { repeated Website Websites = 1; }
+message Websites { repeated Website websites = 1; }
 
 
 message WebsiteAsset{
-  string FileName = 1;
-  bytes Content = 2;
-  string WebName = 3;
+  string fileName = 1;
+  bytes content = 2;
+  string webName = 3;
 }
 
 message WebsiteAssets{
-  repeated WebsiteAsset Assets = 1;
+  repeated WebsiteAsset assets = 1;
 }
 
 message Polling{
