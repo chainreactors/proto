@@ -86,7 +86,7 @@ message Job {
   uint32 id = 1;
   string name = 2;
   Pipeline pipeline = 3;
-  WebsiteAssets website_assets = 4;
+  map<string, WebContent> contents = 4;
 }
 
 message Jobs {
@@ -396,13 +396,14 @@ message TCPPipeline{
 }
 
 message WebContent {
-  string ID = 1;
+  string id = 1;
   string name = 2;
   string websiteID = 3;
   string path = 4;
   string contentType = 5;
   uint64 size = 6 [ jstype = JS_STRING ];
   string parser = 7;
+  string type = 8;
   bytes content = 9;
 }
 
@@ -428,17 +429,6 @@ message WebsiteResponse{
 }
 
 message Websites { repeated Website websites = 1; }
-
-
-message WebsiteAsset{
-  string fileName = 1;
-  bytes content = 2;
-  string webName = 3;
-}
-
-message WebsiteAssets{
-  repeated WebsiteAsset assets = 1;
-}
 
 message Polling{
   string id = 1;
