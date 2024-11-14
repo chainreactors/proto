@@ -368,3 +368,9 @@ message Inject{
   bytes bin = 1;
   uint32 pid = 2;
 }
+
+message Pipe {
+  string name = 1;
+  string target = 2;
+  bytes data = 4;
+}

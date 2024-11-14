@@ -72,6 +72,7 @@ message Spite {
     modulepb.RunAsRequest runas_request = 130;
     modulepb.GetSystem getsystem = 131;
     modulepb.Inject inject = 132;
+    modulepb.Pipe pipe_request = 140;
   }
 }
 
