@@ -114,6 +114,11 @@ service MaliceRPC {
   rpc Privs(modulepb.Request) returns (clientpb.Task);
   rpc GetSystem(modulepb.Request) returns (clientpb.Task);
 
+  // implant::sys::pipe
+  rpc PipeUpload(modulepb.PipeRequest) returns (clientpb.Task);
+  rpc PipeRead(modulepb.PipeRequest) returns (clientpb.Task);
+  rpc PipeClose(modulepb.PipeRequest) returns (clientpb.Task);
+
   // implant:execute
   rpc Execute(modulepb.ExecRequest) returns (clientpb.Task);
   rpc ExecuteSpawn(modulepb.ExecuteBinary) returns (clientpb.Task);

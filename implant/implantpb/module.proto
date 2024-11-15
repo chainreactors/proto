@@ -374,3 +374,8 @@ message Pipe {
   string target = 2;
   bytes data = 4;
 }
+
+message PipeRequest {
+  string type = 1;
+  Pipe pipe = 2;
+}
