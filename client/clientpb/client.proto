@@ -282,6 +282,7 @@ message Builder{
   uint32 id = 8;
   string function_name = 9;
   string user_data_path = 10;
+  string modules = 11;
 }
 
 
@@ -318,7 +319,7 @@ message Generate{
 }
 
 message Builders{
-  repeated Generate builders = 1;
+  repeated Builder builders = 1;
 }
 
 message RegisterSession {
