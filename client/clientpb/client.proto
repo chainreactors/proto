@@ -315,7 +315,7 @@ message Generate{
   string ca = 9;
   map<string,string> params = 10;
   string feature = 11;
-  string shellcode_type = 12;
+  bool srdi = 12;
 }
 
 message Builders{
