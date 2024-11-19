@@ -283,6 +283,8 @@ message Builder{
   string function_name = 9;
   string user_data_path = 10;
   string modules = 11;
+  string profile_name = 12;
+  string pipeline_id = 13;
 }
 
 
