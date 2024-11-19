@@ -296,6 +296,7 @@ message Profile{
   string ca = 7;
   string params = 8;
   string pipeline_id = 9;
+  bytes content = 10;
 }
 
 
@@ -312,7 +313,7 @@ message Generate{
   string type = 7;
   repeated string modules = 8;
   string ca = 9;
-  map<string,string> params = 10;
+  string params = 10;
   string feature = 11;
   bool srdi = 12;
 }
