@@ -306,10 +306,9 @@ message Profiles{
 message Generate{
   string name = 1;
   string profileName = 2;
-  string url = 3;
+  string address = 3;
   string stager =4;
   string target = 5;
-  string platform = 6;
   string type = 7;
   repeated string modules = 8;
   string ca = 9;
