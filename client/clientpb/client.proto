@@ -285,6 +285,8 @@ message Builder{
   string modules = 11;
   string profile_name = 12;
   string pipeline_id = 13;
+  bytes log = 14;
+  uint32 num = 15;
 }
 
 
@@ -318,6 +320,7 @@ message Generate{
   string params = 10;
   string feature = 11;
   bool srdi = 12;
+  bytes bin = 13;
 }
 
 message Builders{
