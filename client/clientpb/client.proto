@@ -109,7 +109,7 @@ message JobStatus {
 
 message Listener{
   string id = 1;
-  string addr = 2;
+  string ip = 2;
   bool active = 3;
   Pipelines pipelines = 4;
 }
@@ -368,6 +368,7 @@ message Pipeline{
   string name = 2;
   string listener_id =3;
   string parser = 4;
+  string ip = 5;
   oneof body {
     TCPPipeline tcp = 10;
     BindPipeline bind = 11;
