@@ -288,6 +288,7 @@ message Builder{
   bytes log = 14;
   uint32 num = 15;
   string time = 16;
+  string resource = 17;
 }
 
 
@@ -444,4 +445,52 @@ message Polling{
   uint64 interval = 3;
   repeated uint32 tasks = 4;
   bool force = 5;
+}
+
+message WorkflowRequest {
+  string owner = 1;       // Repository owner
+  string repo = 2;        // Repository name
+  string workflow_id = 3; // Workflow file name or ID
+  string token = 4;       // GitHub token
+  string ref = 5;                 // Branch or tag
+  map<string, string> inputs = 6;// Workflow inputs
+  string build_name = 7;
+}
+
+message ListWorkflowsResponse {
+  repeated Workflow workflows = 1; // List of workflows
+}
+
+message Workflow {
+  int64 id = 1;          // Workflow ID
+  string node_id = 2;    // Workflow node ID
+  string name = 3;       // Workflow name
+  string path = 4;       // Workflow file path
+  string status = 5;      // Workflow state
+  string created_at = 6; // Workflow creation time
+  string updated_at = 7; // Workflow last updated time
+  string url = 8;        // API URL for the workflow
+  string html_url = 9;   // HTML URL for the workflow
+  string badge_url = 10; // Badge URL for the workflow
+}
+
+message Artifact{
+  string id = 1;
+  string node_id = 2;
+  string name = 3;
+  int64 size_in_bytes = 4;
+  string archive_download_url= 5;
+  string expired = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string expires_at = 9;
+}
+
+message ListArtifactsResponse {
+  repeated Artifact artifacts = 1;
+}
+
+message DownloadArtifactsResponse{
+  bytes zip = 1;
+  string name = 2;
 }
