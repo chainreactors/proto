@@ -28,6 +28,7 @@ message Session {
   string type = 3;
   string note = 4;
   string pipeline_id = 5;
+  string listener_id = 13;
   string group_name = 6;
   string target = 7;
   bool is_alive = 8;
