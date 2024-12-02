@@ -35,6 +35,7 @@ message Session {
   bool is_privilege = 9;
   bool is_initialized = 10;
   int64 last_checkin = 11;
+  int64 timediff = 14;
   Tasks tasks = 12;
 
   modulepb.Os os = 20;
@@ -333,6 +334,7 @@ message Builders{
 message RegisterSession {
   string session_id = 1;
   string pipeline_id = 2;
+  string listener_id = 3;
   string target = 4;
   uint32 raw_id =5;
   string type =6;
