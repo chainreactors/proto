@@ -18,6 +18,7 @@ service ListenerRPC {
   rpc RegisterWebsite(clientpb.Pipeline) returns(clientpb.WebsiteResponse);
   rpc StartPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc StopPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
+  rpc DeletePipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListPipelines(clientpb.Listener) returns (clientpb.Pipelines);
   rpc StartWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc StopWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
