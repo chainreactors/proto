@@ -167,9 +167,6 @@ service MaliceRPC {
   rpc EnableWorkflow(clientpb.WorkflowRequest) returns (clientpb.Empty);
   rpc DisableWorkflow(clientpb.WorkflowRequest) returns (clientpb.Empty);
   rpc ListRepositoryWorkflows(clientpb.WorkflowRequest) returns (clientpb.ListWorkflowsResponse);
-  // artifacts
-  rpc ListArtifacts(clientpb.WorkflowRequest) returns (clientpb.ListArtifactsResponse);
-  rpc DownloadGithubArtifact(clientpb.WorkflowRequest) returns (clientpb.DownloadArtifactsResponse);
 }
 
 service RootRPC {
