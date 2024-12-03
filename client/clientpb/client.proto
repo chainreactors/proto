@@ -325,6 +325,7 @@ message Generate{
   string feature = 11;
   bool srdi = 12;
   bytes bin = 13;
+  uint32 artifact_id = 14;
 }
 
 message Builders{
@@ -462,6 +463,7 @@ message WorkflowRequest {
   string address = 9;
   string ca = 10;
   string params = 11;
+  uint32 artifact_id = 12;
 }
 
 message ListWorkflowsResponse {
