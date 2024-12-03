@@ -156,17 +156,16 @@ service MaliceRPC {
   rpc DownloadArtifact(clientpb.Builder) returns (clientpb.Builder);
   rpc UploadArtifact(clientpb.Builder) returns (clientpb.Builder);
   rpc ListArtifact(clientpb.Empty) returns (clientpb.Builders);
+  rpc FindArtifact(clientpb.Builder) returns (clientpb.Builder);
   rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Builder);
   rpc BuildModules(clientpb.Generate) returns (clientpb.Builder);
-  // plugin
-  //  rpc GetPlugins(clientpb.Empty) returns (clientpb.Plugins);
-  //  rpc InstallPlugin(clientpb.Plugin) returns (clientpb.Empty);
 
   // action
   rpc TriggerWorkflowDispatch(clientpb.WorkflowRequest) returns (clientpb.Builder);
   rpc EnableWorkflow(clientpb.WorkflowRequest) returns (clientpb.Empty);
   rpc DisableWorkflow(clientpb.WorkflowRequest) returns (clientpb.Empty);
   rpc ListRepositoryWorkflows(clientpb.WorkflowRequest) returns (clientpb.ListWorkflowsResponse);
+
 }
 
 service RootRPC {
