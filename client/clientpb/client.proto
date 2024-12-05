@@ -291,6 +291,7 @@ message Builder{
   uint32 num = 15;
   string time = 16;
   string resource = 17;
+  bool is_srdi =18;
 }
 
 
