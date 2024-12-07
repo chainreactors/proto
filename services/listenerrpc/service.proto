@@ -24,7 +24,7 @@ service ListenerRPC {
   rpc StopWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc UploadWebsite(clientpb.Website) returns (clientpb.Empty);
   rpc ListWebsites(clientpb.Listener) returns (clientpb.Pipelines);
-  rpc GetArtifact(clientpb.Builder) returns (clientpb.Builder);
+  rpc GetArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   //  rpc ListenerCtrl(clientpb.CtrlStatus) returns (stream clientpb.CtrlPipeline);
   rpc SpiteStream(stream clientpb.SpiteResponse) returns (stream clientpb.SpiteRequest);
   rpc JobStream(stream clientpb.JobStatus) returns (stream clientpb.JobCtrl);

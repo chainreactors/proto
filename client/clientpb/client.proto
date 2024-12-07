@@ -25,27 +25,28 @@ message Basic {
 message Session {
   string session_id = 1;
   uint32 raw_id = 2;
-  string type = 3;
-  string note = 4;
-  string pipeline_id = 5;
-  string listener_id = 13;
-  string group_name = 6;
-  string target = 7;
-  bool is_alive = 8;
-  bool is_privilege = 9;
-  bool is_initialized = 10;
-  int64 last_checkin = 11;
+  string name = 3;
+  string type = 4;
+  string note = 5;
+  string pipeline_id = 6;
+  string listener_id =7;
+  string group_name = 8;
+  string target = 9;
+  bool is_alive = 10;
+  bool is_privilege = 11;
+  bool is_initialized = 12;
+  int64 last_checkin = 13;
   int64 timediff = 14;
-  Tasks tasks = 12;
+  Tasks tasks = 15;
 
   modulepb.Os os = 20;
   modulepb.Process process = 21;
   modulepb.Timer timer = 22;
-  repeated string modules = 15;
-  repeated modulepb.Addon addons = 16;
-  map<string, string> argue = 17;
-  map<string, string> data = 18;
-  map<string, string> loot = 19;
+  repeated string modules = 30;
+  repeated modulepb.Addon addons = 31;
+  map<string, string> argue = 40;
+  map<string, string> data = 41;
+  map<string, string> loot = 42;
 }
 
 message SessionRequest{
@@ -289,11 +290,29 @@ message Builder{
   string pipeline_id = 13;
   bytes log = 14;
   uint32 num = 15;
-  string time = 16;
+  int64 time = 16;
   string resource = 17;
   bool is_srdi =18;
 }
 
+message Artifact{
+  uint32 id = 1;
+  bytes bin = 2;
+  string name = 3;
+  string type = 4;
+  string stage = 5;
+  string target = 6;
+  string arch = 7;
+  string platform = 8;
+  string profile = 9;
+  string pipeline = 10;
+  bool is_srdi = 11;
+  int64 time = 12;
+}
+
+message Artifacts {
+  repeated Artifact artifacts = 1;
+}
 
 message Profile{
   string name = 1;
@@ -452,7 +471,7 @@ message Polling{
   bool force = 5;
 }
 
-message WorkflowRequest {
+message GithubWorkflowRequest {
   string owner = 1;       // Repository owner
   string repo = 2;        // Repository name
   string workflow_id = 3; // Workflow file name or ID
@@ -467,11 +486,11 @@ message WorkflowRequest {
   uint32 artifact_id = 12;
 }
 
-message ListWorkflowsResponse {
-  repeated Workflow workflows = 1; // List of workflows
+message GithubWorkflows {
+  repeated GithubWorkflow workflows = 1; // List of workflows
 }
 
-message Workflow {
+message GithubWorkflow {
   int64 id = 1;          // Workflow ID
   string node_id = 2;    // Workflow node ID
   string name = 3;       // Workflow name
@@ -482,25 +501,4 @@ message Workflow {
   string url = 8;        // API URL for the workflow
   string html_url = 9;   // HTML URL for the workflow
   string badge_url = 10; // Badge URL for the workflow
-}
-
-message Artifact{
-  string id = 1;
-  string node_id = 2;
-  string name = 3;
-  int64 size_in_bytes = 4;
-  string archive_download_url= 5;
-  string expired = 6;
-  string created_at = 7;
-  string updated_at = 8;
-  string expires_at = 9;
-}
-
-message ListArtifactsResponse {
-  repeated Artifact artifacts = 1;
-}
-
-message DownloadArtifactsResponse{
-  bytes zip = 1;
-  string name = 2;
 }

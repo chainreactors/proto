@@ -152,19 +152,19 @@ service MaliceRPC {
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
   rpc Build(clientpb.Generate) returns(clientpb.Builder);
-  rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
-  rpc DownloadArtifact(clientpb.Builder) returns (clientpb.Builder);
-  rpc UploadArtifact(clientpb.Builder) returns (clientpb.Builder);
-  rpc ListArtifact(clientpb.Empty) returns (clientpb.Builders);
-  rpc FindArtifact(clientpb.Builder) returns (clientpb.Builder);
-  rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Builder);
   rpc BuildModules(clientpb.Generate) returns (clientpb.Builder);
+  rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
+  rpc ListBuilder(clientpb.Empty) returns (clientpb.Builders);
+  rpc DownloadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
+  rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
+  rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
+  rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
 
   // action
-  rpc TriggerWorkflowDispatch(clientpb.WorkflowRequest) returns (clientpb.Builder);
-  rpc EnableWorkflow(clientpb.WorkflowRequest) returns (clientpb.Empty);
-  rpc DisableWorkflow(clientpb.WorkflowRequest) returns (clientpb.Empty);
-  rpc ListRepositoryWorkflows(clientpb.WorkflowRequest) returns (clientpb.ListWorkflowsResponse);
+  rpc TriggerWorkflowDispatch(clientpb.GithubWorkflowRequest) returns (clientpb.Builder);
+  rpc EnableWorkflow(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
+  rpc DisableWorkflow(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
+  rpc ListRepositoryWorkflows(clientpb.GithubWorkflowRequest) returns (clientpb.GithubWorkflows);
 
 }
 
