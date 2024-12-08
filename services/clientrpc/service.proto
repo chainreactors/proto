@@ -151,6 +151,7 @@ service MaliceRPC {
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
+  rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc Build(clientpb.Generate) returns(clientpb.Builder);
   rpc BuildModules(clientpb.Generate) returns (clientpb.Builder);
   rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
@@ -158,6 +159,7 @@ service MaliceRPC {
   rpc DownloadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
   rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
+  rpc DeleteArtifact(clientpb.Artifact) returns (clientpb.Empty);
   rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
 
   // action
