@@ -164,10 +164,6 @@ service MaliceRPC {
 
   // action
   rpc TriggerWorkflowDispatch(clientpb.GithubWorkflowRequest) returns (clientpb.Builder);
-  rpc EnableWorkflow(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
-  rpc DisableWorkflow(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
-  rpc ListRepositoryWorkflows(clientpb.GithubWorkflowRequest) returns (clientpb.GithubWorkflows);
-
 }
 
 service RootRPC {
