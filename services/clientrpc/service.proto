@@ -156,6 +156,7 @@ service MaliceRPC {
   rpc BuildModules(clientpb.Generate) returns (clientpb.Artifact);
   rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
   rpc ListBuilder(clientpb.Empty) returns (clientpb.Builders);
+  rpc GetArtifactsByProfile(clientpb.Profile) returns (clientpb.Builders);
   rpc DownloadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
   rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
