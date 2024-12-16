@@ -29,6 +29,7 @@ service MaliceRPC {
   rpc GetAllTaskContent(clientpb.Task) returns (clientpb.TaskContexts);
 
   rpc GetFiles(clientpb.Session) returns (clientpb.Files);
+  rpc GetAllDownloadFiles(clientpb.Empty) returns (clientpb.Files);
   // event
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
