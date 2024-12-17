@@ -399,6 +399,7 @@ message Pipeline{
     TCPPipeline tcp = 10;
     BindPipeline bind = 11;
     Website web = 20;
+    REM rem = 30;
   }
   TLS tls = 70;
   Encryption encryption = 80;
@@ -422,6 +423,11 @@ message Encryption{
 }
 
 message BindPipeline{
+}
+
+message REM {
+  uint32 port = 1;
+  string console = 2;
 }
 
 message TCPPipeline{
