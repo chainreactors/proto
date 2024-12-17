@@ -223,6 +223,7 @@ message File{
   string temp_id = 4; // server
   string remote = 5;  // implant
   string op = 6;
+  string session_id = 7;
 }
 
 message Files{
