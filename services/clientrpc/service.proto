@@ -131,6 +131,7 @@ service MaliceRPC {
   rpc ExecuteShellcode(modulepb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteBof(modulepb.ExecuteBinary) returns (clientpb.Task);
   rpc ExecuteLocal(modulepb.ExecuteBinary) returns (clientpb.Task);
+  rpc InlineLocal(modulepb.ExecuteBinary) returns (clientpb.Task);
 
   // shellcode
   rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);
