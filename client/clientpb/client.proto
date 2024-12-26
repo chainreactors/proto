@@ -288,12 +288,13 @@ message Builder{
   string user_data_path = 10;
   string modules = 11;
   string profile_name = 12;
-  string pipeline_id = 13;
-  bytes log = 14;
-  uint32 num = 15;
-  int64 time = 16;
-  string resource = 17;
-  bool is_srdi =18;
+  string basic_pipeline = 13;
+  string pulse_pipeline = 14;
+  bytes log = 15;
+  uint32 num = 16;
+  int64 time = 17;
+  string resource = 18;
+  bool is_srdi =19;
 }
 
 message Artifact{
@@ -306,9 +307,10 @@ message Artifact{
   string arch = 7;
   string platform = 8;
   string profile = 9;
-  string pipeline = 10;
-  bool is_srdi = 11;
-  int64 time = 12;
+  string basic_pipeline = 10;
+  string pulse_pipeline = 11;
+  bool is_srdi = 12;
+  int64 time = 13;
 }
 
 message Artifacts {
@@ -324,8 +326,9 @@ message Profile{
   string modules = 6;
   string ca = 7;
   string params = 8;
-  string pipeline_id = 9;
-  bytes content = 10;
+  string basic_pipeline_id = 9;
+  string pulse_pipeline_id = 10;
+  bytes content = 11;
 }
 
 
