@@ -288,8 +288,7 @@ message Builder{
   string user_data_path = 10;
   string modules = 11;
   string profile_name = 12;
-  string basic_pipeline = 13;
-  string pulse_pipeline = 14;
+  string pipeline = 14;
   bytes log = 15;
   uint32 num = 16;
   int64 time = 17;
@@ -307,8 +306,7 @@ message Artifact{
   string arch = 7;
   string platform = 8;
   string profile = 9;
-  string basic_pipeline = 10;
-  string pulse_pipeline = 11;
+  string pipeline = 10;
   bool is_srdi = 12;
   int64 time = 13;
 }
