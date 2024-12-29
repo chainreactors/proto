@@ -324,7 +324,7 @@ message Profile{
   string modules = 6;
   string ca = 7;
   string params = 8;
-  string basic_pipeline_id = 9;
+  string pipeline_id = 9;
   string pulse_pipeline_id = 10;
   bytes content = 11;
 }
