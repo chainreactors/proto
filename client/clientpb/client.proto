@@ -59,9 +59,8 @@ message TaskRequest{
   bool all = 2;
 }
 
-message SessionLog{
-  string session_id = 1;
-  int32 limit = 2;
+message Int{
+  int32 limit = 1;
 }
 
 message BasicUpdateSession{
@@ -143,6 +142,10 @@ message Event {
   Client client = 12;
   Task task = 13;
   implantpb.Spite spite = 14;
+}
+
+message Events {
+  repeated Event events = 1;
 }
 
 message On{
