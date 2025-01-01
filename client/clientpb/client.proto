@@ -441,13 +441,13 @@ message TCPPipeline{
 
 message WebContent {
   string id = 1;
-  string name = 2;
-  string websiteID = 3;
+  string website_id = 2;
+  string file = 3;
   string path = 4;
-  string contentType = 5;
+  string type = 5;
+  string content_type = 7;
   uint64 size = 6 [ jstype = JS_STRING ];
-  string parser = 7;
-  string type = 8;
+  Encryption encryption = 8;
   bytes content = 9;
 }
 
@@ -462,7 +462,7 @@ message WebsiteRemoveContent {
 }
 
 message Website {
-  string ID = 1;
+  string host = 2;
   uint32 port= 3;
   string root = 4;
   map<string, WebContent> contents = 6;
