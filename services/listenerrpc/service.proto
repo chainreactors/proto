@@ -31,7 +31,6 @@ service ListenerRPC {
   rpc ListWebsites(clientpb.Listener) returns (clientpb.Pipelines);
   rpc ListWebContent(clientpb.Website) returns (clientpb.Websites);
   rpc WebsiteAddContent(clientpb.Website) returns (clientpb.Empty);
-  rpc WebsiteRemove(clientpb.Website) returns (clientpb.Empty);
   rpc WebsiteUpdateContent(clientpb.WebContent)returns (clientpb.Empty);
   rpc WebsiteRemoveContent(clientpb.WebContent)returns (clientpb.Empty);
   // rem
