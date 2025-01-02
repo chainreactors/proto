@@ -427,16 +427,22 @@ message Encryption{
 }
 
 message BindPipeline{
+  string name = 1;
+  string listener_id = 2;
 }
 
 message REM {
-  uint32 port = 1;
-  string console = 2;
+  string name = 1;
+  string listener_id = 2;
+  uint32 port = 3;
+  string console = 4;
 }
 
 message TCPPipeline{
-  string host = 2;
-  uint32 port = 3;
+  string name = 1;
+  string listener_id = 2;
+  string host = 3;
+  uint32 port = 4;
 }
 
 message WebContent {
@@ -446,33 +452,22 @@ message WebContent {
   string path = 4;
   string type = 5;
   string content_type = 7;
-  uint64 size = 6 [ jstype = JS_STRING ];
+  uint64 size = 6 ;
   Encryption encryption = 8;
   bytes content = 9;
-}
-
-message WebsiteAddContent {
-  string name = 1;
-  map<string, WebContent> contents = 2;
-}
-
-message WebsiteRemoveContent {
-  string name = 1;
-  repeated string paths = 2;
+  string listener_id = 10;
 }
 
 message Website {
-  string host = 2;
+  string name = 1;
+  string listener_id = 2;
   uint32 port= 3;
   string root = 4;
   map<string, WebContent> contents = 6;
 }
 
-message WebsiteResponse{
-  string ID = 1;
-}
-
 message Websites { repeated Website websites = 1; }
+message WebContents { repeated WebContent contents = 1; }
 
 message Polling{
   string id = 1;
