@@ -161,7 +161,15 @@ service MaliceRPC {
   // action
   rpc TriggerWorkflowDispatch(clientpb.GithubWorkflowRequest) returns (clientpb.Builder);
   rpc WorkflowStatus(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
+
+  // config
+  rpc UpdateGithubConfig(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
+  rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubWorkflowRequest);
+  rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
+  rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
+  rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
 }
+
 
 service RootRPC {
   // manager

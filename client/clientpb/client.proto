@@ -508,3 +508,19 @@ message GithubWorkflow {
   string html_url = 9;   // HTML URL for the workflow
   string badge_url = 10; // Badge URL for the workflow
 }
+
+message Notify{
+  bool telegram_enable = 1;
+  string telegram_api_key = 2;
+  int64 telegram_chat_id = 3;
+
+  bool dingtalk_enable = 4;
+  string dingtalk_secret = 5;
+  string dingtalk_token = 6;
+
+  bool lark_enable = 7;
+  string lark_webhook_url = 8;
+
+  bool serverchan_enable = 9;
+  string serverchan_url = 10;
+}
