@@ -41,6 +41,17 @@ service ListenerRPC {
   rpc DeleteRem(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListRems(clientpb.Listener) returns (clientpb.Pipelines);
 
+  // generator
+  rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
+  rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
+  rpc Build(clientpb.Generate) returns(clientpb.Builder);
+  rpc DockerStatus(clientpb.Empty) returns (clientpb.Empty);
+
+
+  // action
+  rpc TriggerWorkflowDispatch(clientpb.GithubWorkflowRequest) returns (clientpb.Builder);
+  rpc WorkflowStatus(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
+
   rpc GetArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   //  rpc ListenerCtrl(clientpb.CtrlStatus) returns (stream clientpb.CtrlPipeline);
 }

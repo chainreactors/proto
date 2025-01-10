@@ -142,25 +142,18 @@ service MaliceRPC {
   // jobs
   rpc ListJobs(clientpb.Empty) returns (clientpb.Pipelines);
   // generator
-  rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
   rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc UpdateProfile(clientpb.Profile) returns (clientpb.Empty);
-  rpc Build(clientpb.Generate) returns(clientpb.Builder);
   rpc BuildModules(clientpb.Generate) returns (clientpb.Artifact);
   rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
   rpc ListBuilder(clientpb.Empty) returns (clientpb.Builders);
   rpc GetArtifactsByProfile(clientpb.Profile) returns (clientpb.Builders);
   rpc DownloadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
-  rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc DeleteArtifact(clientpb.Artifact) returns (clientpb.Empty);
   rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
-  rpc DockerStatus(clientpb.Empty) returns (clientpb.Empty);
 
-  // action
-  rpc TriggerWorkflowDispatch(clientpb.GithubWorkflowRequest) returns (clientpb.Builder);
-  rpc WorkflowStatus(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
 
   // config
   rpc UpdateGithubConfig(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
