@@ -399,7 +399,7 @@ message Pipeline{
   string listener_id =3;
   string parser = 4;
   string ip = 5;
-  string target = 6;
+  repeated string target = 6;
   string beacon_pipeline = 7;
   oneof body {
     TCPPipeline tcp = 10;
@@ -414,7 +414,7 @@ message Pipeline{
 message CtrlPipeline{
   string listener_id = 1;
   string name = 2;
-  string target = 3;
+  repeated string target = 3;
   string beacon_pipeline = 4;
 }
 
