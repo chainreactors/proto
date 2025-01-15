@@ -494,6 +494,7 @@ message GithubWorkflowRequest {
   string ca = 10;
   string params = 11;
   uint32 artifact_id = 12;
+  bool is_remove = 13;
 }
 
 message GithubWorkflows {
