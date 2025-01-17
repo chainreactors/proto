@@ -529,3 +529,18 @@ message Notify{
   bool serverchan_enable = 9;
   string serverchan_url = 10;
 }
+
+
+message Context {
+  string id = 1;
+  Session session = 2;
+  Task task = 3;
+  Pipeline pipeline = 4;
+  Listener listener = 5;
+  string type = 6;
+  string value = 7;
+}
+
+message Contexts {
+  repeated Context contexts = 1;
+}

@@ -161,6 +161,14 @@ service MaliceRPC {
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
   rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
+
+
+  // context
+  rpc GetContexts(clientpb.Context) returns (clientpb.Contexts);
+  rpc GetScreenShot(clientpb.Empty) returns (clientpb.Contexts);
+  rpc GetCredential(clientpb.Empty) returns (clientpb.Contexts);
+  rpc GetKeylogger(clientpb.Empty) returns (clientpb.Contexts);
+  rpc AddContext(clientpb.Context) returns (clientpb.Empty);
 }
 
 
