@@ -22,7 +22,7 @@ service ListenerRPC {
   rpc StopPipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc DeletePipeline(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListPipelines(clientpb.Listener) returns (clientpb.Pipelines);
-
+  rpc SyncPipeline(clientpb.Pipeline) returns (clientpb.Empty);
   // website
   rpc RegisterWebsite(clientpb.Pipeline) returns(clientpb.Empty);
   rpc StartWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);

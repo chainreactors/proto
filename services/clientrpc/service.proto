@@ -16,11 +16,11 @@ service MaliceRPC {
   rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
   rpc GetSessionHistory(clientpb.Int) returns (clientpb.TasksContext);
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
-
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetPipelines(clientpb.Empty) returns (clientpb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
 
+  // task
   rpc GetTasks(clientpb.TaskRequest) returns (clientpb.Tasks);
   rpc GetTaskContent(clientpb.Task) returns (clientpb.TaskContext);
   rpc GetTaskFiles(clientpb.Session) returns(clientpb.Files);
@@ -28,8 +28,10 @@ service MaliceRPC {
   rpc WaitTaskFinish(clientpb.Task) returns (clientpb.TaskContext);
   rpc GetAllTaskContent(clientpb.Task) returns (clientpb.TaskContexts);
 
+  // file
   rpc GetFiles(clientpb.Session) returns (clientpb.Files);
   rpc GetAllDownloadFiles(clientpb.Empty) returns (clientpb.Files);
+
   // event
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
   rpc Broadcast(clientpb.Event) returns (clientpb.Empty); // broadcast event to all clients
@@ -134,6 +136,9 @@ service MaliceRPC {
   rpc ExecuteLocal(modulepb.ExecuteBinary) returns (clientpb.Task);
   rpc InlineLocal(modulepb.ExecuteBinary) returns (clientpb.Task);
 
+  // implant: 3rd
+  rpc RemDial(modulepb.Request) returns (clientpb.Task);
+
   // shellcode
   rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);
   rpc DLL2Shellcode(clientpb.DLL2Shellcode) returns (clientpb.Bin);
@@ -141,6 +146,7 @@ service MaliceRPC {
 
   // jobs
   rpc ListJobs(clientpb.Empty) returns (clientpb.Pipelines);
+
   // generator
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
   rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
@@ -153,7 +159,6 @@ service MaliceRPC {
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
   rpc DeleteArtifact(clientpb.Artifact) returns (clientpb.Empty);
   rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
-
 
   // config
   rpc UpdateGithubConfig(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);

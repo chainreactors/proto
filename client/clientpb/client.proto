@@ -401,6 +401,7 @@ message Pipeline{
   string ip = 5;
   repeated string target = 6;
   string beacon_pipeline = 7;
+  string type = 8;
   oneof body {
     TCPPipeline tcp = 10;
     BindPipeline bind = 11;
@@ -439,7 +440,18 @@ message REM {
   string name = 1;
   string listener_id = 2;
   uint32 port = 3;
-  string console = 4;
+  string host = 4;
+  string console = 5;
+  string link = 6;
+  string subscribe = 7;
+  map<string, REMAgent>  agents = 10;
+}
+
+message REMAgent {
+  string id = 1;
+  string mod =2;
+  string local = 3;
+  string remote = 4;
 }
 
 message TCPPipeline{
