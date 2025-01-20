@@ -30,9 +30,9 @@ service ListenerRPC {
   rpc DeleteWebsite(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListWebsites(clientpb.Listener) returns (clientpb.Pipelines);
   rpc ListWebContent(clientpb.Website) returns (clientpb.WebContents);
-  rpc WebsiteAddContent(clientpb.Website) returns (clientpb.Empty);
-  rpc WebsiteUpdateContent(clientpb.WebContent)returns (clientpb.Empty);
-  rpc WebsiteRemoveContent(clientpb.WebContent)returns (clientpb.Empty);
+  rpc AddWebsiteContent(clientpb.Website) returns (clientpb.Empty);
+  rpc UpdateWebsiteContent(clientpb.WebContent)returns (clientpb.Empty);
+  rpc RemoveWebsiteContent(clientpb.WebContent)returns (clientpb.Empty);
 
   // rem
   rpc RegisterRem(clientpb.Pipeline) returns (clientpb.Empty);

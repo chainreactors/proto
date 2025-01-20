@@ -17,7 +17,6 @@ service MaliceRPC {
   rpc GetSessionHistory(clientpb.Int) returns (clientpb.TasksContext);
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
-  rpc GetPipelines(clientpb.Empty) returns (clientpb.Pipelines);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
 
   // task
