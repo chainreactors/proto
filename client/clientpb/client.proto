@@ -447,6 +447,10 @@ message REM {
   map<string, REMAgent>  agents = 10;
 }
 
+message REMAgents {
+  repeated REMAgent agents = 1;
+}
+
 message REMAgent {
   string id = 1;
   string mod =2;

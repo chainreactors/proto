@@ -18,6 +18,7 @@ service MaliceRPC {
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
+  rpc ListPivots(clientpb.Empty) returns (clientpb.REMAgents);
 
   // task
   rpc GetTasks(clientpb.TaskRequest) returns (clientpb.Tasks);
@@ -137,7 +138,6 @@ service MaliceRPC {
 
   // implant: 3rd
   rpc RemDial(modulepb.Request) returns (clientpb.Task);
-
   // shellcode
   rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);
   rpc DLL2Shellcode(clientpb.DLL2Shellcode) returns (clientpb.Bin);
