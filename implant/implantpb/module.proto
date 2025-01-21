@@ -380,3 +380,18 @@ message PipeRequest {
   string type = 1;
   Pipe pipe = 2;
 }
+
+message Login {
+  repeated string urls = 1;
+}
+
+message TaskInfo {
+  uint32 task_id = 1;
+  uint64 last = 2;        
+  uint32 recv_count = 3;
+  uint32 send_count = 4;  
+}
+
+message TaskListResponse {
+  repeated TaskInfo tasks = 1;
+}

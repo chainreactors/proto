@@ -31,6 +31,9 @@ message Spite {
     modulepb.ImplantTask task = 14;
     modulepb.Timer sleep_request =15;
     modulepb.Init init = 16;
+    modulepb.Login login_request = 17;
+    modulepb.TaskInfo task_info = 18;
+    modulepb.TaskListResponse task_list = 19;
     modulepb.SysInfo sysinfo = 20;
     modulepb.Register register = 21;
     modulepb.Ping ping = 22;
@@ -73,6 +76,7 @@ message Spite {
     modulepb.GetSystem getsystem = 131;
     modulepb.Inject inject = 132;
     modulepb.Pipe pipe_request = 140;
+
   }
 }
 
