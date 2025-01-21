@@ -77,10 +77,6 @@ message NetstatResponse {
   repeated SockTabEntry socks = 1;
 }
 
-message ImplantTask{
-  uint32 task_id = 1;
-  string op = 2;
-}
 
 message Block{
   uint32 block_id = 1;
@@ -383,6 +379,11 @@ message PipeRequest {
 
 message Login {
   repeated string urls = 1;
+}
+
+message TaskCtrl{
+  uint32 task_id = 1;
+  string op = 2;
 }
 
 message TaskInfo {

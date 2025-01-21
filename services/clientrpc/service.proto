@@ -51,7 +51,9 @@ service MaliceRPC {
   rpc LoadAddon(modulepb.LoadAddon) returns (clientpb.Task);
   rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
   rpc Clear(modulepb.Request) returns (clientpb.Task);
-  rpc CancelTask(modulepb.ImplantTask) returns (clientpb.Task);
+  rpc ListTasks(modulepb.Request) returns (clientpb.Task);
+  rpc QueryTask(modulepb.TaskCtrl) returns (clientpb.Task);
+  rpc CancelTask(modulepb.TaskCtrl) returns (clientpb.Task);
 
   // implant::bind
   rpc Polling(clientpb.Polling) returns (clientpb.Empty);

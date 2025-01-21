@@ -28,7 +28,7 @@ message Spite {
     Empty empty = 10;
     modulepb.Block block = 11;
     modulepb.ACK ack = 13;
-    modulepb.ImplantTask task = 14;
+    modulepb.TaskCtrl task = 14;
     modulepb.Timer sleep_request =15;
     modulepb.Init init = 16;
     modulepb.Login login_request = 17;
