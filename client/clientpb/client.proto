@@ -39,13 +39,17 @@ message Session {
   int64 timediff = 14;
   Tasks tasks = 15;
 
+  string filepath = 16;
+  string locate = 17;
+  string workdir = 18;
+  string proxy = 19;
   modulepb.Os os = 20;
   modulepb.Process process = 21;
   modulepb.Timer timer = 22;
   repeated string modules = 30;
   repeated modulepb.Addon addons = 31;
   map<string, string> argue = 40;
-  map<string, string> data = 41;
+  string data = 41;
   map<string, string> loot = 42;
 }
 
