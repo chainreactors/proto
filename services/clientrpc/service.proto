@@ -24,6 +24,7 @@ service MaliceRPC {
   rpc GetTasks(clientpb.TaskRequest) returns (clientpb.Tasks);
   rpc GetTaskContent(clientpb.Task) returns (clientpb.TaskContext);
   rpc GetTaskFiles(clientpb.Session) returns(clientpb.Files);
+  rpc GetContextFiles(clientpb.Session) returns(clientpb.Files);
   rpc WaitTaskContent(clientpb.Task) returns (clientpb.TaskContext);
   rpc WaitTaskFinish(clientpb.Task) returns (clientpb.TaskContext);
   rpc GetAllTaskContent(clientpb.Task) returns (clientpb.TaskContexts);

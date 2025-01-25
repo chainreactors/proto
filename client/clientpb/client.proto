@@ -227,7 +227,7 @@ message File{
   string task_id = 1;
   string name = 2;
   string local = 3; // client
-  string temp_id = 4; // server
+  string checksum = 4; // server
   string remote = 5;  // implant
   string op = 6;
   string session_id = 7;
