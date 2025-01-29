@@ -18,12 +18,10 @@ service MaliceRPC {
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
-  rpc ListPivots(clientpb.Empty) returns (clientpb.REMAgents);
-
+  rpc GetPivots(clientpb.Empty) returns (clientpb.REMAgents);
   // task
   rpc GetTasks(clientpb.TaskRequest) returns (clientpb.Tasks);
   rpc GetTaskContent(clientpb.Task) returns (clientpb.TaskContext);
-  rpc GetTaskFiles(clientpb.Session) returns(clientpb.Files);
   rpc GetContextFiles(clientpb.Session) returns(clientpb.Files);
   rpc WaitTaskContent(clientpb.Task) returns (clientpb.TaskContext);
   rpc WaitTaskFinish(clientpb.Task) returns (clientpb.TaskContext);
@@ -31,7 +29,6 @@ service MaliceRPC {
 
   // file
   rpc GetFiles(clientpb.Session) returns (clientpb.Files);
-  rpc GetAllDownloadFiles(clientpb.Empty) returns (clientpb.Files);
 
   // event
   rpc Events(clientpb.Empty) returns (stream clientpb.Event); // start listen events / register client
@@ -62,7 +59,7 @@ service MaliceRPC {
   // implant::file
   rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
   rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
-  rpc Sync(clientpb.Sync) returns (clientpb.SyncResp);
+  rpc Sync(clientpb.Sync) returns (clientpb.Context);
 
   // implant::fs
   rpc Pwd(modulepb.Request) returns (clientpb.Task);
@@ -172,10 +169,13 @@ service MaliceRPC {
 
   // context
   rpc GetContexts(clientpb.Context) returns (clientpb.Contexts);
-  rpc GetScreenShot(clientpb.Empty) returns (clientpb.Contexts);
-  rpc GetCredential(clientpb.Empty) returns (clientpb.Contexts);
-  rpc GetKeylogger(clientpb.Empty) returns (clientpb.Contexts);
   rpc AddContext(clientpb.Context) returns (clientpb.Empty);
+  rpc AddScreenShot(clientpb.Context) returns (clientpb.Empty);
+  rpc AddCredential(clientpb.Context) returns (clientpb.Empty);
+  rpc AddKeylogger(clientpb.Context) returns (clientpb.Empty);
+  rpc AddPort(clientpb.Context) returns (clientpb.Empty);
+  rpc AddUpload(clientpb.Context) returns (clientpb.Empty);
+  rpc AddDownload(clientpb.Context) returns (clientpb.Empty);
 }
 
 

@@ -176,7 +176,7 @@ message RegisterResp {
 }
 
 message Sync{
-  string file_id = 1;
+  string context_id = 1;
 }
 
 message SyncResp {
@@ -224,7 +224,7 @@ message TaskDescs{
 }
 
 message File{
-  string task_id = 1;
+  uint32 task_id = 1;
   string name = 2;
   string local = 3; // client
   string checksum = 4; // server
@@ -558,7 +558,7 @@ message Context {
   Pipeline pipeline = 4;
   Listener listener = 5;
   string type = 6;
-  string value = 7;
+  bytes value = 7;
 }
 
 message Contexts {
