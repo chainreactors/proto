@@ -177,6 +177,7 @@ message RegisterResp {
 
 message Sync{
   string context_id = 1;
+  string task_id = 2;
 }
 
 message SyncResp {
@@ -559,6 +560,7 @@ message Context {
   Listener listener = 5;
   string type = 6;
   bytes value = 7;
+  bytes content = 8;
 }
 
 message Contexts {
