@@ -10,9 +10,7 @@ import "implant/implantpb/module.proto";
 message Empty {}
 
 message Basic {
-  int32 major = 1;
-  int32 minor = 2;
-  int32 patch = 3;
+  string version = 1;
 
   string commit = 4;
   bool dirty = 5;
