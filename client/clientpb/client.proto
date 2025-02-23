@@ -559,6 +559,7 @@ message Context {
   string type = 6;
   bytes value = 7;
   bytes content = 8;
+  string nonce = 9;
 }
 
 message Contexts {

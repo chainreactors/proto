@@ -209,7 +209,8 @@ message ExecuteBinary {
   uint32 arch = 10;
   uint32 timeout = 11;
   SacrificeProcess sacrifice = 12;
-  string path =13;
+  string path = 13;
+  string context = 14;
 }
 
 message ExecuteCommand {
