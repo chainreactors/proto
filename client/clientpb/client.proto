@@ -459,6 +459,7 @@ message REMAgent {
   string mod =2;
   string local = 3;
   string remote = 4;
+  bool enable = 5;
 }
 
 message TCPPipeline{

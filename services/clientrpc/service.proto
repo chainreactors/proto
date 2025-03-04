@@ -18,7 +18,6 @@ service MaliceRPC {
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
-  rpc GetPivots(clientpb.Empty) returns (clientpb.REMAgents);
   // task
   rpc GetTasks(clientpb.TaskRequest) returns (clientpb.Tasks);
   rpc GetTaskContent(clientpb.Task) returns (clientpb.TaskContext);

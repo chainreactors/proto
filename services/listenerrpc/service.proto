@@ -40,7 +40,7 @@ service ListenerRPC {
   rpc StopRem(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc DeleteRem(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListRems(clientpb.Listener) returns (clientpb.Pipelines);
-
+  rpc HealthCheckRem(clientpb.Pipeline) returns (clientpb.Empty);
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
