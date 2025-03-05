@@ -109,6 +109,7 @@ message JobStatus {
   int32 status = 3;
   string error = 4;
   Job job = 5;
+  uint32 ctrl_id = 6;
 }
 
 message Listener{
