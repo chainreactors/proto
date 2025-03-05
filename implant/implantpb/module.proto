@@ -41,6 +41,7 @@ message Request {
   string input = 2;
   repeated string args = 3;
   map<string, string> params = 4;
+  bytes bin = 5;
 }
 
 message Response {
