@@ -101,6 +101,9 @@ message JobCtrl {
   uint32 id = 1;
   string ctrl = 2;
   Job job = 3;
+  oneof body {
+    REMAgent agent = 10;
+  }
 }
 
 message JobStatus {
@@ -456,11 +459,19 @@ message REMAgents {
 }
 
 message REMAgent {
-  string id = 1;
-  string mod =2;
-  string local = 3;
-  string remote = 4;
-  bool enable = 5;
+  string pipeline_id = 1;
+  string id = 2;
+  string mod =3;
+  string local = 4;
+  string remote = 5;
+  bool enable = 6;
+  repeated string args = 7;
+}
+
+message RemLog {
+  string pipeline_id = 1;
+  string agent_id = 2;
+  bytes log = 3;
 }
 
 message TCPPipeline{
