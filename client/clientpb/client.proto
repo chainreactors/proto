@@ -91,6 +91,10 @@ message Job {
   string name = 2;
   Pipeline pipeline = 3;
   map<string, WebContent> contents = 4;
+  oneof body {
+    REMAgent rem_agent = 10;
+    RemLog rem_log = 11;
+  }
 }
 
 message Jobs {
@@ -101,9 +105,6 @@ message JobCtrl {
   uint32 id = 1;
   string ctrl = 2;
   Job job = 3;
-  oneof body {
-    REMAgent agent = 10;
-  }
 }
 
 message JobStatus {
@@ -471,7 +472,7 @@ message REMAgent {
 message RemLog {
   string pipeline_id = 1;
   string agent_id = 2;
-  bytes log = 3;
+  string log = 3;
 }
 
 message TCPPipeline{
