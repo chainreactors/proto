@@ -41,8 +41,9 @@ service ListenerRPC {
   rpc DeleteRem(clientpb.CtrlPipeline) returns (clientpb.Empty);
   rpc ListRems(clientpb.Listener) returns (clientpb.Pipelines);
   rpc HealthCheckRem(clientpb.Pipeline) returns (clientpb.Empty);
-  rpc RemCtrl(clientpb.REMAgent) returns (clientpb.Empty);
-  rpc RemLog(clientpb.REMAgent) returns (clientpb.RemLog);
+  rpc RemAgentCtrl(clientpb.REMAgent) returns (clientpb.Empty);
+  rpc RemAgentStop(clientpb.REMAgent) returns (clientpb.Empty);
+  rpc RemAgentLog(clientpb.REMAgent) returns (clientpb.RemLog);
 
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
