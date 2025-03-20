@@ -148,6 +148,7 @@ message ExecRequest {
   string path = 1;
   repeated string args = 2;
   bool output = 3;
+  bool singleton = 4;
   uint32 ppid = 10;
 }
 
@@ -225,6 +226,7 @@ message UploadRequest {
   uint32 priv = 3;
   bytes data = 4;
   bool hidden = 5;
+  bool override = 6;
 }
 
 message DownloadRequest {
