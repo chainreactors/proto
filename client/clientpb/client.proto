@@ -426,6 +426,7 @@ message CtrlPipeline{
   string name = 2;
   repeated string target = 3;
   string beacon_pipeline = 4;
+  Pipeline pipeline = 5;
 }
 
 message TLS{
