@@ -402,22 +402,23 @@ message Pipelines{
 }
 
 message Pipeline{
-  bool enable = 1;
-  string name = 2;
-  string listener_id =3;
-  string parser = 4;
-  string ip = 5;
+  string name = 1;
+  bool enable = 2;
+  string type = 3;
+  string listener_id = 4;
+  string parser = 5;
   repeated string target = 6;
   string beacon_pipeline = 7;
-  string type = 8;
+  TLS tls = 8;
+  Encryption encryption = 9;
+  string ip = 10;
   oneof body {
-    TCPPipeline tcp = 10;
-    BindPipeline bind = 11;
-    Website web = 20;
-    REM rem = 30;
+    TCPPipeline tcp = 20;
+    BindPipeline bind = 21;
+    REM rem = 22;
+    Website web = 23;
+    HTTPPipeline http = 24;
   }
-  TLS tls = 70;
-  Encryption encryption = 80;
 }
 
 message CtrlPipeline{
@@ -478,8 +479,16 @@ message RemLog {
 message TCPPipeline{
   string name = 1;
   string listener_id = 2;
-  string host = 3;
-  uint32 port = 4;
+  uint32 port = 3;
+  string host = 4;
+}
+
+message HTTPPipeline{
+  string name = 1;
+  string listener_id = 2;
+  uint32 port = 3;
+  string host = 4;
+  string params = 5;  // JSON serialized additional parameters
 }
 
 message WebContent {
