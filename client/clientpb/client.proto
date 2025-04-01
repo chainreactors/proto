@@ -500,7 +500,6 @@ message WebContent {
   string type = 5;
   string content_type = 7;
   uint64 size = 6 ;
-  Encryption encryption = 8;
   bytes content = 9;
   string listener_id = 10;
 }
