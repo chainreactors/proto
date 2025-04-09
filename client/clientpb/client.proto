@@ -141,6 +141,7 @@ message Clients {
 message Event {
   string type = 1;
   string op = 2;
+  string formatted = 4;
   bytes message = 5;
   string err = 6; // Can't trigger normal gRPC error
   string callee = 7;
