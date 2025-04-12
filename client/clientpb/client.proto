@@ -105,6 +105,7 @@ message JobCtrl {
   uint32 id = 1;
   string ctrl = 2;
   Job job = 3;
+  WebContent content = 4;
 }
 
 message JobStatus {
