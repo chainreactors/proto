@@ -159,6 +159,7 @@ service MaliceRPC {
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
   rpc DeleteArtifact(clientpb.Artifact) returns (clientpb.Empty);
   rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
+  rpc GetActionProgress(clientpb.GithubWorkflowRequest) returns (clientpb.Artifact);
 
   // config
   rpc UpdateGithubConfig(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
