@@ -306,7 +306,8 @@ message Builder{
   uint32 num = 16;
   int64 time = 17;
   string resource = 18;
-  bool is_srdi =19;
+  bool is_srdi = 19;
+  string status = 20;
 }
 
 message Artifact{
