@@ -149,6 +149,7 @@ message ExecRequest {
   repeated string args = 2;
   bool output = 3;
   bool singleton = 4;
+  bool realtime = 5;
   uint32 ppid = 10;
 }
 
@@ -157,6 +158,7 @@ message ExecResponse {
   bytes stdout = 2;
   bytes stderr = 3;
   uint32 pid = 4;
+  bool end = 5;
 }
 
 message BinaryResponse {
