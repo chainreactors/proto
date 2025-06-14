@@ -51,6 +51,7 @@ service MaliceRPC {
   rpc ListTasks(modulepb.Request) returns (clientpb.Task);
   rpc QueryTask(modulepb.TaskCtrl) returns (clientpb.Task);
   rpc CancelTask(modulepb.TaskCtrl) returns (clientpb.Task);
+  rpc Switch(modulepb.Switch) returns (clientpb.Task);
 
   // implant::bind
   rpc Polling(clientpb.Polling) returns (clientpb.Empty);
