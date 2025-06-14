@@ -31,7 +31,7 @@ message Spite {
     modulepb.TaskCtrl task = 14;
     modulepb.Timer sleep_request =15;
     modulepb.Init init = 16;
-    modulepb.Login login_request = 17;
+    modulepb.Switch switch = 17;
     modulepb.TaskInfo task_info = 18;
     modulepb.TaskListResponse task_list = 19;
     modulepb.SysInfo sysinfo = 20;

@@ -383,7 +383,7 @@ message PipeRequest {
   Pipe pipe = 2;
 }
 
-message Login {
+message Switch {
   repeated string urls = 1;
 }
 
