@@ -360,7 +360,6 @@ message Generate{
   repeated string modules = 8;
   string ca = 9;
   string params = 10;
-  string feature = 11;
   bool srdi = 12;
   bytes bin = 13;
   uint32 artifact_id = 14;
@@ -487,6 +486,7 @@ message TCPPipeline{
   string listener_id = 2;
   uint32 port = 3;
   string host = 4;
+  string proxy = 5;
 }
 
 message HTTPPipeline{
@@ -495,6 +495,7 @@ message HTTPPipeline{
   uint32 port = 3;
   string host = 4;
   string params = 5;  // JSON serialized additional parameters
+  string proxy = 6;
 }
 
 message WebContent {
