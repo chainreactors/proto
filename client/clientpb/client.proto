@@ -350,21 +350,6 @@ message Profiles{
   repeated Profile profiles = 1;
 }
 
-message Generate{
-  string name = 1;
-  string profileName = 2;
-  string address = 3;
-  string stager =4;
-  string target = 5;
-  string type = 7;
-  repeated string modules = 8;
-  string ca = 9;
-  string params = 10;
-  bool srdi = 12;
-  bytes bin = 13;
-  uint32 artifact_id = 14;
-}
-
 message Builders{
   repeated Builder builders = 1;
 }
@@ -530,20 +515,39 @@ message Polling{
   bool force = 5;
 }
 
-message GithubWorkflowRequest {
+message BuildConfig{
+  string buildName = 1;
+  string buildType = 2;
+  string profileName = 3;
+
+  string malefic_host = 4;
+  string target = 5;
+  string type = 6;
+  map<string, string> inputs = 7;// Workflow inputs
+  string ca = 8;
+  string params = 9;
+  bool srdi = 10;
+  bytes bin = 11;
+  uint32 artifact_id = 12;
+  repeated string modules = 19;
+  string resource = 20;
+  
+  string docker_remote_host = 13;
+
+
+  string owner = 14;       // Repository owner
+  string repo = 15;        // Repository name
+  string workflow_id = 16; // Workflow file name or ID
+  string token = 17;       // GitHub token
+  bool is_remove = 18;     // Remove workflow or not
+
+}
+
+message GithubWorkflowConfig {
   string owner = 1;       // Repository owner
   string repo = 2;        // Repository name
   string workflow_id = 3; // Workflow file name or ID
   string token = 4;       // GitHub token
-  string ref = 5;                 // Branch or tag
-  map<string, string> inputs = 6;// Workflow inputs
-  string build_name = 7;
-  string profile = 8;
-  string address = 9;
-  string ca = 10;
-  string params = 11;
-  uint32 artifact_id = 12;
-  bool is_remove = 13;
 }
 
 message GithubWorkflows {

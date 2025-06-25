@@ -152,7 +152,6 @@ service MaliceRPC {
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
   rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc UpdateProfile(clientpb.Profile) returns (clientpb.Empty);
-  rpc BuildModules(clientpb.Generate) returns (clientpb.Artifact);
   rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
   rpc ListBuilder(clientpb.Empty) returns (clientpb.Builders);
   rpc GetArtifactsByProfile(clientpb.Profile) returns (clientpb.Builders);
@@ -160,11 +159,10 @@ service MaliceRPC {
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
   rpc DeleteArtifact(clientpb.Artifact) returns (clientpb.Empty);
   rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
-  rpc GetActionProgress(clientpb.GithubWorkflowRequest) returns (clientpb.Artifact);
 
   // config
-  rpc UpdateGithubConfig(clientpb.GithubWorkflowRequest) returns (clientpb.Empty);
-  rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubWorkflowRequest);
+  rpc UpdateGithubConfig(clientpb.GithubWorkflowConfig) returns (clientpb.Empty);
+  rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubWorkflowConfig);
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
   rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
