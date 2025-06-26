@@ -44,6 +44,7 @@ message Session {
   modulepb.Os os = 20;
   modulepb.Process process = 21;
   modulepb.Timer timer = 22;
+  int64 created_at = 23;
   repeated string modules = 30;
   repeated modulepb.Addon addons = 31;
   map<string, string> argue = 40;
@@ -304,7 +305,7 @@ message Builder{
   string pipeline = 14;
   bytes log = 15;
   uint32 num = 16;
-  int64 time = 17;
+  int64 created_at = 17;
   string resource = 18;
   bool is_srdi = 19;
   string status = 20;
@@ -322,7 +323,7 @@ message Artifact{
   string profile = 9;
   string pipeline = 10;
   bool is_srdi = 12;
-  int64 time = 13;
+  int64 created_at = 13;
   string status = 14;
   string conclusion = 15;
 }
@@ -343,6 +344,7 @@ message Profile{
   string pipeline_id = 9;
   string pulse_pipeline_id = 10;
   bytes content = 11;
+  int64 created_at = 12;
 }
 
 
