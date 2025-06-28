@@ -421,9 +421,14 @@ message CtrlPipeline{
 }
 
 message TLS{
+  Cert cert = 1;
+  Cert ca =2;
+  bool enable = 4;
+}
+
+message Cert{
   string cert = 1;
   string key = 2;
-  bool enable = 3;
 }
 
 message Encryption{
