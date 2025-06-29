@@ -574,6 +574,14 @@ message GithubWorkflow {
   string badge_url = 10; // Badge URL for the workflow
 }
 
+
+message LicenseInfo{
+  string type = 1;
+  string expire_at = 2;
+  int64 build_count=3;
+  int64 max_builds=4;
+}
+
 message Notify{
   bool telegram_enable = 1;
   string telegram_api_key = 2;
