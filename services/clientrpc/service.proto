@@ -116,6 +116,7 @@ service MaliceRPC {
   // implant::sys:token
   rpc Runas(modulepb.RunAsRequest) returns (clientpb.Task);
   rpc Privs(modulepb.Request) returns (clientpb.Task);
+  rpc Rev2Self(modulepb.Request) returns (clientpb.Task);
   rpc GetSystem(modulepb.Request) returns (clientpb.Task);
 
   // implant::sys::pipe
