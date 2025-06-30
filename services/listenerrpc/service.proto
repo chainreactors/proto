@@ -50,7 +50,7 @@ service ListenerRPC {
   rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc Build(clientpb.BuildConfig) returns(clientpb.Builder);
   rpc DockerStatus(clientpb.Empty) returns (clientpb.Empty);
-  rpc WorkflowStatus(clientpb.BuildConfig) returns (clientpb.Empty);
+  rpc WorkflowStatus(clientpb.GithubWorkflowConfig) returns (clientpb.Empty);
 
   rpc GetArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   //  rpc ListenerCtrl(clientpb.CtrlStatus) returns (stream clientpb.CtrlPipeline);

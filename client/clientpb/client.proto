@@ -543,12 +543,7 @@ message BuildConfig{
   string docker_remote_host = 13;
 
 
-  string owner = 14;       // Repository owner
-  string repo = 15;        // Repository name
-  string workflow_id = 16; // Workflow file name or ID
-  string token = 17;       // GitHub token
-  bool is_remove = 18;     // Remove workflow or not
-
+  GithubWorkflowConfig github = 14;
 }
 
 message GithubWorkflowConfig {
@@ -556,6 +551,7 @@ message GithubWorkflowConfig {
   string repo = 2;        // Repository name
   string workflow_id = 3; // Workflow file name or ID
   string token = 4;       // GitHub token
+  bool is_remove = 5;
 }
 
 message GithubWorkflows {
