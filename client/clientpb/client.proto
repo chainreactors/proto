@@ -306,7 +306,7 @@ message Builder{
   bytes log = 15;
   uint32 num = 16;
   int64 created_at = 17;
-  string resource = 18;
+  string source = 18;
   bool is_srdi = 19;
   string status = 20;
 }
@@ -537,7 +537,8 @@ message BuildConfig{
   bytes bin = 11;
   uint32 artifact_id = 12;
   repeated string modules = 19;
-  string resource = 20;
+  string source = 20;
+  string proxy = 21;
   
   string docker_remote_host = 13;
 
