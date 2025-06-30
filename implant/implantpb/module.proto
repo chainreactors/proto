@@ -358,8 +358,9 @@ message RunAsRequest {
   string password = 3;    // 用户密码
   string program = 4;     // 程序路径
   string args = 5;        // 程序参数（可选）
-  int32 show = 6;         // 窗口展示方式 (1: 默认显示)
+  bool use_profile = 6;
   bool netonly = 7;       // 是否仅使用网络凭据 (可选，默认 false)
+  bool use_env = 8;
 }
 
 message GetSystem{
