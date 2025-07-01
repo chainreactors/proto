@@ -309,6 +309,8 @@ message Builder{
   string source = 18;
   bool is_srdi = 19;
   string status = 20;
+  bytes profile_bytes = 21;
+  bytes params_bytes = 22;
 }
 
 message Artifact{
@@ -326,6 +328,8 @@ message Artifact{
   int64 created_at = 13;
   string status = 14;
   string conclusion = 15;
+  bytes profile_bytes = 16;
+  bytes params_bytes = 17;
 }
 
 message Artifacts {
