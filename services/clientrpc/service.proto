@@ -153,13 +153,12 @@ service MaliceRPC {
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
   rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc UpdateProfile(clientpb.Profile) returns (clientpb.Empty);
-  rpc BuildLog(clientpb.Builder) returns(clientpb.Builder);
-  rpc ListBuilder(clientpb.Empty) returns (clientpb.Builders);
-  rpc GetArtifactsByProfile(clientpb.Profile) returns (clientpb.Builders);
+  rpc BuildLog(clientpb.Artifact) returns(clientpb.Artifact);
+  rpc ListArtifact(clientpb.Empty) returns (clientpb.Artifacts);
   rpc DownloadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
-  rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Builder);
+  rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc DeleteArtifact(clientpb.Artifact) returns (clientpb.Empty);
-  rpc MaleficSRDI(clientpb.Builder) returns (clientpb.Artifact);
+  rpc MaleficSRDI(clientpb.Artifact) returns (clientpb.Artifact);
 
   // License
   rpc GetLicenseInfo(clientpb.Empty) returns(clientpb.LicenseInfo);
@@ -170,6 +169,12 @@ service MaliceRPC {
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
   rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
+
+  // certs
+  rpc AddCertificate(clientpb.TLS) returns (clientpb.Empty);
+  rpc DeleteCertificate(clientpb.Cert) returns (clientpb.Empty);
+  rpc UpdateCertificate(clientpb.Cert) returns (clientpb.Empty);
+  rpc GetAllCertificates(clientpb.Empty) returns (clientpb.Certs);
 
 
   // context

@@ -48,7 +48,7 @@ service ListenerRPC {
   // generator
   rpc NewProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc FindArtifact(clientpb.Artifact) returns (clientpb.Artifact);
-  rpc Build(clientpb.BuildConfig) returns(clientpb.Builder);
+  rpc Build(clientpb.BuildConfig) returns(clientpb.Artifact);
   rpc DockerStatus(clientpb.Empty) returns (clientpb.Empty);
   rpc WorkflowStatus(clientpb.GithubWorkflowConfig) returns (clientpb.Empty);
 

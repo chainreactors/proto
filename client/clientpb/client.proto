@@ -289,30 +289,6 @@ message Bin {
   bytes Bin = 1;
 }
 
-message Builder{
-  bytes bin = 1;
-  string name = 2;
-  string type = 3;
-  string stage = 4;
-  string target = 5;
-  string arch = 6;
-  string platform = 7;
-  uint32 id = 8;
-  string function_name = 9;
-  string user_data_path = 10;
-  string modules = 11;
-  string profile_name = 12;
-  string pipeline = 14;
-  bytes log = 15;
-  uint32 num = 16;
-  int64 created_at = 17;
-  string source = 18;
-  bool is_srdi = 19;
-  string status = 20;
-  bytes profile_bytes = 21;
-  bytes params_bytes = 22;
-}
-
 message Artifact{
   uint32 id = 1;
   bytes bin = 2;
@@ -324,12 +300,17 @@ message Artifact{
   string platform = 8;
   string profile = 9;
   string pipeline = 10;
-  bool is_srdi = 12;
+  string format = 12;
   int64 created_at = 13;
   string status = 14;
   string conclusion = 15;
   bytes profile_bytes = 16;
   bytes params_bytes = 17;
+  string source = 18;
+  bytes log = 19;
+  uint32 log_num = 20;
+  string function_name = 21;
+  string user_data_path = 22;
 }
 
 message Artifacts {
@@ -354,10 +335,6 @@ message Profile{
 
 message Profiles{
   repeated Profile profiles = 1;
-}
-
-message Builders{
-  repeated Builder builders = 1;
 }
 
 message RegisterSession {
@@ -407,6 +384,7 @@ message Pipeline{
   TLS tls = 8;
   Encryption encryption = 9;
   string ip = 10;
+  string cert_name = 11;
   oneof body {
     TCPPipeline tcp = 20;
     BindPipeline bind = 21;
@@ -422,17 +400,26 @@ message CtrlPipeline{
   repeated string target = 3;
   string beacon_pipeline = 4;
   Pipeline pipeline = 5;
+  string cert_name = 6;
 }
 
 message TLS{
   Cert cert = 1;
   Cert ca =2;
   bool enable = 4;
+  bool auto_cert = 5;
+  string domain = 6;
+}
+
+message Certs {
+  repeated Cert certs= 1;
 }
 
 message Cert{
   string cert = 1;
   string key = 2;
+  string name = 3;
+  string type = 4;
 }
 
 message Encryption{
