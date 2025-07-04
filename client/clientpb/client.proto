@@ -409,6 +409,8 @@ message TLS{
   bool enable = 4;
   bool auto_cert = 5;
   string domain = 6;
+  CertificateSubject cert_subject = 7;
+  string pipeline_name = 8;
 }
 
 message Certs {
@@ -420,6 +422,16 @@ message Cert{
   string key = 2;
   string name = 3;
   string type = 4;
+}
+
+message CertificateSubject {
+  string cn = 1;        // Common Name
+  string o = 2;         // Organization
+  string c = 3;         // Country
+  string l = 4;         // Locality/City
+  string ou = 5;        // Organizational Unit
+  string st = 6;        // State/Province
+  string validity = 7;  // Validity period in days
 }
 
 message Encryption{

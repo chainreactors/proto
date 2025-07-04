@@ -170,10 +170,11 @@ service MaliceRPC {
   rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
 
   // certs
-  rpc AddCertificate(clientpb.TLS) returns (clientpb.Empty);
+  rpc GenerateSelfCertificate(clientpb.TLS) returns (clientpb.Cert);
   rpc DeleteCertificate(clientpb.Cert) returns (clientpb.Empty);
   rpc UpdateCertificate(clientpb.Cert) returns (clientpb.Empty);
   rpc GetAllCertificates(clientpb.Empty) returns (clientpb.Certs);
+  rpc GenerateAcmeCert(clientpb.TLS) returns (clientpb.Empty);
 
 
   // context
