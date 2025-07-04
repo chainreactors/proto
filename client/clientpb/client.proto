@@ -271,7 +271,7 @@ message EXE2Shellcode{
 
 message DLL2Shellcode{
   bytes bin = 1;
-  string type = 2; // srdi or donut
+  string type = 2; // donut
   string arch = 3; // x86 or x64
   string params = 4;
   string entrypoint = 5;
@@ -524,7 +524,6 @@ message BuildConfig{
   map<string, string> inputs = 7;// Workflow inputs
   string ca = 8;
   string params = 9;
-  bool srdi = 10;
   bytes bin = 11;
   uint32 artifact_id = 12;
   repeated string modules = 19;
