@@ -379,10 +379,8 @@ message Pipeline{
   string type = 3;
   string listener_id = 4;
   string parser = 5;
-  repeated string target = 6;
-  string beacon_pipeline = 7;
   TLS tls = 8;
-  Encryption encryption = 9;
+  repeated Encryption encryption = 9;
   string ip = 10;
   string cert_name = 11;
   oneof body {
