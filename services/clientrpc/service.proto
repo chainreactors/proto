@@ -139,7 +139,6 @@ service MaliceRPC {
 
   // implant: 3rd
   rpc RemDial(modulepb.Request) returns (clientpb.Task);
-  rpc LoadRem(modulepb.Request) returns (clientpb.Task);
 
   // shellcode
   rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);
