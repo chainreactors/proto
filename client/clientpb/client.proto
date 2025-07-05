@@ -431,7 +431,6 @@ message CertificateSubject {
 }
 
 message Encryption{
-  bool enable = 1;
   string type = 2;
   string key = 3;
 }
