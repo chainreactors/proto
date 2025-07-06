@@ -174,12 +174,6 @@ message LoginReq {
   string name = 3;
 }
 
-message RegisterResp {
-  bytes certs = 1;
-  bytes private_key = 2;
-  bytes ca = 3;
-}
-
 message Sync{
   string context_id = 1;
   string task_id = 2;
@@ -316,11 +310,7 @@ message Artifacts {
 message Profile{
   string name = 1;
   string target = 2;
-  string type = 3;
   string proxy = 4;
-  string obfuscate =5;
-  string modules = 6;
-  string ca = 7;
   string params = 8;
   string pipeline_id = 9;
   string pulse_pipeline_id = 10;
