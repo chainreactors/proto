@@ -313,7 +313,6 @@ message Profile{
   string proxy = 4;
   string params = 8;
   string pipeline_id = 9;
-  string pulse_pipeline_id = 10;
   bytes content = 11;
   int64 created_at = 12;
 }
