@@ -34,7 +34,6 @@ message Session {
   bool is_privilege = 11;
   bool is_initialized = 12;
   int64 last_checkin = 13;
-  int64 timediff = 14;
   Tasks tasks = 15;
 
   string filepath = 16;
@@ -528,7 +527,6 @@ message BuildConfig{
   string malefic_host = 4;
   string target = 5;
   string type = 6;
-  map<string, string> inputs = 7;// Workflow inputs
   string ca = 8;
   string params = 9;
   bytes bin = 11;
@@ -539,7 +537,7 @@ message BuildConfig{
   
   string docker_remote_host = 13;
 
-
+  map<string, string> inputs = 7;// Workflow inputs
   GithubWorkflowConfig github = 14;
 }
 
