@@ -152,7 +152,6 @@ service MaliceRPC {
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
   rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc UpdateProfile(clientpb.Profile) returns (clientpb.Empty);
-  rpc BuildLog(clientpb.Artifact) returns(clientpb.Artifact);
   rpc ListArtifact(clientpb.Empty) returns (clientpb.Artifacts);
   rpc DownloadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   rpc UploadArtifact(clientpb.Artifact) returns (clientpb.Artifact);
