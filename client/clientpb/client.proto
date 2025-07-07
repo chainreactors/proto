@@ -552,10 +552,11 @@ message GithubWorkflow {
 
 
 message LicenseInfo{
-  string type = 1;
-  string expire_at = 2;
-  int64 build_count=3;
-  int64 max_builds=4;
+  string user_name = 1;
+  string type = 2;
+  string expire_at = 3;
+  int64 build_count=4;
+  int64 max_builds=5;
 }
 
 message Notify{
