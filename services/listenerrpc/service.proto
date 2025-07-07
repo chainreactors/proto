@@ -51,8 +51,7 @@ service ListenerRPC {
   rpc Build(clientpb.BuildConfig) returns(clientpb.Artifact);
   rpc SyncBuild(clientpb.BuildConfig) returns (clientpb.Artifact);
   rpc BuildLog(clientpb.Artifact) returns(clientpb.Artifact);
-  rpc DockerStatus(clientpb.Empty) returns (clientpb.Empty);
-  rpc WorkflowStatus(clientpb.GithubWorkflowConfig) returns (clientpb.Empty);
+  rpc CheckSource(clientpb.BuildConfig) returns(clientpb.BuildConfig);
 
   // cert
   rpc GenerateSelfCert(clientpb.Pipeline) returns (clientpb.Empty);
