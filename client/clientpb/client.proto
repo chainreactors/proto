@@ -391,7 +391,6 @@ message TLS{
   bool acme = 5;
   string domain = 6;
   CertificateSubject cert_subject = 7;
-  string pipeline_name = 8;
 }
 
 message Certs {

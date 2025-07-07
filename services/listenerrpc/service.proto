@@ -54,6 +54,11 @@ service ListenerRPC {
   rpc DockerStatus(clientpb.Empty) returns (clientpb.Empty);
   rpc WorkflowStatus(clientpb.GithubWorkflowConfig) returns (clientpb.Empty);
 
+  // cert
+  rpc GenerateSelfCert(clientpb.Pipeline) returns (clientpb.Empty);
+  rpc GenerateAcmeCert(clientpb.Pipeline) returns (clientpb.Empty);
+  rpc SaveAcmeCert(clientpb.Pipeline) returns (clientpb.Empty);
+
   rpc GetArtifact(clientpb.Artifact) returns (clientpb.Artifact);
   //  rpc ListenerCtrl(clientpb.CtrlStatus) returns (stream clientpb.CtrlPipeline);
 }
