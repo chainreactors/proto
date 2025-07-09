@@ -169,7 +169,7 @@ service MaliceRPC {
 
   // certs
   rpc DeleteCertificate(clientpb.Cert) returns (clientpb.Empty);
-  rpc UpdateCertificate(clientpb.Cert) returns (clientpb.Empty);
+  rpc UpdateCertificate(clientpb.TLS) returns (clientpb.Empty);
   rpc GetAllCertificates(clientpb.Empty) returns (clientpb.Certs);
   rpc DownloadCertificate(clientpb.Cert) returns (clientpb.TLS);
 
