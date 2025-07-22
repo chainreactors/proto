@@ -115,6 +115,7 @@ message JobStatus {
   string error = 4;
   Job job = 5;
   uint32 ctrl_id = 6;
+  WebContent content = 7;
 }
 
 message Listener{
