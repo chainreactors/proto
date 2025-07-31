@@ -46,6 +46,7 @@ message Session {
   int64 created_at = 23;
   repeated string modules = 30;
   repeated modulepb.Addon addons = 31;
+  KeyPair key_pair = 32;  // Age 密钥对
   map<string, string> argue = 40;
   string data = 41;
   map<string, string> loot = 42;
@@ -106,6 +107,7 @@ message JobCtrl {
   string ctrl = 2;
   Job job = 3;
   WebContent content = 4;
+  Session session = 5;
 }
 
 message JobStatus {
@@ -369,6 +371,7 @@ message Pipeline{
   repeated Encryption encryption = 9;
   string ip = 10;
   string cert_name = 11;
+  SecureConfig secure = 12;  // Age 安全配置
   oneof body {
     TCPPipeline tcp = 20;
     BindPipeline bind = 21;
@@ -590,4 +593,19 @@ message Context {
 
 message Contexts {
   repeated Context contexts = 1;
+}
+
+message SecureConfig {
+  bool enable = 1;
+  string server_public_key = 2;
+  string server_private_key = 3;
+}
+
+message KeyPair {
+  string public_key = 1;          // Age 公钥 (server的公钥)
+  string private_key = 2;         // Age 私钥 (server的私钥)
+  string key_id = 3;              // 密钥标识符
+  int64 created_at = 4;           // 创建时间戳
+  int64 expires_at = 5;           // 过期时间戳 (0表示永不过期)
+  string implant_public_key = 6;  // implant的公钥，用于server加密数据
 }
