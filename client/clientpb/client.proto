@@ -66,6 +66,19 @@ message Int{
   int32 limit = 1;
 }
 
+message Audit{
+  TaskContext context = 1;
+  string command = 2;
+  implantpb.Spite request = 3;
+  string Created = 4;
+  string Finished = 5;
+  string Lasted = 6;
+}
+
+message Audits{
+  repeated Audit audit = 1;
+}
+
 message BasicUpdateSession{
   string session_id = 1;
   string op = 2;
@@ -304,6 +317,7 @@ message Artifact{
   string source = 16;
   bytes log = 17;
   uint32 log_num = 18;
+  string rdi = 19;
 }
 
 message Artifacts {
@@ -558,8 +572,8 @@ message LicenseInfo{
   string user_name = 1;
   string type = 2;
   string expire_at = 3;
-  int64 build_count=4;
-  int64 max_builds=5;
+  int64 build_count= 4 ;
+  int64 max_builds= 5 ;
 }
 
 message Notify{
