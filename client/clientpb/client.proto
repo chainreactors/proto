@@ -609,17 +609,16 @@ message Contexts {
   repeated Context contexts = 1;
 }
 
-message SecureConfig {
-  bool enable = 1;
-  string server_public_key = 2;
-  string server_private_key = 3;
+message KeyPair {
+  string public_key = 1;    // 公钥
+  string private_key = 2;   // 私钥  
+  string key_id = 3;        // 密钥标识符
+  int64 created_at = 4;     // 创建时间戳
+  int64 expires_at = 5;     // 过期时间戳 (0表示永不过期)
 }
 
-message KeyPair {
-  string public_key = 1;          // Age 公钥 (server的公钥)
-  string private_key = 2;         // Age 私钥 (server的私钥)
-  string key_id = 3;              // 密钥标识符
-  int64 created_at = 4;           // 创建时间戳
-  int64 expires_at = 5;           // 过期时间戳 (0表示永不过期)
-  string implant_public_key = 6;  // implant的公钥，用于server加密数据
+message SecureConfig {
+  bool enable = 1;                    // 是否启用安全模式
+  KeyPair server_keypair = 2;         // server密钥对
+  KeyPair implant_keypair = 3;        // implant密钥对
 }
