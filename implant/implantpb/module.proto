@@ -26,7 +26,7 @@ message Secure{
 
 // Age 密钥交换相关消息
 message KeyExchangeRequest {
-  bytes ephemeral_public_key = 1;  // 临时公钥 (Age X25519)
+  string public_key = 1;  // 临时公钥 (Age X25519)
   bytes signature = 2;             // 对临时公钥的签名
   uint64 timestamp = 3;            // 时间戳
   string nonce = 4;                // 随机数
@@ -34,7 +34,7 @@ message KeyExchangeRequest {
 }
 
 message KeyExchangeResponse {
-  bytes ephemeral_public_key = 1;  // Server 临时公钥
+  bytes public_key = 1;  // Server 临时公钥
   bytes encrypted_session_key = 2; // 加密的会话密钥
   bytes signature = 3;             // 签名
   uint64 timestamp = 4;            // 时间戳
