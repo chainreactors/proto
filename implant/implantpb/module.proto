@@ -19,10 +19,12 @@ message Register {
 }
 
 message Secure{
-  string key = 1;        // encryption key
-  string type = 2;       // encryption type
-  string public_key = 3;  // implant的公钥，用于server加密数据
+  bool enable = 1;
+  string key = 2;        // encryption key
+  string type = 3;       // encryption type
+  string public_key = 4;  // implant的公钥，用于server加密数据
 }
+
 
 // Age 密钥交换相关消息
 message KeyExchangeRequest {
@@ -30,15 +32,13 @@ message KeyExchangeRequest {
   bytes signature = 2;             // 对临时公钥的签名
   uint64 timestamp = 3;            // 时间戳
   string nonce = 4;                // 随机数
-  bool is_rotation = 5;            // 是否为密钥轮换（服务端主导）
 }
 
 message KeyExchangeResponse {
-  bytes public_key = 1;  // Server 临时公钥
-  bytes encrypted_session_key = 2; // 加密的会话密钥
+  string public_key = 1;  // Server 临时公钥
+  bytes session_key = 2; // 加密的会话密钥
   bytes signature = 3;             // 签名
   uint64 timestamp = 4;            // 时间戳
-  string key_id = 5;               // 密钥标识符
 }
 
 message Init{

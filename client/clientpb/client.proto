@@ -611,10 +611,7 @@ message Contexts {
 
 message KeyPair {
   string public_key = 1;    // 公钥
-  string private_key = 2;   // 私钥  
-  string key_id = 3;        // 密钥标识符
-  int64 created_at = 4;     // 创建时间戳
-  int64 expires_at = 5;     // 过期时间戳 (0表示永不过期)
+  string private_key = 2;   // 私钥
 }
 
 message SecureConfig {
