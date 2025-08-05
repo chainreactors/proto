@@ -35,10 +35,6 @@ message KeyExchangeRequest {
 }
 
 message KeyExchangeResponse {
-  string public_key = 1;  // Server 临时公钥
-  bytes session_key = 2; // 加密的会话密钥
-  bytes signature = 3;             // 签名
-  uint64 timestamp = 4;            // 时间戳
 }
 
 message Init{

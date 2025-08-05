@@ -15,6 +15,7 @@ service ListenerRPC {
   rpc SysInfo(modulepb.SysInfo) returns (clientpb.Empty);
   rpc Checkin(modulepb.Ping) returns (clientpb.Empty);
   rpc InitBindSession(modulepb.Request) returns (clientpb.Empty);
+  rpc KeyExchange(modulepb.KeyExchangeRequest) returns (clientpb.Empty);
   // pipeline
   rpc RegisterListener(clientpb.RegisterListener) returns (clientpb.Empty);
   rpc RegisterPipeline(clientpb.Pipeline) returns(clientpb.Empty);
