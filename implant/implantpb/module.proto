@@ -35,6 +35,7 @@ message KeyExchangeRequest {
 }
 
 message KeyExchangeResponse {
+  string public_key = 1;  // Server 临时公钥
 }
 
 message Init{
