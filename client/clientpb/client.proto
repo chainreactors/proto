@@ -385,7 +385,7 @@ message Pipeline{
   repeated Encryption encryption = 9;
   string ip = 10;
   string cert_name = 11;
-  SecureConfig secure = 12;  // Age 安全配置
+  Secure secure = 12;  // Age 安全配置
   oneof body {
     TCPPipeline tcp = 20;
     BindPipeline bind = 21;
@@ -614,7 +614,7 @@ message KeyPair {
   string private_key = 2;   // 私钥
 }
 
-message SecureConfig {
+message Secure {
   bool enable = 1;                    // 是否启用安全模式
   KeyPair server_keypair = 2;         // server密钥对
   KeyPair implant_keypair = 3;        // implant密钥对
