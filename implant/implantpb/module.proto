@@ -236,6 +236,7 @@ message ExecuteBinary {
   SacrificeProcess sacrifice = 12;
   string path = 13;
   string context = 14;
+  uint32 delay = 15; //millisecond
 }
 
 message ExecuteCommand {
