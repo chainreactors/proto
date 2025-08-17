@@ -79,6 +79,8 @@ message Spite {
     modulepb.Inject inject = 132;
     modulepb.Pipe pipe_request = 140;
 
+    modulepb.FFmpegRequest ffmpeg_request = 150;
+
   }
 }
 

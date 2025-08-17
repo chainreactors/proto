@@ -61,6 +61,7 @@ service MaliceRPC {
   // implant::file
   rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
   rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
+  rpc DownloadDir(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.Context);
 
   // implant::fs
@@ -141,6 +142,7 @@ service MaliceRPC {
 
   // implant: 3rd
   rpc RemDial(modulepb.Request) returns (clientpb.Task);
+  rpc FFmpeg(modulepb.FFmpegRequest) returns (clientpb.Task);
 
   // shellcode
   rpc EXE2Shellcode(clientpb.EXE2Shellcode) returns (clientpb.Bin);

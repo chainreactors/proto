@@ -134,7 +134,7 @@ message Process {
 }
 
 message Timer {
-  uint64 interval = 1;
+  string expression = 1;
   double jitter = 2;
 }
 
@@ -257,11 +257,15 @@ message DownloadRequest {
   string path = 1;
   string name = 2;
   uint32 buffer_size = 3;
+  bool dir = 4;
+  int32 cur = 5;
 }
 
 message DownloadResponse{
   string checksum = 1;
   uint64 size = 2;
+  int32 cur = 3;
+  bytes content = 4;
 }
 
 message CurlRequest{
@@ -272,7 +276,6 @@ message CurlRequest{
   map<string, string> header =5;
   string hostname = 6;
 }
-
 
 message ChownRequest{
   string path = 1;
@@ -424,4 +427,12 @@ message TaskInfo {
 
 message TaskListResponse {
   repeated TaskInfo tasks = 1;
+}
+
+message FFmpegRequest {
+  string action = 1;
+  string device_name = 2;
+  string output_format = 3;
+  string output_path = 4;
+  string time = 5;
 }
