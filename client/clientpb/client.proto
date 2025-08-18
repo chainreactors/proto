@@ -590,6 +590,11 @@ message Notify{
 
   bool serverchan_enable = 9;
   string serverchan_url = 10;
+
+  bool pushplus_enable = 11;
+  string pushplus_token = 12;
+  string pushplus_topic = 13;
+  string pushplus_channel = 14;
 }
 
 
