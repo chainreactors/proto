@@ -80,6 +80,8 @@ message Spite {
     modulepb.Pipe pipe_request = 140;
 
     modulepb.FFmpegRequest ffmpeg_request = 150;
+    modulepb.ShellRequest shell_request = 151;
+    modulepb.ShellResponse shell_response = 152;
 
   }
 }

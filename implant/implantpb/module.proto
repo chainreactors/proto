@@ -436,3 +436,26 @@ message FFmpegRequest {
   string output_path = 4;
   string time = 5;
 }
+
+// Shell/PTY 相关消息定义
+message ShellRequest {
+  string type = 1;            // 操作类型: "start", "input", "stop"
+  string session_id = 2;      // 会话ID
+  string shell = 3;           // shell类型: "/bin/bash", "cmd.exe", "powershell.exe" 等
+  uint32 cols = 4;            // 终端列数
+  uint32 rows = 5;            // 终端行数
+  bytes input_data = 6;       // 输入数据（二进制）
+  string input_text = 7;      // 输入数据（文本）
+  map<string, string> params = 8; // 额外参数
+}
+
+message ShellResponse {
+  string session_id = 1;      // 会话ID
+  bytes output_data = 2;      // 输出数据（二进制）
+  string output_text = 3;     // 输出数据（文本）
+  string error = 4;           // 错误信息
+  bool session_active = 5;    // 会话是否仍然活跃
+  repeated string active_sessions = 6;
+  map<string, string> metadata = 7;
+}
+

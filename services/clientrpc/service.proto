@@ -178,6 +178,9 @@ service MaliceRPC {
   rpc DownloadCertificate(clientpb.Cert) returns (clientpb.TLS);
 
 
+  // pty
+  rpc PtyRequest(modulepb.ShellRequest) returns (clientpb.Task);
+
   // context
   rpc GetContexts(clientpb.Context) returns (clientpb.Contexts);
   rpc AddContext(clientpb.Context) returns (clientpb.Empty);
