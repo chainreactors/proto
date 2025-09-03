@@ -179,7 +179,7 @@ service MaliceRPC {
 
 
   // pty
-  rpc PtyRequest(modulepb.ShellRequest) returns (clientpb.Task);
+  rpc PtyRequest(modulepb.PtyRequest) returns (clientpb.Task);
 
   // context
   rpc GetContexts(clientpb.Context) returns (clientpb.Contexts);

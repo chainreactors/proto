@@ -437,8 +437,8 @@ message FFmpegRequest {
   string time = 5;
 }
 
-// Shell/PTY 相关消息定义
-message ShellRequest {
+// PTY 相关消息定义
+message PtyRequest {
   string type = 1;            // 操作类型: "start", "input", "stop"
   string session_id = 2;      // 会话ID
   string shell = 3;           // shell类型: "/bin/bash", "cmd.exe", "powershell.exe" 等
@@ -449,7 +449,7 @@ message ShellRequest {
   map<string, string> params = 8; // 额外参数
 }
 
-message ShellResponse {
+message PtyResponse {
   string session_id = 1;      // 会话ID
   bytes output_data = 2;      // 输出数据（二进制）
   string output_text = 3;     // 输出数据（文本）
