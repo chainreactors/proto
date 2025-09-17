@@ -525,21 +525,47 @@ message Polling{
 message BuildConfig{
   string buildName = 1;
   string buildType = 2;
-  string profileName = 3;
+  string target = 3;
+  string source = 4;
+  string profileName = 5;
+  uint32 artifact_id = 6;
+  bytes malefic_config = 7;
+  bytes prelude_config = 8;
+  BuildResources resources = 9;
+  oneof source_config {
+    DockerBuildConfig docker = 10;
+    GithubActionBuildConfig github_action = 11;
+    SaasBuildConfig saas = 12;
+  }
+}
 
-  string target = 4;
-  string type = 5;
-  map<string, string> inputs = 6;// Workflow inputs
-  bytes params_bytes = 7;
-  bytes bin = 8;
-  uint32 artifact_id = 9;
-  string source = 10;
-  string proxy = 11;
-  
-  string docker_remote_host = 12;
+message BuildResources {
+  repeated ResourceEntry entries = 1;
+}
 
+message ResourceEntry {
+  string filename = 1;
+  bytes content = 2;
+}
 
-  GithubWorkflowConfig github = 13;
+message DockerBuildConfig {
+  string remote_host = 1;
+  repeated string volumes = 2;
+}
+
+message GithubActionBuildConfig {
+  string owner = 1;
+  string repo = 2;
+  string token = 3;
+  string workflow_id = 4;
+  map<string, string> inputs = 5;
+  bool is_remove = 6;
+}
+
+message SaasBuildConfig {
+  string url = 1;
+  string token = 2;
+  map<string, string> headers = 3;
 }
 
 message GithubWorkflowConfig {

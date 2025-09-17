@@ -165,8 +165,8 @@ service MaliceRPC {
   rpc GetLicenseInfo(clientpb.Empty) returns(clientpb.LicenseInfo);
 
   // config
-  rpc UpdateGithubConfig(clientpb.GithubWorkflowConfig) returns (clientpb.Empty);
-  rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubWorkflowConfig);
+  rpc UpdateGithubConfig(clientpb.GithubActionBuildConfig) returns (clientpb.Empty);
+  rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubActionBuildConfig);
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
   rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
