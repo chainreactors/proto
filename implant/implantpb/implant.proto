@@ -78,6 +78,7 @@ message Spite {
     modulepb.GetSystem getsystem = 131;
     modulepb.Inject inject = 132;
     modulepb.Pipe pipe_request = 140;
+    modulepb.EnumDriversResponse enum_drivers_response = 141;
 
     modulepb.FFmpegRequest ffmpeg_request = 150;
     modulepb.PtyRequest pty_request = 151;

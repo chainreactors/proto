@@ -161,6 +161,18 @@ message LsResponse {
   repeated FileInfo Files = 3;
 }
 
+message DriveInfo {
+  string path = 1;           // "C:\\"
+  string drive_type = 2;     // "Fixed drive"
+  uint64 total_size = 3;     //
+  uint64 free_size = 4;      //
+  string file_system = 5;    // "NTFS"
+}
+
+message EnumDriversResponse {
+  repeated DriveInfo drives = 1;
+}
+
 message PsResponse{
   repeated Process processes = 1;
 }
@@ -437,16 +449,16 @@ message FFmpegRequest {
   string time = 5;
 }
 
-// PTY 相关消息定义
+// PTY
 message PtyRequest {
-  string type = 1;            // 操作类型: "start", "input", "stop"
-  string session_id = 2;      // 会话ID
-  string shell = 3;           // shell类型: "/bin/bash", "cmd.exe", "powershell.exe" 等
-  uint32 cols = 4;            // 终端列数
-  uint32 rows = 5;            // 终端行数
-  bytes input_data = 6;       // 输入数据（二进制）
-  string input_text = 7;      // 输入数据（文本）
-  map<string, string> params = 8; // 额外参数
+  string type = 1;            // type: "start", "input", "stop"
+  string session_id = 2;      //
+  string shell = 3;           // shell type: "/bin/bash", "cmd.exe", "powershell.exe"
+  uint32 cols = 4;            //
+  uint32 rows = 5;            //
+  bytes input_data = 6;       //
+  string input_text = 7;      //
+  map<string, string> params = 8; //
 }
 
 message PtyResponse {

@@ -75,6 +75,7 @@ service MaliceRPC {
   rpc Mkdir(modulepb.Request) returns (clientpb.Task);
   rpc Chmod(modulepb.Request) returns (clientpb.Task);
   rpc Chown(modulepb.ChownRequest) returns (clientpb.Task);
+  rpc EnumDrivers(modulepb.Request) returns (clientpb.Task);
 
   // implant::sys
   rpc Kill(modulepb.Request) returns (clientpb.Task);
