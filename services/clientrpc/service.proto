@@ -127,6 +127,7 @@ service MaliceRPC {
   rpc PipeUpload(modulepb.PipeRequest) returns (clientpb.Task);
   rpc PipeRead(modulepb.PipeRequest) returns (clientpb.Task);
   rpc PipeClose(modulepb.PipeRequest) returns (clientpb.Task);
+  rpc PipeServer(modulepb.PipeRequest) returns (clientpb.Task);
 
   // implant:execute
   rpc Execute(modulepb.ExecRequest) returns (clientpb.Task);
@@ -155,6 +156,7 @@ service MaliceRPC {
 
   // generator
   rpc GetProfiles(clientpb.Empty) returns (clientpb.Profiles);
+  rpc GetProfileByName(clientpb.Profile) returns (clientpb.Profile);
   rpc DeleteProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc UpdateProfile(clientpb.Profile) returns (clientpb.Empty);
   rpc ListArtifact(clientpb.Empty) returns (clientpb.Artifacts);
