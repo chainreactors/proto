@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package services.localrpc;
+
+option go_package = "github.com/chainreactors/IoM-go/proto/services/localrpc";
+
+// CommandService provides gRPC methods for executing commands and Lua scripts
+// in the context of the Malice Network C2 client
+service CommandService {
+  // ExecuteCommand executes a client command in the specified session context
+  // Commands are automatically routed to client menu or implant menu based on
+  // whether there's an active session
+  rpc ExecuteCommand(ExecuteCommandRequest) returns (ExecuteCommandResponse);
+
+  // ExecuteLua executes a Lua script with access to internal functions and
+  // the current session context
+  rpc ExecuteLua(ExecuteLuaRequest) returns (ExecuteLuaResponse);
+}
+
+// ExecuteCommandRequest contains the command to execute and optional session context
+message ExecuteCommandRequest {
+  // The command to execute, exactly as you would type it in the console
+  // Examples:
+  // - "session --all --static" - List all sessions
+  // - "use <session_id>" - Switch to a session
+  // - "whoami" - Execute whoami in current session (requires active session)
+  // - "ls" - List files in current directory (requires active session)
+  string command = 1;
+
+  // Optional session ID to set as active context before execution
+  // If not provided, uses the current active session
+  string session_id = 2;
+}
+
+// ExecuteCommandResponse contains the result of command execution
+message ExecuteCommandResponse {
+  // The output from the command execution
+  string output = 1;
+
+  // Error message if the command failed
+  string error = 2;
+
+  // Whether the command executed successfully
+  bool success = 3;
+}
+
+// ExecuteLuaRequest contains the Lua script to execute and optional session context
+message ExecuteLuaRequest {
+  // Lua script code to execute
+  // The script has access to:
+  // - session: current session object
+  // - session_id: current session ID
+  // - console: console object
+  // - All registered internal functions
+  string script = 1;
+
+  // Optional session ID to set as active context before execution
+  // If provided, the session context will be switched before script execution
+  // and restored after execution completes
+  string session_id = 2;
+}
+
+// ExecuteLuaResponse contains the result of Lua script execution
+message ExecuteLuaResponse {
+  // The output/return value from the Lua script execution
+  string output = 1;
+
+  // Error message if the script failed
+  string error = 2;
+
+  // Whether the script executed successfully
+  bool success = 3;
+}
