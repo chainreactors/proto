@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package clientrpc;
-option go_package = "github.com/chainreactors/malice-network/helper/proto/services/clientrpc";
+option go_package = "github.com/chainreactors/IoM-go/proto/services/clientrpc";
 
 import "client/clientpb/client.proto";
 import "client/rootpb/root.proto";

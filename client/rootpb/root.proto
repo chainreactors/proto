@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package rootpb;
-option go_package = "github.com/chainreactors/malice-network/helper/proto/client/rootpb";
+option go_package = "github.com/chainreactors/IoM-go/proto/client/rootpb";
 
 
 message Operator{
