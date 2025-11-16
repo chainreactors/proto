@@ -229,6 +229,8 @@ message Task{
   string callby =10;
   bool finished = 11;
   bool timeout = 12;
+  int64 created_at = 13;
+  int64 finished_at = 14;
 }
 
 message Tasks{
@@ -635,6 +637,7 @@ message Context {
   bytes content = 8;
   string nonce = 9;
   int64 created_at = 10;
+  int64 updated_at = 11;
 }
 
 message Contexts {
