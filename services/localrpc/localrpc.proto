@@ -15,6 +15,9 @@ service CommandService {
   // ExecuteLua executes a Lua script with access to internal functions and
   // the current session context
   rpc ExecuteLua(ExecuteLuaRequest) returns (ExecuteLuaResponse);
+
+  // GetHistory retrieves rendered history data for a specific task
+  rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse);
 }
 
 // ExecuteCommandRequest contains the command to execute and optional session context
@@ -69,5 +72,26 @@ message ExecuteLuaResponse {
   string error = 2;
 
   // Whether the script executed successfully
+  bool success = 3;
+}
+
+// GetHistoryRequest contains the task ID to query
+message GetHistoryRequest {
+  // Task ID to retrieve history for
+  uint32 task_id = 1;
+
+  // Session ID context
+  string session_id = 2;
+}
+
+// GetHistoryResponse contains the rendered history data
+message GetHistoryResponse {
+  // Rendered output for the task
+  string output = 1;
+
+  // Error message if retrieval failed
+  string error = 2;
+
+  // Whether the operation was successful
   bool success = 3;
 }
