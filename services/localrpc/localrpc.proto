@@ -18,6 +18,10 @@ service CommandService {
 
   // GetHistory retrieves rendered history data for a specific task
   rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse);
+
+  // GetSchemas retrieves JSON schemas for commands in specified cobra group
+  // Returns schemas suitable for react-jsonschema-form rendering
+  rpc GetSchemas(GetSchemasRequest) returns (GetSchemasResponse);
 }
 
 // ExecuteCommandRequest contains the command to execute and optional session context
@@ -88,6 +92,27 @@ message GetHistoryRequest {
 message GetHistoryResponse {
   // Rendered output for the task
   string output = 1;
+
+  // Error message if retrieval failed
+  string error = 2;
+
+  // Whether the operation was successful
+  bool success = 3;
+}
+
+// GetSchemasRequest contains the cobra group to query
+message GetSchemasRequest {
+  // Cobra command group to retrieve schemas for
+  // Examples: "implant", "execute", "sys", "file", "pivot"
+  // Required field
+  string group = 1;
+}
+
+// GetSchemasResponse contains the JSON schemas for commands
+message GetSchemasResponse {
+  // JSON string containing schemas for commands in the specified group
+  // Format: { "group_name": { "command_name": schema } }
+  string schemas_json = 1;
 
   // Error message if retrieval failed
   string error = 2;
