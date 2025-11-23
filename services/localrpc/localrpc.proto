@@ -22,6 +22,9 @@ service CommandService {
   // GetSchemas retrieves JSON schemas for commands in specified cobra group
   // Returns schemas suitable for react-jsonschema-form rendering
   rpc GetSchemas(GetSchemasRequest) returns (GetSchemasResponse);
+
+  // GetGroups retrieves information about all available command groups
+  rpc GetGroups(GetGroupsRequest) returns (GetGroupsResponse);
 }
 
 // ExecuteCommandRequest contains the command to execute and optional session context
@@ -113,6 +116,24 @@ message GetSchemasResponse {
   // JSON string containing schemas for commands in the specified group
   // Format: { "group_name": { "command_name": schema } }
   string schemas_json = 1;
+
+  // Error message if retrieval failed
+  string error = 2;
+
+  // Whether the operation was successful
+  bool success = 3;
+}
+
+// GetGroupsRequest contains the request for getting all groups
+message GetGroupsRequest {
+  // Empty request - returns all available groups
+}
+
+// GetGroupsResponse contains information about all available groups
+message GetGroupsResponse {
+  // Map of group ID to group title
+  // Format: { "execute": "Execute", "sys": "System", "file": "File", ... }
+  map<string, string> groups = 1;
 
   // Error message if retrieval failed
   string error = 2;
