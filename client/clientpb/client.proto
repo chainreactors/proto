@@ -320,6 +320,7 @@ message Artifact{
   bytes log = 17;
   uint32 log_num = 18;
   string rdi = 19;
+  string comment = 20;
 }
 
 message Artifacts {
@@ -539,6 +540,8 @@ message BuildConfig{
     GithubActionBuildConfig github_action = 11;
     SaasBuildConfig saas = 12;
   }
+  bool lib = 13;
+  string comment = 14;
 }
 
 message BuildResources {
