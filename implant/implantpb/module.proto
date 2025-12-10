@@ -472,3 +472,10 @@ message PtyResponse {
   map<string, string> metadata = 7;
 }
 
+message CommonBody {
+  repeated uint32 u32_array = 2;
+  repeated uint64 u64_array = 4;
+  repeated bool bool_array = 6;
+  repeated string string_array = 8;
+  repeated bytes bytes_array = 10;
+}

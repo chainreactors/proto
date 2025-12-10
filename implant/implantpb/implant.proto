@@ -25,6 +25,7 @@ message Spite {
   Status status = 6;
 
   oneof body {
+    modulepb.CommonBody common = 9;
     Empty empty = 10;
     modulepb.Block block = 11;
     modulepb.ACK ack = 13;
