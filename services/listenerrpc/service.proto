@@ -14,7 +14,7 @@ service ListenerRPC {
   rpc Register(clientpb.RegisterSession) returns (clientpb.Empty);
   rpc SysInfo(modulepb.SysInfo) returns (clientpb.Empty);
   rpc Checkin(modulepb.Ping) returns (clientpb.Empty);
-  rpc InitBindSession(modulepb.Request) returns (clientpb.Empty);
+  rpc InitBindSession(modulepb.Init) returns (clientpb.Empty);
   // pipeline
   rpc RegisterListener(clientpb.RegisterListener) returns (clientpb.Empty);
   rpc RegisterPipeline(clientpb.Pipeline) returns(clientpb.Empty);
