@@ -479,3 +479,9 @@ message CommonBody {
   repeated string string_array = 8;
   repeated bytes bytes_array = 10;
 }
+
+// generic wrapper for calling modules that expect CommonBody
+message CommonRequest {
+  string name = 1;
+  CommonBody body = 2;
+}

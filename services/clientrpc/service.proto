@@ -46,6 +46,7 @@ service MaliceRPC {
   rpc ListModule(modulepb.Request) returns (clientpb.Task);
   rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
   rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
+  rpc ModuleCommon(modulepb.CommonRequest) returns (clientpb.Task);
   rpc ListAddon(modulepb.Request) returns (clientpb.Task);
   rpc LoadAddon(modulepb.LoadAddon) returns (clientpb.Task);
   rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
