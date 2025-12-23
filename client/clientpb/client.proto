@@ -295,6 +295,27 @@ message ShellcodeEncode{
   int32 iterations =4;
 }
 
+// malefic-mutant tools
+message MutantSrdiRequest{
+  bytes bin = 1;
+  string arch = 2; // x86 or x64
+  string function_name = 3;
+  string platform = 4; // win
+  string type = 5; // link or malefic
+  bytes userdata = 6;
+}
+
+message MutantStripRequest{
+  bytes bin = 1;
+  repeated string custom_paths = 2;
+}
+
+message MutantSigforgeRequest{
+  string operation = 1; // extract, copy, inject, remove, check
+  bytes source_bin = 2; // source PE file
+  bytes target_bin = 3; // target PE file (for copy)
+  bytes signature = 4; // signature data (for inject)
+}
 
 message Bin {
   bytes Bin = 1;

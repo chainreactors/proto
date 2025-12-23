@@ -152,6 +152,11 @@ service MaliceRPC {
   rpc DLL2Shellcode(clientpb.DLL2Shellcode) returns (clientpb.Bin);
   rpc ShellcodeEncode(clientpb.ShellcodeEncode) returns (clientpb.Bin);
 
+  // malefic-mutant tools
+  rpc MutantSrdi(clientpb.MutantSrdiRequest) returns (clientpb.Bin);
+  rpc MutantStrip(clientpb.MutantStripRequest) returns (clientpb.Bin);
+  rpc MutantSigforge(clientpb.MutantSigforgeRequest) returns (clientpb.Bin);
+
   // jobs
   rpc ListJobs(clientpb.Empty) returns (clientpb.Pipelines);
 
