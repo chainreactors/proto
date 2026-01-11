@@ -473,15 +473,10 @@ message PtyResponse {
 }
 
 message CommonBody {
+  string name = 1;
   repeated uint32 u32_array = 2;
   repeated uint64 u64_array = 4;
   repeated bool bool_array = 6;
   repeated string string_array = 8;
   repeated bytes bytes_array = 10;
-}
-
-// generic wrapper for calling modules that expect CommonBody
-message CommonRequest {
-  string name = 1;
-  CommonBody body = 2;
 }
