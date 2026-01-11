@@ -91,3 +91,8 @@ message Spite {
 message Spites {
   repeated Spite spites = 1;
 }
+
+message ExecuteModuleRequest {
+  Spite spite = 1;
+  string expect = 2;
+}

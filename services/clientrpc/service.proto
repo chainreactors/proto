@@ -6,6 +6,7 @@ option go_package = "github.com/chainreactors/IoM-go/proto/services/clientrpc";
 import "client/clientpb/client.proto";
 import "client/rootpb/root.proto";
 import "implant/implantpb/module.proto";
+import "implant/implantpb/implant.proto";
 
 service MaliceRPC {
   // basic
@@ -47,6 +48,7 @@ service MaliceRPC {
   rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
   rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
   rpc ModuleCommon(modulepb.CommonRequest) returns (clientpb.Task);
+  rpc ExecuteModule(implantpb.ExecuteModuleRequest) returns (clientpb.Task);
   rpc ListAddon(modulepb.Request) returns (clientpb.Task);
   rpc LoadAddon(modulepb.LoadAddon) returns (clientpb.Task);
   rpc ExecuteAddon(modulepb.ExecuteAddon) returns (clientpb.Task);
