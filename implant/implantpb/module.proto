@@ -15,27 +15,27 @@ message Register {
   repeated Addon addons = 4;
   Timer timer = 5;
   SysInfo sysinfo = 11;
-  Secure secure = 12;  // implant的公钥，用于server加密数据
+  Secure secure = 12;  // Implant's public key, used by server to encrypt data
 }
 
 message Secure{
   bool enable = 1;
   string key = 2;        // encryption key
   string type = 3;       // encryption type
-  string public_key = 4;  // implant的公钥，用于server加密数据
+  string public_key = 4;  // Implant's public key, used by server to encrypt data
 }
 
 
-// Age 密钥交换相关消息
+// Age key exchange related messages
 message KeyExchangeRequest {
-  string public_key = 1;  // 临时公钥 (Age X25519)
-  bytes signature = 2;             // 对临时公钥的签名
-  uint64 timestamp = 3;            // 时间戳
-  string nonce = 4;                // 随机数
+  string public_key = 1;  // Temporary public key (Age X25519)
+  bytes signature = 2;             // Signature of temporary public key
+  uint64 timestamp = 3;            // Timestamp
+  string nonce = 4;                // Nonce
 }
 
 message KeyExchangeResponse {
-  string public_key = 1;  // Server 临时公钥
+  string public_key = 1;  // Server temporary public key
 }
 
 message Init{
@@ -391,13 +391,13 @@ message WmiMethodRequest {
 }
 
 message RunAsRequest {
-  string username = 1;    // 需要执行的用户名
-  string domain = 2;      // 用户所属域
-  string password = 3;    // 用户密码
-  string program = 4;     // 程序路径
-  string args = 5;        // 程序参数（可选）
+  string username = 1;    // Username to execute as
+  string domain = 2;      // User domain
+  string password = 3;    // User password
+  string program = 4;     // Program path
+  string args = 5;        // Program arguments (optional)
   bool use_profile = 6;
-  bool netonly = 7;       // 是否仅使用网络凭据 (可选，默认 false)
+  bool netonly = 7;       // Use network credentials only (optional, default false)
   bool use_env = 8;
 }
 
@@ -463,11 +463,11 @@ message PtyRequest {
 }
 
 message PtyResponse {
-  string session_id = 1;      // 会话ID
-  bytes output_data = 2;      // 输出数据（二进制）
-  string output_text = 3;     // 输出数据（文本）
-  string error = 4;           // 错误信息
-  bool session_active = 5;    // 会话是否仍然活跃
+  string session_id = 1;      // Session ID
+  bytes output_data = 2;      // Output data (binary)
+  string output_text = 3;     // Output data (text)
+  string error = 4;           // Error message
+  bool session_active = 5;    // Whether session is still active
   repeated string active_sessions = 6;
   map<string, string> metadata = 7;
 }

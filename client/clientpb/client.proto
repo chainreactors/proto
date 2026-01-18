@@ -46,7 +46,7 @@ message Session {
   int64 created_at = 23;
   repeated string modules = 30;
   repeated modulepb.Addon addons = 31;
-  KeyPair key_pair = 32;  // Age 密钥对
+  KeyPair key_pair = 32;  // Age key pair
   map<string, string> argue = 40;
   string data = 41;
   map<string, string> loot = 42;
@@ -409,7 +409,7 @@ message Pipeline{
   repeated Encryption encryption = 9;
   string ip = 10;
   string cert_name = 11;
-  Secure secure = 12;  // Age 安全配置
+  Secure secure = 12;  // Age security configuration
   oneof body {
     TCPPipeline tcp = 20;
     BindPipeline bind = 21;
@@ -669,12 +669,12 @@ message Contexts {
 }
 
 message KeyPair {
-  string public_key = 1;    // 公钥
-  string private_key = 2;   // 私钥
+  string public_key = 1;    // Public key
+  string private_key = 2;   // Private key
 }
 
 message Secure {
-  bool enable = 1;                    // 是否启用安全模式
-  KeyPair server_keypair = 2;         // server密钥对
-  KeyPair implant_keypair = 3;        // implant密钥对
+  bool enable = 1;                    // Whether to enable security mode
+  KeyPair server_keypair = 2;         // Server key pair
+  KeyPair implant_keypair = 3;        // Implant key pair
 }
