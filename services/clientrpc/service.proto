@@ -200,6 +200,7 @@ service MaliceRPC {
   rpc AddPort(clientpb.Context) returns (clientpb.Empty);
   rpc AddUpload(clientpb.Context) returns (clientpb.Empty);
   rpc AddDownload(clientpb.Context) returns (clientpb.Empty);
+  rpc DeleteContext(clientpb.Context) returns (clientpb.Empty);
 }
 
 
