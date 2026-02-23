@@ -354,8 +354,10 @@ message Profile{
   string proxy = 4;
   string params = 8;
   string pipeline_id = 9;
-  bytes content = 11;
+  bytes implant_config = 11;
   int64 created_at = 12;
+  bytes prelude_config = 13;
+  BuildResources resources = 14;
 }
 
 
