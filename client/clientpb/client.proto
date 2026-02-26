@@ -641,6 +641,7 @@ message Notify{
 
   bool lark_enable = 7;
   string lark_webhook_url = 8;
+  string lark_secret = 15;
 
   bool serverchan_enable = 9;
   string serverchan_url = 10;
