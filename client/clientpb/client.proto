@@ -458,6 +458,21 @@ message CertificateSubject {
   string validity = 7;  // Validity period in days
 }
 
+message AcmeConfig {
+  string email = 1;
+  string ca_url = 2;
+  string provider = 3;                  // cloudflare, alidns, dnspod, route53
+  map<string, string> credentials = 4;
+}
+
+message AcmeRequest {
+  string domain = 1;
+  string provider = 2;                  // optional, override config default
+  map<string, string> credentials = 3;  // optional, override config default
+  string email = 4;                     // optional
+  string ca_url = 5;                    // optional
+}
+
 message Encryption{
   string type = 2;
   string key = 3;

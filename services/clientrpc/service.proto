@@ -179,6 +179,8 @@ service MaliceRPC {
   rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubActionBuildConfig);
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
+  rpc GetAcmeConfig(clientpb.Empty) returns (clientpb.AcmeConfig);
+  rpc UpdateAcmeConfig(clientpb.AcmeConfig) returns (clientpb.Empty);
   rpc RefreshConfig(clientpb.Empty) returns (clientpb.Empty);
 
   // certs
@@ -186,6 +188,7 @@ service MaliceRPC {
   rpc UpdateCertificate(clientpb.TLS) returns (clientpb.Empty);
   rpc GetAllCertificates(clientpb.Empty) returns (clientpb.Certs);
   rpc DownloadCertificate(clientpb.Cert) returns (clientpb.TLS);
+  rpc ObtainAcmeCert(clientpb.AcmeRequest) returns (clientpb.Empty);
 
 
   // pty
