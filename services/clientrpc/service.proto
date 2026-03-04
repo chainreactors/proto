@@ -43,6 +43,7 @@ service MaliceRPC {
   // implant::internal
   rpc Ping(modulepb.Ping) returns (clientpb.Task);
   rpc Sleep(modulepb.Timer) returns (clientpb.Task);
+  rpc Keepalive(modulepb.CommonBody) returns (clientpb.Task);
   rpc Suicide(modulepb.Request) returns (clientpb.Task);
   rpc ListModule(modulepb.Request) returns (clientpb.Task);
   rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
