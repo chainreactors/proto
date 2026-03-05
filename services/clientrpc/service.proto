@@ -76,6 +76,7 @@ service MaliceRPC {
   rpc Cp(modulepb.Request) returns (clientpb.Task);
   rpc Cat(modulepb.Request) returns (clientpb.Task);
   rpc Mkdir(modulepb.Request) returns (clientpb.Task);
+  rpc Touch(modulepb.Request) returns (clientpb.Task);
   rpc Chmod(modulepb.Request) returns (clientpb.Task);
   rpc Chown(modulepb.ChownRequest) returns (clientpb.Task);
   rpc EnumDrivers(modulepb.Request) returns (clientpb.Task);
