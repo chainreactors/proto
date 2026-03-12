@@ -418,7 +418,19 @@ message Pipeline{
     REM rem = 22;
     Website web = 23;
     HTTPPipeline http = 24;
+    CustomPipeline custom = 25;
   }
+}
+
+// CustomPipeline is a generic, externally-managed pipeline type.
+// All custom configuration is passed via the params JSON string field;
+// the server stores it as-is without parsing.
+message CustomPipeline {
+  string name = 1;
+  string listener_id = 2;
+  string host = 3;
+  uint32 port = 4;
+  string params = 5;
 }
 
 message CtrlPipeline{
