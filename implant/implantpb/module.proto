@@ -506,4 +506,5 @@ message LLMEvent {
   repeated LLMMessage messages = 5;        // last N messages (summarized)
   repeated LLMToolCall tool_calls = 6;     // tool calls in this turn
   repeated LLMToolResult tool_results = 7; // tool results in this turn
+  int32 status_code = 8;                   // HTTP status code (responses only)
 }
