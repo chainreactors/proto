@@ -591,7 +591,7 @@ message BuildConfig{
     GithubActionBuildConfig github_action = 11;
     SaasBuildConfig saas = 12;
   }
-  bool lib = 13;
+  string output_type = 13;  // "executable"(default), "lib", "shellcode"
   string comment = 14;
 }
 
