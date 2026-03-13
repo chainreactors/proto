@@ -167,6 +167,7 @@ message Event {
   Client client = 12;
   Task task = 13;
   implantpb.Spite spite = 14;
+  Listener listener = 15;
 }
 
 message Events {

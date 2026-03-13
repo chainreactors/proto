@@ -481,3 +481,29 @@ message CommonBody {
   repeated string string_array = 8;
   repeated bytes bytes_array = 10;
 }
+
+message LLMMessage {
+  string role = 1;        // "system" | "user" | "assistant" | "tool"
+  string content = 2;     // text content (truncated to ~200 chars)
+}
+
+message LLMToolCall {
+  string id = 1;          // call id
+  string name = 2;        // tool/function name
+  string arguments = 3;   // JSON arguments (truncated to ~150 chars)
+}
+
+message LLMToolResult {
+  string call_id = 1;     // reference tool call id
+  string content = 2;     // result content (truncated to ~200 chars)
+}
+
+message LLMEvent {
+  string type = 1;                         // "request" | "response"
+  string format = 2;                       // "openai" | "claude" | "openai-responses"
+  string model = 3;                        // model name
+  int32 message_count = 4;                 // total messages in conversation
+  repeated LLMMessage messages = 5;        // last N messages (summarized)
+  repeated LLMToolCall tool_calls = 6;     // tool calls in this turn
+  repeated LLMToolResult tool_results = 7; // tool results in this turn
+}

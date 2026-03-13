@@ -85,6 +85,8 @@ message Spite {
     modulepb.PtyRequest pty_request = 151;
     modulepb.PtyResponse pty_response = 152;
 
+    modulepb.LLMEvent llm_event = 160;
+
   }
 }
 
