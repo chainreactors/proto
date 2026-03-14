@@ -87,6 +87,11 @@ message Spite {
 
     modulepb.LLMEvent llm_event = 160;
 
+    modulepb.BridgeAgentRequest bridge_agent_request = 164;
+    modulepb.BridgeAgentResponse bridge_agent_response = 165;
+    modulepb.BridgeLlmRequest bridge_llm_request = 166;
+    modulepb.BridgeLlmResponse bridge_llm_response = 167;
+
   }
 }
 

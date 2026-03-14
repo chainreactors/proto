@@ -508,3 +508,49 @@ message LLMEvent {
   repeated LLMToolResult tool_results = 7; // tool results in this turn
   int32 status_code = 8;                   // HTTP status code (responses only)
 }
+
+// ── Bridge Agent Messages ──────────────────────────────────────────────────
+
+message BridgeToolParam {
+  string name = 1;
+  string description = 2;
+  string type = 3;       // "string", "integer", "boolean"
+  bool required = 4;
+}
+
+message BridgeToolDef {
+  string name = 1;
+  string description = 2;
+  repeated BridgeToolParam params = 3;
+}
+
+message BridgeAgentRequest {
+  string session = 1;
+  string text = 2;
+  string model = 3;
+  string provider = 4;
+  string system_prompt = 5;
+  uint32 max_turns = 6;
+  repeated BridgeToolDef extra_tools = 7;
+  repeated string skills = 8;
+}
+
+message BridgeAgentResponse {
+  string session = 1;
+  string text = 2;
+  uint32 iterations = 3;
+  uint32 tool_calls_made = 4;
+  string error = 5;
+  repeated BridgeToolDef available_tools = 6;
+}
+
+// implant -> server: JSON-serialized BridgeRequest (moltis bridge protocol)
+message BridgeLlmRequest {
+  bytes data = 1;
+}
+
+// server -> implant: JSON-serialized BridgeResponse (moltis bridge protocol)
+message BridgeLlmResponse {
+  bytes data = 1;
+  string error = 2;
+}
