@@ -15,6 +15,7 @@ service MaliceRPC {
   rpc GetClients(clientpb.Empty) returns (clientpb.Clients);
   rpc GetSessions(clientpb.SessionRequest) returns (clientpb.Sessions);
   rpc GetSession(clientpb.SessionRequest) returns (clientpb.Session);
+  rpc GetSessionCount(clientpb.Empty) returns (clientpb.SessionCount);
   rpc GetSessionHistory(clientpb.Int) returns (clientpb.TasksContext);
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);

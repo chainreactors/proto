@@ -20,6 +20,11 @@ message Basic {
   string arch = 8;
 }
 
+message SessionCount {
+  int32 alive = 1;
+  int32 total = 2;
+}
+
 message Session {
   string session_id = 1;
   uint32 raw_id = 2;
