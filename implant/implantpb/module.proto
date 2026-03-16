@@ -423,8 +423,54 @@ message PipeRequest {
   Pipe pipe = 2;
 }
 
+// ============= Target Configuration =============
+
+message TargetTlsConfig {
+  bool enable = 1;
+  string version = 2;
+  string sni = 3;
+  bool skip_verify = 4;
+}
+
+message TargetProxyConfig {
+  string type = 1;
+  string host = 2;
+  uint32 port = 3;
+  string username = 4;
+  string password = 5;
+}
+
+message TargetHttpConfig {
+  string method = 1;
+  string path = 2;
+  string version = 3;
+  map<string, string> headers = 4;
+}
+
+message TargetRemConfig {
+  string link = 1;
+}
+
+message Target {
+  string address = 1;
+  string protocol = 2;       // "tcp" / "http" / "rem"
+  TargetTlsConfig tls_config = 3;
+  TargetProxyConfig proxy_config = 4;
+  TargetHttpConfig http_config = 5;
+  TargetRemConfig rem_config = 6;
+  string domain_suffix = 7;
+}
+
+enum SwitchAction {
+  REPLACE = 0;
+  ADD = 1;
+  SWITCH = 2;
+}
+
 message Switch {
-  repeated string urls = 1;
+  repeated Target targets = 1;
+  SwitchAction action = 2;
+  bytes key = 3;
 }
 
 message TaskCtrl{
