@@ -560,6 +560,7 @@ message WebContent {
   string url = 8;
   bytes content = 9;
   string listener_id = 10;
+  string auth = 11;           // per-path auth "user:pass", empty = inherit website default, "none" = skip
 }
 
 message Website {
@@ -568,6 +569,7 @@ message Website {
   uint32 port= 3;
   string root = 4;
   map<string, WebContent> contents = 6;
+  string auth = 7;            // website-level default auth "user:pass"
 }
 
 message Websites { repeated Website websites = 1; }
