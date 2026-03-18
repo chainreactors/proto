@@ -524,6 +524,7 @@ message REMAgent {
   string remote = 5;
   bool enable = 6;
   repeated string args = 7;
+  int64 created_at = 8;
 }
 
 message RemLog {
