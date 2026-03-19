@@ -148,27 +148,51 @@ message GetGroupsResponse {
   bool success = 3;
 }
 
-// SearchCommandsRequest contains the search query for commands
+// SearchCommandsRequest contains search parameters for command discovery
 message SearchCommandsRequest {
+  // Search keyword for fuzzy matching against command name and description
   string query = 1;
+
+  // Optional group filter to narrow search scope
+  // Examples: "implant", "execute", "sys", "file", "pivot"
   string group = 2;
+
+  // Optional session ID to scope search to commands available for that session
   string session_id = 3;
 }
 
-// SearchCommandsResponse contains the search results
-message SearchCommandsResponse {
-  repeated CommandInfo commands = 1;
-  string error = 2;
-  bool success = 3;
+// CommandInfo contains a lightweight summary of a command
+message CommandInfo {
+  // Command name
+  string name = 1;
+
+  // Command group ID
+  string group = 2;
+
+  // Short description
+  string description = 3;
+
+  // ATT&CK technique ID (e.g., "T1033")
+  string ttp = 4;
+
+  // OPSEC safety rating (1-10, higher is safer)
+  int32 opsec = 5;
+
+  // Usage line showing command syntax
+  string usage = 6;
+
+  // List of subcommand names
+  repeated string subcommands = 7;
 }
 
-// CommandInfo contains lightweight information about a command
-message CommandInfo {
-  string name = 1;
-  string group = 2;
-  string description = 3;
-  string usage = 4;
-  string ttp = 5;
-  int32 opsec = 6;
-  repeated string subcommands = 7;
+// SearchCommandsResponse contains matching command summaries
+message SearchCommandsResponse {
+  // List of matching commands
+  repeated CommandInfo commands = 1;
+
+  // Error message if search failed
+  string error = 2;
+
+  // Whether the operation was successful
+  bool success = 3;
 }
