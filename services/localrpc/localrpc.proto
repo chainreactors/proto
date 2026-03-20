@@ -26,10 +26,13 @@ service CommandService {
   // GetGroups retrieves information about all available command groups
   rpc GetGroups(GetGroupsRequest) returns (GetGroupsResponse);
 
-  // SearchCommands searches for commands by name and description
+  // SearchCommands searches for commands by name or description with fuzzy matching
+  // Returns lightweight command summaries to avoid context pollution
   rpc SearchCommands(SearchCommandsRequest) returns (SearchCommandsResponse);
 
-  // StreamCommand executes a command and streams back task event output
+  // StreamCommand executes a command and continuously streams back task event output.
+  // Suitable for any command that produces persistent EventTaskDone events (e.g. tapping, poison).
+  // The client cancels the context to stop the stream.
   rpc StreamCommand(ExecuteCommandRequest) returns (stream ExecuteCommandResponse);
 }
 
