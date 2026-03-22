@@ -25,6 +25,12 @@ service CommandService {
 
   // GetGroups retrieves information about all available command groups
   rpc GetGroups(GetGroupsRequest) returns (GetGroupsResponse);
+
+  // SearchCommands searches for commands by name and description
+  rpc SearchCommands(SearchCommandsRequest) returns (SearchCommandsResponse);
+
+  // StreamCommand executes a command and streams back task event output
+  rpc StreamCommand(ExecuteCommandRequest) returns (stream ExecuteCommandResponse);
 }
 
 // ExecuteCommandRequest contains the command to execute and optional session context
@@ -140,4 +146,29 @@ message GetGroupsResponse {
 
   // Whether the operation was successful
   bool success = 3;
+}
+
+// SearchCommandsRequest contains the search query for commands
+message SearchCommandsRequest {
+  string query = 1;
+  string group = 2;
+  string session_id = 3;
+}
+
+// SearchCommandsResponse contains the search results
+message SearchCommandsResponse {
+  repeated CommandInfo commands = 1;
+  string error = 2;
+  bool success = 3;
+}
+
+// CommandInfo contains lightweight information about a command
+message CommandInfo {
+  string name = 1;
+  string group = 2;
+  string description = 3;
+  string usage = 4;
+  string ttp = 5;
+  int32 opsec = 6;
+  repeated string subcommands = 7;
 }
