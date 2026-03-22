@@ -413,6 +413,7 @@ message Pipeline{
   string type = 3;
   string listener_id = 4;
   string parser = 5;
+  uint32 packet_length = 6;
   TLS tls = 8;
   repeated Encryption encryption = 9;
   string ip = 10;
