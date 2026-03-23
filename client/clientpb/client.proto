@@ -520,7 +520,7 @@ message REMAgents {
 message REMAgent {
   string pipeline_id = 1;
   string id = 2;
-  string mod =3;
+  string inbound_side = 3;
   string local = 4;
   string remote = 5;
   bool enable = 6;
