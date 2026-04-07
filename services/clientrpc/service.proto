@@ -49,6 +49,7 @@ service MaliceRPC {
   rpc ListModule(modulepb.Request) returns (clientpb.Task);
   rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
   rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
+  rpc UnloadModule(modulepb.Request) returns (clientpb.Task);
   rpc ExecuteModule(implantpb.ExecuteModuleRequest) returns (clientpb.Task);
   rpc BridgeAgentChat(modulepb.BridgeAgentRequest) returns (clientpb.Task);
   rpc ListAddon(modulepb.Request) returns (clientpb.Task);

@@ -204,6 +204,7 @@ message BinaryResponse {
 
 message Modules {
   repeated string modules = 1;
+  map<string, string> bundle_map = 2;
 }
 
 
