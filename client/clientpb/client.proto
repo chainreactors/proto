@@ -708,6 +708,22 @@ message Contexts {
   repeated Context contexts = 1;
 }
 
+// ContextChunk is used by the SyncStream RPC to deliver a Context
+// incrementally. The first chunk carries `header` (metadata) and
+// `total_size`; subsequent chunks carry binary `content` slices.
+message ContextChunk {
+  // Metadata only sent in the first chunk. Content field inside is empty.
+  Context header = 1;
+  // A slice of the binary content. Concatenate by offset to reconstruct.
+  bytes content = 2;
+  // Byte offset of this chunk inside the full content.
+  int64 offset = 3;
+  // Total size of the binary content in bytes.
+  int64 total_size = 4;
+  // Marks the final chunk of the stream.
+  bool eof = 5;
+}
+
 message KeyPair {
   string public_key = 1;    // Public key
   string private_key = 2;   // Private key

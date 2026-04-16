@@ -69,6 +69,11 @@ service MaliceRPC {
   rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc DownloadDir(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.Context);
+  // SyncStream streams the Context content in chunks for faster delivery
+  // of large payloads over gRPC-Web. The first chunk carries metadata;
+  // subsequent chunks contain binary slices that concatenate to the full
+  // Context.content.
+  rpc SyncStream(clientpb.Sync) returns (stream clientpb.ContextChunk);
 
   // implant::fs
   rpc Pwd(modulepb.Request) returns (clientpb.Task);
