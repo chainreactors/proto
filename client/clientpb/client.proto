@@ -602,6 +602,7 @@ message BuildConfig{
   }
   string output_type = 13;  // "executable"(default), "lib", "shellcode"
   string comment = 14;
+  bool debug = 15;  // build in debug mode (passes --debug to malefic-mutant: dev profile, no release opt)
 }
 
 message BuildResources {

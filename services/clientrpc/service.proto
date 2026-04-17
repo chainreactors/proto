@@ -48,6 +48,7 @@ service MaliceRPC {
   rpc Suicide(modulepb.Request) returns (clientpb.Task);
   rpc ListModule(modulepb.Request) returns (clientpb.Task);
   rpc LoadModule(modulepb.LoadModule) returns (clientpb.Task);
+  rpc UnloadModule(modulepb.Request) returns (clientpb.Task);
   rpc RefreshModule(modulepb.Request) returns (clientpb.Task);
   rpc UnloadModule(modulepb.Request) returns (clientpb.Task);
   rpc ExecuteModule(implantpb.ExecuteModuleRequest) returns (clientpb.Task);
