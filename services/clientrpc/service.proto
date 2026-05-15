@@ -188,6 +188,8 @@ service MaliceRPC {
   // config
   rpc UpdateGithubConfig(clientpb.GithubActionBuildConfig) returns (clientpb.Empty);
   rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubActionBuildConfig);
+  rpc UpdateSaasConfig(clientpb.SaasConfig) returns (clientpb.Empty);
+  rpc GetSaasConfig(clientpb.Empty) returns (clientpb.SaasConfig);
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
   rpc GetAcmeConfig(clientpb.Empty) returns (clientpb.AcmeConfig);

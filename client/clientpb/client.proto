@@ -634,6 +634,12 @@ message SaasBuildConfig {
   map<string, string> headers = 3;
 }
 
+message SaasConfig {
+  bool enable = 1;
+  string url = 2;
+  string token = 3;
+}
+
 message GithubWorkflowConfig {
   string owner = 1;       // Repository owner
   string repo = 2;        // Repository name
