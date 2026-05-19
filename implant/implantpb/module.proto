@@ -132,6 +132,10 @@ message Process {
   string path = 6;
   string args = 7;
   string uid = 8;
+  bool signed = 9;
+  string signature_status = 10;
+  string signer = 11;
+  string issuer = 12;
 }
 
 message Timer {
