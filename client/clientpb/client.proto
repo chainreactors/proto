@@ -585,6 +585,18 @@ message Polling{
   bool force = 5;
 }
 
+message PollingState {
+  string id = 1;
+  string session_id = 2;
+  bool running = 3;
+  uint64 interval = 4;
+  repeated uint32 tasks = 5;
+  bool force = 6;
+  int64 started_at = 7;
+  int64 last_tick_at = 8;
+  string last_error = 9;
+}
+
 message BuildConfig{
   string buildName = 1;
   string buildType = 2;
