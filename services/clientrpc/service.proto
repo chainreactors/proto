@@ -64,6 +64,8 @@ service MaliceRPC {
 
   // implant::bind
   rpc Polling(clientpb.Polling) returns (clientpb.Empty);
+  rpc StopPolling(clientpb.Polling) returns (clientpb.Empty);
+  rpc PollingStatus(clientpb.Polling) returns (clientpb.PollingState);
 
   // implant::file
   rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
