@@ -19,6 +19,10 @@ service MaliceRPC {
   rpc GetSessionHistory(clientpb.Int) returns (clientpb.TasksContext);
   rpc SessionManage(clientpb.BasicUpdateSession) returns(clientpb.Empty);
   rpc GetListeners(clientpb.Empty) returns (clientpb.Listeners);
+  rpc ConnectForwardListener(clientpb.ForwardListenerConnect) returns (clientpb.ForwardListenerStatus);
+  rpc DisconnectForwardListener(clientpb.Listener) returns (clientpb.ForwardListenerStatus);
+  rpc GetForwardListenerStatus(clientpb.Listener) returns (clientpb.ForwardListenerStatus);
+  rpc ListForwardListeners(clientpb.Empty) returns (clientpb.ForwardListenerStatuses);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc GetAudit(clientpb.SessionRequest) returns (clientpb.Audits);
 
@@ -71,6 +75,7 @@ service MaliceRPC {
   rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc DownloadDir(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.Context);
+  rpc SyncStream(clientpb.Sync) returns (stream clientpb.ContextChunk);
 
   // implant::fs
   rpc Pwd(modulepb.Request) returns (clientpb.Task);
@@ -164,6 +169,7 @@ service MaliceRPC {
   rpc MutantSrdi(clientpb.MutantSrdiRequest) returns (clientpb.Bin);
   rpc MutantStrip(clientpb.MutantStripRequest) returns (clientpb.Bin);
   rpc MutantSigforge(clientpb.MutantSigforgeRequest) returns (clientpb.Bin);
+  rpc MutantTool(clientpb.MutantToolRequest) returns (clientpb.MutantToolResponse);
 
   // jobs
   rpc ListJobs(clientpb.Empty) returns (clientpb.Pipelines);
@@ -184,6 +190,8 @@ service MaliceRPC {
   // config
   rpc UpdateGithubConfig(clientpb.GithubActionBuildConfig) returns (clientpb.Empty);
   rpc GetGithubConfig(clientpb.Empty) returns (clientpb.GithubActionBuildConfig);
+  rpc UpdateSaasConfig(clientpb.SaasConfig) returns (clientpb.Empty);
+  rpc GetSaasConfig(clientpb.Empty) returns (clientpb.SaasConfig);
   rpc UpdateNotifyConfig(clientpb.Notify) returns (clientpb.Empty);
   rpc GetNotifyConfig(clientpb.Empty) returns (clientpb.Notify);
   rpc GetAcmeConfig(clientpb.Empty) returns (clientpb.AcmeConfig);
