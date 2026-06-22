@@ -126,6 +126,7 @@ message JobCtrl {
   Job job = 3;
   WebContent content = 4;
   Session session = 5;
+  ListenerRetire retire = 6;
 }
 
 message JobStatus {
@@ -782,4 +783,12 @@ message Secure {
   bool enable = 1;                    // Whether to enable security mode
   KeyPair server_keypair = 2;         // Server key pair
   KeyPair implant_keypair = 3;        // Implant key pair
+}
+
+message ListenerRetire {
+  string listener_id = 1;
+  bool purge_config = 2;
+  bool purge_auth = 3;
+  bool no_revoke = 4;
+  uint32 timeout_seconds = 5;
 }

@@ -23,6 +23,7 @@ service MaliceRPC {
   rpc DisconnectForwardListener(clientpb.Listener) returns (clientpb.ForwardListenerStatus);
   rpc GetForwardListenerStatus(clientpb.Listener) returns (clientpb.ForwardListenerStatus);
   rpc ListForwardListeners(clientpb.Empty) returns (clientpb.ForwardListenerStatuses);
+  rpc RetireListener(clientpb.ListenerRetire) returns (clientpb.ForwardListenerStatus);
   rpc GetJobs(clientpb.Empty) returns (clientpb.Jobs);
   rpc GetAudit(clientpb.SessionRequest) returns (clientpb.Audits);
 
