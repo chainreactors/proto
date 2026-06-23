@@ -153,7 +153,7 @@ message GetGroupsResponse {
 
 // SearchCommandsRequest contains search parameters for command discovery
 message SearchCommandsRequest {
-  // Search keyword for fuzzy matching against command name and description
+  // Full-text search query (FTS5 syntax supported: AND, OR, NOT, phrases)
   string query = 1;
 
   // Optional group filter to narrow search scope
@@ -162,6 +162,12 @@ message SearchCommandsRequest {
 
   // Optional session ID to scope search to commands available for that session
   string session_id = 3;
+
+  // Filter by result type: "command", "plugin", or "" for all
+  string type_filter = 4;
+
+  // Maximum results to return (default 20)
+  int32 limit = 5;
 }
 
 // CommandInfo contains a lightweight summary of a command
@@ -186,6 +192,15 @@ message CommandInfo {
 
   // List of subcommand names
   repeated string subcommands = 7;
+
+  // FTS5 highlighted snippet showing match context
+  string snippet = 8;
+
+  // Command source: "builtin", "mal", "lua", "alias", "extension"
+  string source = 9;
+
+  // FTS5 relevance rank (lower is better match)
+  double rank = 10;
 }
 
 // SearchCommandsResponse contains matching command summaries
@@ -198,4 +213,7 @@ message SearchCommandsResponse {
 
   // Whether the operation was successful
   bool success = 3;
+
+  // Total number of results found
+  int32 total_count = 4;
 }
