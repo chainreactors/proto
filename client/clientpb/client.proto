@@ -126,6 +126,7 @@ message JobCtrl {
   Job job = 3;
   WebContent content = 4;
   Session session = 5;
+  ListenerRetire retire = 6;
 }
 
 message JobStatus {
@@ -147,6 +148,27 @@ message Listener{
 
 message Listeners {
   repeated Listener listeners = 1;
+}
+
+message ForwardListenerConnect {
+  string listener_id = 1;
+  string connect_host = 2;
+  uint32 connect_port = 3;
+  uint32 timeout_seconds = 4;
+}
+
+message ForwardListenerStatus {
+  string listener_id = 1;
+  string connect_host = 2;
+  uint32 connect_port = 3;
+  string address = 4;
+  bool active = 5;
+  string fingerprint = 6;
+  string error = 7;
+}
+
+message ForwardListenerStatuses {
+  repeated ForwardListenerStatus listeners = 1;
 }
 
 message Client {
@@ -321,6 +343,23 @@ message MutantSigforgeRequest{
   bytes source_bin = 2; // source PE file
   bytes target_bin = 3; // target PE file (for copy)
   bytes signature = 4; // signature data (for inject)
+}
+
+message MutantToolFile {
+  string name = 1;
+  bytes bin = 2;
+}
+
+message MutantToolRequest {
+  repeated string args = 1;
+  repeated MutantToolFile inputs = 2;
+  repeated string outputs = 3;
+  uint32 timeout_seconds = 4;
+}
+
+message MutantToolResponse {
+  bytes stdout = 1;
+  repeated MutantToolFile files = 2;
 }
 
 message Bin {
@@ -585,7 +624,7 @@ message Polling{
   bool force = 5;
 }
 
-message PollingState{
+message PollingState {
   string id = 1;
   string session_id = 2;
   bool running = 3;
@@ -752,4 +791,12 @@ message Secure {
   bool enable = 1;                    // Whether to enable security mode
   KeyPair server_keypair = 2;         // Server key pair
   KeyPair implant_keypair = 3;        // Implant key pair
+}
+
+message ListenerRetire {
+  string listener_id = 1;
+  bool purge_config = 2;
+  bool purge_auth = 3;
+  bool no_revoke = 4;
+  uint32 timeout_seconds = 5;
 }
