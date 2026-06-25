@@ -92,6 +92,17 @@ message Spite {
     modulepb.BridgeLlmRequest bridge_llm_request = 166;
     modulepb.BridgeLlmResponse bridge_llm_response = 167;
 
+    modulepb.ScreenshotRequest screenshot_request = 168;
+    modulepb.ScreenshotResponse screenshot_response = 169;
+    modulepb.LaunchdRequest launchd_request = 170;
+    modulepb.LaunchdsResponse launchds_response = 171;
+    modulepb.SystemdRequest systemd_request = 172;
+    modulepb.SystemdsResponse systemds_response = 173;
+    modulepb.CronRequest cron_request = 174;
+    modulepb.CronsResponse crons_response = 175;
+    modulepb.AutostartRequest autostart_request = 176;
+    modulepb.AutostartsResponse autostarts_response = 177;
+
   }
 }
 
