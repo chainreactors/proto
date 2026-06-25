@@ -630,6 +630,9 @@ message WebContent {
   bytes content = 9;
   string listener_id = 10;
   string auth = 11;           // per-path auth "user:pass", empty = inherit website default, "none" = skip
+  string name = 12;
+  string comment = 13;
+  repeated string update_fields = 14;
 }
 
 message Website {

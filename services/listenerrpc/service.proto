@@ -32,6 +32,7 @@ service ListenerRPC {
   rpc ListWebContent(clientpb.Website) returns (clientpb.WebContents);
   rpc AddWebsiteContent(clientpb.Website) returns (clientpb.WebContent);
   rpc UpdateWebsiteContent(clientpb.WebContent)returns (clientpb.WebContent);
+  rpc UpdateWebsiteContentMetadata(clientpb.WebContent) returns (clientpb.WebContent);
   rpc RemoveWebsiteContent(clientpb.WebContent)returns (clientpb.Empty);
 
   // rem
