@@ -259,10 +259,38 @@ message Task{
   bool timeout = 12;
   int64 created_at = 13;
   int64 finished_at = 14;
+  string command_summary = 15;
+  string request_summary = 16;
+  int64 request_size = 17;
+  string request_sha256 = 18;
+  bool has_request = 19;
 }
 
 message Tasks{
   repeated Task tasks = 1;
+}
+
+message TaskQuery {
+  string session_id = 1;
+  repeated uint32 task_ids = 2;
+  uint32 page_size = 3;
+  string page_token = 4;
+  bool include_request_summary = 5;
+  bool include_raw_request = 6;
+  bool include_results = 7;
+  bool include_total_count = 8;
+}
+
+message TaskDetail {
+  Task task = 1;
+  implantpb.Spite raw_request = 2;
+  repeated implantpb.Spite results = 3;
+}
+
+message TaskDetails {
+  repeated TaskDetail tasks = 1;
+  string next_page_token = 2;
+  int64 total_count = 3;
 }
 
 message TaskDescs{
