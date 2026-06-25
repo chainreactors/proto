@@ -78,6 +78,7 @@ message Audit{
   string Created = 4;
   string Finished = 5;
   string Lasted = 6;
+  int32 result_index = 7;
 }
 
 message Audits{
