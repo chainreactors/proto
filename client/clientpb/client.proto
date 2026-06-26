@@ -515,6 +515,24 @@ message CtrlPipeline{
   string cert_name = 6;
 }
 
+enum TLSUpdateMode {
+  TLS_UPDATE_MODE_UNSPECIFIED = 0;
+  TLS_UPDATE_MODE_DISABLE = 1;
+  TLS_UPDATE_MODE_EXISTING_CERT = 2;
+  TLS_UPDATE_MODE_INLINE_CERT = 3;
+}
+
+message PipelineTLSUpdate {
+  string listener_id = 1;
+  string name = 2;
+  TLSUpdateMode mode = 3;
+  string cert_name = 4;
+  TLS tls = 5;
+  bool save_cert = 6;
+  string save_cert_name = 7;
+  string cert_comment = 8;
+}
+
 message TLS{
   Cert cert = 1;
   Cert ca =2;
@@ -533,6 +551,7 @@ message Cert{
   string key = 2;
   string name = 3;
   string type = 4;
+  string comment = 5;
 }
 
 message CertificateSubject {
