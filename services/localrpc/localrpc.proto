@@ -34,6 +34,55 @@ service CommandService {
   // Suitable for any command that produces persistent EventTaskDone events (e.g. tapping, poison).
   // The client cancels the context to stop the stream.
   rpc StreamCommand(ExecuteCommandRequest) returns (stream ExecuteCommandResponse);
+
+  // GetCompletions returns dynamic completion values for a specific flag or positional argument.
+  // Called by UI when user focuses on a field that has registered completions.
+  rpc GetCompletions(GetCompletionsRequest) returns (GetCompletionsResponse);
+}
+
+// GetCompletionsRequest specifies which command and field to complete
+message GetCompletionsRequest {
+  // Command path, e.g. "pipeline tcp" or "exec"
+  string command = 1;
+
+  // Flag name to complete (e.g. "listener"). Empty for positional args.
+  string flag = 2;
+
+  // Positional argument index (used when flag is empty)
+  int32 arg_index = 3;
+
+  // Current user input for filtering
+  string current = 4;
+
+  // Session context for session-aware completions
+  string session_id = 5;
+}
+
+// CompletionItem represents a single completion candidate
+message CompletionItem {
+  // The completion value to insert
+  string value = 1;
+
+  // Display text (may differ from value)
+  string display = 2;
+
+  // Description of this completion
+  string description = 3;
+
+  // Category tag (e.g. "listener id", "session id", "pipeline")
+  string tag = 4;
+}
+
+// GetCompletionsResponse contains completion results
+message GetCompletionsResponse {
+  // List of completion candidates
+  repeated CompletionItem items = 1;
+
+  // Whether the operation was successful
+  bool success = 2;
+
+  // Error message if completion failed
+  string error = 3;
 }
 
 // ExecuteCommandRequest contains the command to execute and optional session context
