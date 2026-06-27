@@ -106,3 +106,27 @@ message ToolCallResult {
   string result_json = 3;
   string error       = 4;
 }
+
+// ── gRPC service ────────────────────────────────────────────────────────
+// Bidirectional streaming: agent connects, sends manifest + results,
+// receives tool call requests from server.
+
+service AgentService {
+  // Agent connects and exchanges tool calls with server.
+  // Agent sends: ToolManifest (first message), then ToolCallResults.
+  // Server sends: ToolCallRequests, final one with done=true.
+  rpc Session(stream AgentMessage) returns (stream ServerMessage);
+}
+
+// Wrapper for agent → server messages (manifest or result)
+message AgentMessage {
+  oneof payload {
+    ToolManifest   manifest = 1;
+    ToolCallResult result   = 2;
+  }
+}
+
+// Wrapper for server → agent messages (tool call request)
+message ServerMessage {
+  ToolCallRequest request = 1;
+}
