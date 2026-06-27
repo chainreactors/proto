@@ -1,7 +1,7 @@
 syntax = "proto3";
 package agentpb;
 
-option go_package = "github.com/chainreactors/cyber-agent/proto/implant/agentpb";
+option go_package = "github.com/chainreactors/cyber-agent/proto/agent/agentpb";
 
 // ── Tool schema definitions ─────────────────────────────────────────────
 
@@ -16,6 +16,32 @@ message ToolDef {
   string              name        = 1;
   string              description = 2;
   repeated ToolParam  params      = 3;
+}
+
+// ── Chat message types (OpenAI-compatible layout) ───────────────────────
+
+message ToolCall {
+  string id             = 1;
+  string name           = 2;
+  string arguments_json = 3;  // JSON-encoded arguments
+}
+
+message ChatMessage {
+  string            role         = 1;
+  string            content      = 2;
+  repeated ToolCall tool_calls   = 3;
+  string            tool_call_id = 4;  // for role="tool" only
+}
+
+message Usage {
+  uint32 input_tokens  = 1;
+  uint32 output_tokens = 2;
+}
+
+message CompletionResponse {
+  string            text       = 1;
+  repeated ToolCall tool_calls = 2;
+  Usage             usage      = 3;
 }
 
 // ── Agent task request / response (C2 control plane) ────────────────────
@@ -49,4 +75,34 @@ message LlmRequest {
 message LlmResponse {
   bytes  data  = 1;
   string error = 2;
+}
+
+// ── Reverse tool execution protocol (server-driven ReAct) ───────────────
+// Server drives the loop, agent is a pure tool executor.
+//
+// Flow:
+//   1. Agent → Server:  ToolManifest (available tools)
+//   2. Server → Agent:  ToolCallRequest (execute this tool)
+//   3. Agent → Server:  ToolCallResult (here's the output)
+//   4. Repeat 2-3 until server is done
+//   5. Server → Agent:  ToolCallRequest with done=true (session complete)
+
+message ToolManifest {
+  string             session = 1;
+  repeated ToolDef   tools   = 2;
+}
+
+message ToolCallRequest {
+  string id             = 1;
+  string name           = 2;
+  string arguments_json = 3;
+  bool   done           = 4;  // if true, session is complete, no tool call
+  string final_text     = 5;  // final answer when done=true
+}
+
+message ToolCallResult {
+  string id          = 1;
+  bool   success     = 2;
+  string result_json = 3;
+  string error       = 4;
 }
