@@ -1,0 +1,52 @@
+syntax = "proto3";
+package agentpb;
+
+option go_package = "github.com/chainreactors/cyber-agent/proto/implant/agentpb";
+
+// ── Tool schema definitions ─────────────────────────────────────────────
+
+message ToolParam {
+  string name        = 1;
+  string description = 2;
+  string type        = 3;  // "string", "integer", "boolean"
+  bool   required    = 4;
+}
+
+message ToolDef {
+  string              name        = 1;
+  string              description = 2;
+  repeated ToolParam  params      = 3;
+}
+
+// ── Agent task request / response (C2 control plane) ────────────────────
+
+message AgentRequest {
+  string              session       = 1;
+  string              text          = 2;
+  string              model         = 3;
+  string              provider      = 4;
+  string              system_prompt = 5;
+  uint32              max_turns     = 6;
+  repeated ToolDef    extra_tools   = 7;
+  repeated string     skills        = 8;
+}
+
+message AgentResponse {
+  string              session         = 1;
+  string              text            = 2;
+  uint32              iterations      = 3;
+  uint32              tool_calls_made = 4;
+  string              error           = 5;
+  repeated ToolDef    available_tools = 6;
+}
+
+// ── LLM bridge messages (raw byte envelopes) ────────────────────────────
+
+message LlmRequest {
+  bytes data = 1;
+}
+
+message LlmResponse {
+  bytes  data  = 1;
+  string error = 2;
+}
