@@ -226,6 +226,13 @@ service MaliceRPC {
   rpc AddUpload(clientpb.Context) returns (clientpb.Empty);
   rpc AddDownload(clientpb.Context) returns (clientpb.Empty);
   rpc DeleteContext(clientpb.Context) returns (clientpb.Empty);
+
+  // project
+  rpc CreateProject(clientpb.CreateProjectRequest) returns (clientpb.Project);
+  rpc GetProject(clientpb.Project) returns (clientpb.Project);
+  rpc ListProjects(clientpb.Empty) returns (clientpb.Projects);
+  rpc UpdateProject(clientpb.UpdateProjectRequest) returns (clientpb.Project);
+  rpc DeleteProject(clientpb.DeleteProjectRequest) returns (clientpb.Empty);
 }
 
 

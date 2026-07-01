@@ -851,3 +851,36 @@ message ListenerRetire {
   bool no_revoke = 4;
   uint32 timeout_seconds = 5;
 }
+
+// Project
+message Project {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string note = 4;
+  bool is_deleted = 5;
+  int64 created_at = 6;
+  int64 updated_at = 7;
+}
+
+message Projects {
+  repeated Project projects = 1;
+}
+
+message CreateProjectRequest {
+  string name = 1;
+  string description = 2;
+  string note = 3;
+}
+
+message UpdateProjectRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string note = 4;
+}
+
+message DeleteProjectRequest {
+  string id = 1;
+  bool hard = 2;
+}
