@@ -884,3 +884,27 @@ message DeleteProjectRequest {
   string id = 1;
   bool hard = 2;
 }
+
+// EventSubscription configures the resumable EventsV2 stream.
+// topics match Event.type values. An empty topic list subscribes to all events.
+message EventSubscription {
+  string stream_id = 1;
+  uint64 after_sequence = 2;
+  bool replay = 3;
+  repeated string topics = 4;
+  bool include_heartbeats = 5;
+}
+
+// EventEnvelope adds ordering and replay metadata without changing the legacy
+// Event message used by Events and GetEvent.
+message EventEnvelope {
+  string stream_id = 1;
+  uint64 sequence = 2;
+  int64 occurred_at_unix_milli = 3;
+  Event event = 4;
+  bool replayed = 5;
+  bool reset_required = 6;
+  uint64 oldest_sequence = 7;
+  uint64 latest_sequence = 8;
+  bool ready = 9;
+}

@@ -233,6 +233,9 @@ service MaliceRPC {
   rpc ListProjects(clientpb.Empty) returns (clientpb.Projects);
   rpc UpdateProject(clientpb.UpdateProjectRequest) returns (clientpb.Project);
   rpc DeleteProject(clientpb.DeleteProjectRequest) returns (clientpb.Empty);
+
+  // resumable event stream; appended to preserve legacy method ordering
+  rpc EventsV2(clientpb.EventSubscription) returns (stream clientpb.EventEnvelope);
 }
 
 
