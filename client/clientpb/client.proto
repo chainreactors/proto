@@ -908,3 +908,14 @@ message EventEnvelope {
   uint64 latest_sequence = 8;
   bool ready = 9;
 }
+
+// ArtifactChunk is used by DownloadArtifactStream to deliver an Artifact
+// incrementally. The first chunk carries metadata with an empty bin field;
+// subsequent chunks carry binary content slices.
+message ArtifactChunk {
+  Artifact header = 1;
+  bytes content = 2;
+  int64 offset = 3;
+  int64 total_size = 4;
+  bool eof = 5;
+}
