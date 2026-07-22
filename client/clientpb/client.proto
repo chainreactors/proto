@@ -833,6 +833,29 @@ message ContextChunk {
   bool eof = 5;
 }
 
+// UploadChunkRequest is one sequential chunk of a browser-safe file upload.
+// Clients generate upload_id and resend immutable metadata on every chunk.
+// Completion is defined by next_offset reaching total_size (no separate Commit).
+message UploadChunkRequest {
+  string upload_id = 1;
+  string name = 2;
+  string target = 3;
+  uint32 priv = 4;
+  uint64 total_size = 5;
+  uint64 offset = 6;
+  bytes data = 7;
+  bool hidden = 8;
+  bool override = 9;
+}
+
+// UploadChunkResponse acknowledges received bytes. task is set only when the
+// file is fully staged and a downstream implant Task has been created.
+message UploadChunkResponse {
+  string upload_id = 1;
+  uint64 next_offset = 2;
+  Task task = 3;
+}
+
 message KeyPair {
   string public_key = 1;    // Public key
   string private_key = 2;   // Private key

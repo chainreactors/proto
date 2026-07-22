@@ -74,6 +74,9 @@ service MaliceRPC {
 
   // implant::file
   rpc Upload(modulepb.UploadRequest) returns (clientpb.Task);
+  // UploadChunk stages sequential browser-safe chunks on the server, then
+  // dispatches a single implant upload Task when total_size is reached.
+  rpc UploadChunk(clientpb.UploadChunkRequest) returns (clientpb.UploadChunkResponse);
   rpc Download(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc DownloadDir(modulepb.DownloadRequest) returns (clientpb.Task);
   rpc Sync(clientpb.Sync) returns (clientpb.Context);
