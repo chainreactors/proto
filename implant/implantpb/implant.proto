@@ -91,6 +91,13 @@ message Spite {
     modulepb.BridgeAgentResponse bridge_agent_response = 165;
     modulepb.BridgeLlmRequest bridge_llm_request = 166;
     modulepb.BridgeLlmResponse bridge_llm_response = 167;
+    modulepb.TunnelOpen tunnel_open = 179;
+    modulepb.TunnelOpenResult tunnel_open_result = 180;
+    modulepb.TunnelData tunnel_data = 181;
+    modulepb.TunnelClose tunnel_close = 182;
+    modulepb.TunnelCtrl tunnel_ctrl = 183;
+    modulepb.TunnelListResponse tunnel_list = 184;
+
 
   }
 }
