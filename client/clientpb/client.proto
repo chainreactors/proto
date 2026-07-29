@@ -942,3 +942,22 @@ message ArtifactChunk {
   int64 total_size = 4;
   bool eof = 5;
 }
+
+message CertificateApplyRequest {
+  string cert_name = 1;
+  string listener_id = 2;
+  string pipeline_name = 3;
+}
+
+message CertificateApplyTarget {
+  string listener_id = 1;
+  string pipeline_name = 2;
+  string pipeline_type = 3;
+  bool applied = 4;
+  string error = 5;
+}
+
+message CertificateApplyResult {
+  string cert_name = 1;
+  repeated CertificateApplyTarget targets = 2;
+}

@@ -220,6 +220,7 @@ service MaliceRPC {
   rpc UpdateCertificate(clientpb.TLS) returns (clientpb.Empty);
   rpc GetAllCertificates(clientpb.Empty) returns (clientpb.Certs);
   rpc DownloadCertificate(clientpb.Cert) returns (clientpb.TLS);
+  rpc ApplyCertificate(clientpb.CertificateApplyRequest) returns (clientpb.CertificateApplyResult);
   rpc ObtainAcmeCert(clientpb.AcmeRequest) returns (clientpb.Empty);
 
 
