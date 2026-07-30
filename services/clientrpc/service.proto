@@ -247,6 +247,11 @@ service MaliceRPC {
 
   // resumable event stream; appended to preserve legacy method ordering
   rpc EventsV2(clientpb.EventSubscription) returns (stream clientpb.EventEnvelope);
+
+  // manual session topology; appended to preserve legacy method ordering
+  rpc ListSessionLinks(clientpb.SessionLinkRequest) returns (clientpb.SessionLinks);
+  rpc SetSessionLink(clientpb.SessionLinkRequest) returns (clientpb.SessionLink);
+  rpc RemoveSessionLink(clientpb.SessionLinkRequest) returns (clientpb.Empty);
 }
 
 
