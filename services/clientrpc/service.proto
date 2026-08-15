@@ -252,6 +252,12 @@ service MaliceRPC {
   rpc ListSessionLinks(clientpb.SessionLinkRequest) returns (clientpb.SessionLinks);
   rpc SetSessionLink(clientpb.SessionLinkRequest) returns (clientpb.SessionLink);
   rpc RemoveSessionLink(clientpb.SessionLinkRequest) returns (clientpb.Empty);
+
+  // Bounded, server-side filtered Session list for management UIs.
+  rpc ListSessions(clientpb.ListSessionsRequest) returns (clientpb.ListSessionsResponse);
+  rpc GetSessionStats(clientpb.SessionStatsRequest) returns (clientpb.SessionStats);
+  rpc ListSessionGroups(clientpb.Empty) returns (clientpb.SessionGroups);
+  rpc GetSessionTrend(clientpb.Empty) returns (clientpb.SessionTrend);
 }
 
 

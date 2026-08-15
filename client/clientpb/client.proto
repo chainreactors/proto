@@ -978,3 +978,72 @@ message SessionLinkRequest {
 message SessionLinks {
   repeated SessionLink links = 1;
 }
+
+enum SessionListStatus {
+  SESSION_LIST_STATUS_ALL = 0;
+  SESSION_LIST_STATUS_ALIVE = 1;
+  SESSION_LIST_STATUS_OFFLINE = 2;
+}
+
+enum SessionListSortField {
+  SESSION_LIST_SORT_FIELD_OPERATIONAL = 0;
+  SESSION_LIST_SORT_FIELD_STATUS = 1;
+  SESSION_LIST_SORT_FIELD_SESSION_ID = 2;
+  SESSION_LIST_SORT_FIELD_GROUP_NAME = 3;
+  SESSION_LIST_SORT_FIELD_NOTE = 4;
+  SESSION_LIST_SORT_FIELD_LISTENER_ID = 5;
+  SESSION_LIST_SORT_FIELD_PIPELINE_ID = 6;
+  SESSION_LIST_SORT_FIELD_TARGET = 7;
+  SESSION_LIST_SORT_FIELD_CREATED_AT = 8;
+  SESSION_LIST_SORT_FIELD_LAST_CHECKIN = 9;
+  SESSION_LIST_SORT_FIELD_PROFILE_NAME = 10;
+  SESSION_LIST_SORT_FIELD_TYPE = 11;
+}
+
+enum SessionListSortDirection {
+  SESSION_LIST_SORT_DIRECTION_UNSPECIFIED = 0;
+  SESSION_LIST_SORT_DIRECTION_ASC = 1;
+  SESSION_LIST_SORT_DIRECTION_DESC = 2;
+}
+
+message ListSessionsRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+  SessionListStatus status = 3;
+  string group = 4;
+  string search = 5;
+  SessionListSortField sort_field = 6;
+  SessionListSortDirection sort_direction = 7;
+}
+
+message ListSessionsResponse {
+  repeated Session sessions = 1;
+  int64 filtered_total = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+  SessionStats stats = 5;
+}
+
+message SessionStatsRequest {
+  string group = 1;
+  string search = 2;
+}
+
+message SessionStats {
+  int64 total = 1;
+  int64 alive = 2;
+  int64 offline = 3;
+}
+
+message SessionGroups {
+  repeated string groups = 1;
+}
+
+message SessionTrendPoint {
+  int64 bucket_start_unix = 1;
+  int64 count = 2;
+}
+
+message SessionTrend {
+  repeated SessionTrendPoint points = 1;
+}
