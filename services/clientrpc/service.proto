@@ -151,6 +151,12 @@ service MaliceRPC {
 
   // implant: 3rd
   rpc RemDial(modulepb.Request) returns (clientpb.Task);
+  // native socks/tcp relay (no REM)
+  rpc TcpRelay(modulepb.TunnelCtrl) returns (clientpb.Task);
+  rpc TunnelOpen(modulepb.TunnelOpen) returns (clientpb.Task);
+  rpc TunnelData(modulepb.TunnelData) returns (clientpb.Task);
+  rpc TunnelClose(modulepb.TunnelClose) returns (clientpb.Task);
+
   rpc FFmpeg(modulepb.FFmpegRequest) returns (clientpb.Task);
 
   // shellcode

