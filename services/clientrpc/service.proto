@@ -253,6 +253,9 @@ service MaliceRPC {
   rpc SetSessionLink(clientpb.SessionLinkRequest) returns (clientpb.SessionLink);
   rpc RemoveSessionLink(clientpb.SessionLinkRequest) returns (clientpb.Empty);
 
+  // Rebuild from the immutable configuration snapshot of an existing artifact.
+  rpc ReplayArtifact(clientpb.Artifact) returns (clientpb.Artifact);
+
   // Bounded, server-side filtered Session list for management UIs.
   rpc ListSessions(clientpb.ListSessionsRequest) returns (clientpb.ListSessionsResponse);
   rpc GetSessionStats(clientpb.SessionStatsRequest) returns (clientpb.SessionStats);

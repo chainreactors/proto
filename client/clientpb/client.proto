@@ -416,6 +416,8 @@ message Artifact{
   uint32 log_num = 18;
   string rdi = 19;
   string comment = 20;
+  BuildConfig build_config = 21;
+  bool has_build_snapshot = 22;
 }
 
 message Artifacts {
