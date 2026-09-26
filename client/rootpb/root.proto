@@ -220,4 +220,9 @@ message ListenerRuntimeCredentialOperation {
   string rejection_code = 11;
   int64 created_at_unix_milli = 12;
   int64 completed_at_unix_milli = 13;
+  string public_key_fingerprint = 14;
+  string ca_certificate_pem = 15;
+  string prepare_operation_id = 16;
+  string process_instance_id = 17;
+  string transport = 18;
 }
