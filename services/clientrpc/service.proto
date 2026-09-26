@@ -272,4 +272,8 @@ service RootRPC {
   rpc AddListener(rootpb.Operator) returns (rootpb.Response);
   rpc RemoveListener(rootpb.Operator) returns (rootpb.Response);
   rpc ListListeners(rootpb.Operator) returns(clientpb.Listeners);
+  rpc CreateListenerIdentity(rootpb.CreateListenerIdentityRequest) returns(rootpb.ListenerIdentityOperation);
+  rpc GetListenerIdentityOperation(rootpb.ListenerIdentityOperationRequest) returns(rootpb.ListenerIdentityOperation);
+  rpc GetListenerIdentity(rootpb.ListenerIdentityRequest) returns(rootpb.ListenerIdentity);
+  rpc GetListenerIdentityConfig(rootpb.ListenerIdentityRequest) returns(rootpb.ListenerIdentityConfig);
 }

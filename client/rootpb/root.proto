@@ -16,3 +16,57 @@ message Response{
   string response = 2;
   string error = 3;
 }
+
+// Administrative creation intent. Owner identifiers are opaque to IOM.
+message CreateListenerIdentityRequest {
+  string operation_id = 1;
+  string listener_name = 2;
+  string owner_id = 3;
+  uint64 owner_generation = 4;
+}
+
+message ListenerIdentityOperationRequest {
+  string operation_id = 1;
+}
+
+message ListenerIdentityRequest {
+  // Immutable Operator UUID; never a routing name.
+  string identity_id = 1;
+}
+
+enum ListenerIdentityOperationState {
+  LISTENER_IDENTITY_OPERATION_UNSPECIFIED = 0;
+  LISTENER_IDENTITY_OPERATION_PENDING = 1;
+  LISTENER_IDENTITY_OPERATION_SUCCEEDED = 2;
+  LISTENER_IDENTITY_OPERATION_REJECTED = 3;
+}
+
+// Non-secret, durable creation result. Success does not imply a running Listener.
+message ListenerIdentityOperation {
+  string operation_id = 1;
+  string listener_name = 2;
+  string owner_id = 3;
+  uint64 owner_generation = 4;
+  string actor_id = 5;
+  string identity_id = 6;
+  ListenerIdentityOperationState state = 7;
+  string rejection_code = 8;
+  int64 created_at_unix_milli = 9;
+  int64 completed_at_unix_milli = 10;
+}
+
+message ListenerIdentity {
+  string identity_id = 1;
+  string listener_name = 2;
+  string certificate_fingerprint = 3;
+  bool revoked = 4;
+  string create_operation_id = 5;
+  string owner_id = 6;
+  uint64 owner_generation = 7;
+}
+
+// Explicit credential read; never included in operation or identity queries.
+message ListenerIdentityConfig {
+  ListenerIdentity identity = 1;
+  string yaml_config = 2;
+}
