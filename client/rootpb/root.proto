@@ -70,3 +70,29 @@ message ListenerIdentityConfig {
   ListenerIdentity identity = 1;
   string yaml_config = 2;
 }
+
+// Conditional administrative cleanup of an original managed creation result.
+message RemoveListenerIdentityRequest {
+  string operation_id = 1;
+  string identity_id = 2;
+  string owner_id = 3;
+  uint64 owner_generation = 4;
+}
+
+// Removal IDs have their own namespace, queried via GetListenerIdentityRemoval.
+// Success concerns only the original identity; it does not certify deployment
+// shutdown, Pipeline cleanup, or port release.
+message ListenerIdentityRemoval {
+  string operation_id = 1;
+  string identity_id = 2;
+  string owner_id = 3;
+  uint64 owner_generation = 4;
+  string actor_id = 5;
+  string listener_name = 6;
+  ListenerIdentityOperationState state = 7;
+  string rejection_code = 8;
+  // Successful outcomes: "removed" or "already_absent".
+  string outcome = 9;
+  int64 created_at_unix_milli = 10;
+  int64 completed_at_unix_milli = 11;
+}
