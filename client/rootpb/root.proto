@@ -96,3 +96,98 @@ message ListenerIdentityRemoval {
   int64 created_at_unix_milli = 10;
   int64 completed_at_unix_milli = 11;
 }
+
+// Trusted management intent, committed before deployment or registration.
+// Source identifiers describe the selected management environment; they are
+// not authenticated process-start evidence and do not authorize Task callers.
+message PrepareListenerRuntimeRequest {
+  string operation_id = 1;
+  string identity_id = 2;
+  string owner_id = 3;
+  uint64 owner_generation = 4;
+  string deployment_id = 5;
+  string executor_id = 6;
+  string host_id = 7;
+  // Expected immutable process instance, distinct from any connection epoch.
+  string process_instance_id = 8;
+  // "reverse" or "forward". Neither transport is admitted by preparation.
+  string transport = 9;
+}
+
+message ListenerRuntimeOperationRequest {
+  string operation_id = 1;
+}
+
+message ListenerRuntimeRequest {
+  string runtime_id = 1;
+}
+
+enum ListenerRuntimeOperationState {
+  LISTENER_RUNTIME_OPERATION_UNSPECIFIED = 0;
+  LISTENER_RUNTIME_OPERATION_PENDING = 1;
+  LISTENER_RUNTIME_OPERATION_SUCCEEDED = 2;
+  LISTENER_RUNTIME_OPERATION_REJECTED = 3;
+}
+
+// Immutable result of preparation, also returned after admission is closed.
+// Success reserves an original runtime UUID; it does not establish readiness.
+message ListenerRuntimePreparation {
+  string operation_id = 1;
+  string identity_id = 2;
+  string owner_id = 3;
+  uint64 owner_generation = 4;
+  string actor_id = 5;
+  string deployment_id = 6;
+  string executor_id = 7;
+  string host_id = 8;
+  string process_instance_id = 9;
+  string transport = 10;
+  string identity_operation_id = 11;
+  string listener_name = 12;
+  string runtime_id = 13;
+  ListenerRuntimeOperationState state = 14;
+  string rejection_code = 15;
+  int64 created_at_unix_milli = 16;
+  int64 completed_at_unix_milli = 17;
+}
+
+enum ListenerRuntimeAdmissionState {
+  LISTENER_RUNTIME_ADMISSION_UNSPECIFIED = 0;
+  LISTENER_RUNTIME_ADMISSION_AWAITING_REGISTRATION = 1;
+  LISTENER_RUNTIME_ADMISSION_CLOSED = 2;
+}
+
+// No online/ready/exited claim can be derived from this reservation record.
+message ListenerRuntime {
+  string runtime_id = 1;
+  ListenerRuntimePreparation preparation = 2;
+  ListenerRuntimeAdmissionState admission_state = 3;
+  int64 created_at_unix_milli = 4;
+  string close_operation_id = 5;
+  int64 closed_at_unix_milli = 6;
+}
+
+message CloseListenerRuntimeAdmissionRequest {
+  string operation_id = 1;
+  string runtime_id = 2;
+  string identity_id = 3;
+  string owner_id = 4;
+  uint64 owner_generation = 5;
+}
+
+// Closure has its own operation namespace. Closing admission never proves
+// process exit, Pipeline cleanup, identity revocation, or port release.
+message ListenerRuntimeClosure {
+  string operation_id = 1;
+  string runtime_id = 2;
+  string identity_id = 3;
+  string owner_id = 4;
+  uint64 owner_generation = 5;
+  string actor_id = 6;
+  ListenerRuntimeOperationState state = 7;
+  string rejection_code = 8;
+  // Successful outcomes: "admission_closed" or "already_closed".
+  string outcome = 9;
+  int64 created_at_unix_milli = 10;
+  int64 completed_at_unix_milli = 11;
+}

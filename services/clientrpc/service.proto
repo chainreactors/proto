@@ -278,4 +278,9 @@ service RootRPC {
   rpc GetListenerIdentityConfig(rootpb.ListenerIdentityRequest) returns(rootpb.ListenerIdentityConfig);
   rpc RemoveListenerIdentity(rootpb.RemoveListenerIdentityRequest) returns(rootpb.ListenerIdentityRemoval);
   rpc GetListenerIdentityRemoval(rootpb.ListenerIdentityOperationRequest) returns(rootpb.ListenerIdentityRemoval);
+  rpc PrepareListenerRuntime(rootpb.PrepareListenerRuntimeRequest) returns(rootpb.ListenerRuntimePreparation);
+  rpc GetListenerRuntimePreparation(rootpb.ListenerRuntimeOperationRequest) returns(rootpb.ListenerRuntimePreparation);
+  rpc GetListenerRuntime(rootpb.ListenerRuntimeRequest) returns(rootpb.ListenerRuntime);
+  rpc CloseListenerRuntimeAdmission(rootpb.CloseListenerRuntimeAdmissionRequest) returns(rootpb.ListenerRuntimeClosure);
+  rpc GetListenerRuntimeClosure(rootpb.ListenerRuntimeOperationRequest) returns(rootpb.ListenerRuntimeClosure);
 }
