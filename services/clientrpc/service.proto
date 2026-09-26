@@ -283,4 +283,6 @@ service RootRPC {
   rpc GetListenerRuntime(rootpb.ListenerRuntimeRequest) returns(rootpb.ListenerRuntime);
   rpc CloseListenerRuntimeAdmission(rootpb.CloseListenerRuntimeAdmissionRequest) returns(rootpb.ListenerRuntimeClosure);
   rpc GetListenerRuntimeClosure(rootpb.ListenerRuntimeOperationRequest) returns(rootpb.ListenerRuntimeClosure);
+  rpc IssueListenerRuntimeCredential(rootpb.IssueListenerRuntimeCredentialRequest) returns(rootpb.ListenerRuntimeCredentialOperation);
+  rpc GetListenerRuntimeCredentialOperation(rootpb.ListenerRuntimeOperationRequest) returns(rootpb.ListenerRuntimeCredentialOperation);
 }

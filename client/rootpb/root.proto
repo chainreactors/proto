@@ -191,3 +191,33 @@ message ListenerRuntimeClosure {
   int64 created_at_unix_milli = 10;
   int64 completed_at_unix_milli = 11;
 }
+
+// Trusted management binds a deployment-generated public key to one prepared
+// runtime. The CSR contains no management authorization; the server verifies
+// the original runtime/identity/owner receipt before signing it.
+message IssueListenerRuntimeCredentialRequest {
+  string operation_id = 1;
+  string runtime_id = 2;
+  string identity_id = 3;
+  string owner_id = 4;
+  uint64 owner_generation = 5;
+  string csr_pem = 6;
+}
+
+// Public runtime credential result. The private key remains with the trusted
+// deployment executor that created the CSR.
+message ListenerRuntimeCredentialOperation {
+  string operation_id = 1;
+  string runtime_id = 2;
+  string identity_id = 3;
+  string owner_id = 4;
+  uint64 owner_generation = 5;
+  string actor_id = 6;
+  string credential_id = 7;
+  string certificate_fingerprint = 8;
+  string certificate_pem = 9;
+  ListenerRuntimeOperationState state = 10;
+  string rejection_code = 11;
+  int64 created_at_unix_milli = 12;
+  int64 completed_at_unix_milli = 13;
+}
